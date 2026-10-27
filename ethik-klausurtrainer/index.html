@@ -1,0 +1,1480 @@
+<title>Klausurtrainer Religionskritik</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700;800&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Kalam:wght@400;700&display=swap">
+<style>
+/* Layout: ein Hefterblatt auf Karopapier – Lernmodi als Registerreiter, roter Korrekturrand, Feedback als handschriftliche Randnotiz */
+:root{
+  --paper:#F2F4F8; --grid:#DEE4EE; --sheet:#FFFFFF; --panel:#F5F7FB; --tab:#E7EBF2; --line:#D4DAE5; --rule:#E2E7F0;
+  --ink:#1A2030; --ink-soft:#454F64; --muted:#6C768A;
+  --blue:#1D43B5; --on-blue:#FFFFFF; --blue-soft:#E6ECFC; --hl:#CCDDFF;
+  --red:#C2362C; --red-soft:#FCEAE7; --green:#1E7845; --green-soft:#E1F3E8; --amber:#8F5D00; --amber-soft:#FFF1CF;
+  --t-theo:#6B3FA0; --t-rk:#8F5D00; --t-fb:#0B7675; --t-mx:#B8322A; --t-vg:#1D43B5;
+  --font-display:"Alegreya","Iowan Old Style",Georgia,serif;
+  --font-body:"Alegreya Sans","Segoe UI",system-ui,sans-serif;
+  --font-hand:"Kalam","Segoe Print","Comic Sans MS",cursive;
+  --radius:12px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F131B; --grid:#192030; --sheet:#161B26; --panel:#1C2230; --tab:#141925; --line:#2A3244; --rule:#242C3C;
+    --ink:#E7EAF1; --ink-soft:#B5BCCB; --muted:#8B94A7;
+    --blue:#93ABFF; --on-blue:#0B1230; --blue-soft:#212C49; --hl:#2B3D6B;
+    --red:#FF8D80; --red-soft:#3A2225; --green:#73D69E; --green-soft:#1A3225; --amber:#F0C25A; --amber-soft:#382F1E;
+    --t-theo:#C6A6F2; --t-rk:#F0C25A; --t-fb:#5FD0CD; --t-mx:#FF8D80; --t-vg:#93ABFF;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F131B; --grid:#192030; --sheet:#161B26; --panel:#1C2230; --tab:#141925; --line:#2A3244; --rule:#242C3C;
+  --ink:#E7EAF1; --ink-soft:#B5BCCB; --muted:#8B94A7;
+  --blue:#93ABFF; --on-blue:#0B1230; --blue-soft:#212C49; --hl:#2B3D6B;
+  --red:#FF8D80; --red-soft:#3A2225; --green:#73D69E; --green-soft:#1A3225; --amber:#F0C25A; --amber-soft:#382F1E;
+  --t-theo:#C6A6F2; --t-rk:#F0C25A; --t-fb:#5FD0CD; --t-mx:#FF8D80; --t-vg:#93ABFF;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.wrap{max-width:980px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:22px 56px}
+.app-head{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:flex-end;justify-content:space-between}
+.eyebrow{font-family:var(--font-hand);color:var(--red);font-size:17px;display:inline-block;transform:rotate(-1.5deg)}
+.brand h1{font-family:var(--font-display);font-weight:800;font-size:clamp(30px,5.4vw,44px);line-height:1.02;margin:2px 0 0;letter-spacing:-.01em;text-wrap:balance}
+.brand h1 span{color:var(--blue)}
+.status{display:flex;flex-wrap:wrap;gap:6px;font-size:13px}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;border:1px solid var(--line);background:var(--sheet);color:var(--ink-soft)}
+.pill i{width:7px;height:7px;border-radius:50%;background:var(--muted)}
+.pill.on i{background:var(--green)}
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;display:flex;gap:4px;overflow-x:auto;margin-top:18px;padding-top:8px;background:var(--paper);border-bottom:1px solid var(--line);scrollbar-width:none}
+nav.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;font-family:var(--font-display);font-weight:700;font-size:15.5px;padding:8px 14px 7px;border:1px solid var(--line);border-bottom:none;border-radius:10px 10px 0 0;background:var(--tab);color:var(--ink-soft);text-decoration:none;white-space:nowrap;position:relative;top:1px}
+.tab:hover{color:var(--ink)}
+.tab[aria-current="page"]{background:var(--sheet);color:var(--blue)}
+.sheet{position:relative;background:var(--sheet);border:1px solid var(--line);border-top:none;border-radius:0 0 14px 14px;padding:28px 30px 44px 56px;min-height:60vh}
+.sheet::before{content:"";position:absolute;top:0;bottom:0;left:34px;width:2px;background:var(--red);opacity:.4;pointer-events:none}
+@media (max-width:640px){.sheet{padding:20px 14px 32px 28px}.sheet::before{left:14px}}
+h2{font-family:var(--font-display);font-size:29px;line-height:1.12;margin:0 0 6px;text-wrap:balance}
+h3{font-family:var(--font-display);font-size:21px;line-height:1.22;margin:0;text-wrap:balance}
+h4{font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;font-weight:700}
+p{margin:0}
+.lede{color:var(--ink-soft);max-width:65ch}
+.small{font-size:14.5px}
+.muted{color:var(--muted)}
+.stack{display:flex;flex-direction:column;gap:18px}
+.stack.tight{gap:10px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.row.between{justify-content:space-between}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+hr.rule{border:0;border-top:1px solid var(--rule);margin:4px 0}
+.btn{font:inherit;font-weight:700;font-size:16px;border-radius:10px;padding:9px 16px;border:1.5px solid var(--blue);background:var(--blue);color:var(--on-blue);cursor:pointer;line-height:1.2;min-height:42px}
+.btn:hover{filter:brightness(1.07)}
+.btn:disabled{opacity:.45;cursor:not-allowed;filter:none}
+.btn.sec{background:transparent;color:var(--blue)}
+.btn.ghost{background:transparent;border-color:transparent;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px;padding-inline:6px}
+.btn.small{font-size:14.5px;min-height:34px;padding:6px 12px}
+.btn.ai{background:var(--ink);border-color:var(--ink);color:var(--sheet)}
+.btn.danger{background:var(--red);border-color:var(--red);color:var(--sheet)}
+.btn.r-no{background:var(--red-soft);border-color:var(--red);color:var(--red)}
+.btn.r-part{background:var(--amber-soft);border-color:var(--amber);color:var(--amber)}
+.btn.r-ok{background:var(--green-soft);border-color:var(--green);color:var(--green)}
+.btn.suggest{box-shadow:0 0 0 3px var(--blue-soft),0 0 0 5px var(--blue)}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.chip{display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:13px;font-weight:700;padding:2px 10px;border-radius:999px;--c:var(--t-vg);color:var(--c);background:color-mix(in srgb,var(--c) 11%,transparent);border:1px solid color-mix(in srgb,var(--c) 38%,transparent);line-height:1.5}
+.chip.theo{--c:var(--t-theo)}.chip.rk{--c:var(--t-rk)}.chip.fb{--c:var(--t-fb)}.chip.mx{--c:var(--t-mx)}.chip.vg{--c:var(--t-vg)}
+button.chip{cursor:pointer;padding:5px 12px;font-size:14px}
+button.chip[aria-pressed="false"]{color:var(--muted);background:transparent;border-color:var(--line)}
+details.op{font-size:13.5px}
+details.op summary{display:inline-flex;gap:6px;align-items:center;padding:2px 10px;border-radius:999px;border:1px dashed var(--ink-soft);color:var(--ink-soft);font-weight:700;cursor:pointer;list-style:none}
+details.op summary::-webkit-details-marker{display:none}
+details.op p{margin-top:6px;color:var(--ink-soft);max-width:60ch}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px}
+.panel.quote{font-family:var(--font-display);font-size:18px;line-height:1.55}
+.src{display:block;margin-top:6px;font-family:var(--font-body);font-size:13.5px;color:var(--muted);font-style:italic}
+.note{font-family:var(--font-hand);font-size:18.5px;line-height:1.35;color:var(--red)}
+.note.ok{color:var(--green)}.note.warn{color:var(--amber)}.note.blue{color:var(--blue)}
+.thinking{color:var(--muted);font-style:italic}
+.thinking::after{content:"";display:inline-block;width:1.2em;text-align:left;animation:dots 1.2s steps(4) infinite}
+@keyframes dots{0%{content:""}25%{content:"."}50%{content:".."}75%{content:"..."}}
+textarea,input[type=text]{font:inherit;color:var(--ink);background:var(--sheet);border:1.5px solid var(--line);border-radius:10px;width:100%}
+textarea{padding:6px 12px;resize:vertical}
+textarea.lined{line-height:30px;padding:0 12px;min-height:152px;background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 29px,var(--rule) 29px,var(--rule) 30px);background-attachment:local}
+textarea[readonly]{background-color:var(--panel)}
+textarea:focus,input[type=text]:focus{border-color:var(--blue);outline:none;box-shadow:0 0 0 3px var(--blue-soft)}
+.wc{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.checklist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+.checklist li{display:flex;gap:10px;align-items:flex-start;padding:6px 10px;border-radius:8px}
+.checklist li.hit{background:var(--green-soft)}
+.checklist li.half{background:var(--amber-soft)}
+.checklist input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--green);flex:none}
+.checklist label{cursor:pointer}
+.bar{height:8px;border-radius:99px;background:var(--rule);overflow:hidden;min-width:60px}
+.bar>span{display:block;height:100%;background:var(--blue);border-radius:inherit;transition:width .4s}
+.pct{font-size:13px;font-weight:700;color:var(--ink-soft);font-variant-numeric:tabular-nums;min-width:3.2em;text-align:right}
+.choice{display:flex;flex-direction:column;gap:6px;text-align:left;font:inherit;color:inherit;padding:14px 16px;border:1.5px solid var(--line);border-radius:var(--radius);background:var(--sheet);cursor:pointer}
+.choice:hover{border-color:var(--blue)}
+.choice strong{font-family:var(--font-display);font-size:18.5px;line-height:1.25}
+.choice .meta{font-size:14px;color:var(--muted)}
+.syl{list-style:none;padding:0;margin:0}
+.syl li{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:6px 18px;padding:12px 0;border-bottom:1px solid var(--rule);align-items:center}
+.syl li:last-child{border-bottom:0}
+.syl .t{font-family:var(--font-display);font-size:19px;font-weight:700;line-height:1.25}
+.syl .links{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:14.5px;margin-top:2px}
+.syl .links a{color:var(--blue);text-underline-offset:3px}
+.syl .m{display:flex;gap:8px;align-items:center}
+.syl .m .bar{flex:1}
+@media (max-width:620px){.syl li{grid-template-columns:1fr}}
+ol.path{margin:0;padding:0;list-style:none;counter-reset:p;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 14px}
+ol.path li{counter-increment:p;display:flex;gap:10px;align-items:flex-start;font-size:15.5px}
+ol.path li::before{content:counter(p);flex:none;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--blue);color:var(--blue);font-weight:700;font-size:14px;display:grid;place-items:center;margin-top:1px}
+ol.path a{color:var(--ink);font-weight:700;text-underline-offset:3px}
+.callout{border:1.5px dashed var(--red);border-radius:var(--radius);padding:14px 16px;background:var(--red-soft)}
+.callout .note{font-size:20px}
+.card-q{font-family:var(--font-display);font-size:24px;line-height:1.28;font-weight:700;text-wrap:balance}
+.statement{font-family:var(--font-display);font-size:22px;line-height:1.32;padding:18px;border:1.5px dashed var(--line);border-radius:var(--radius);background:var(--panel)}
+.buckets{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px}
+.bucket{font:inherit;font-weight:700;padding:12px;border-radius:10px;border:1.5px solid var(--line);background:var(--sheet);color:var(--ink);cursor:pointer;min-height:54px;line-height:1.25}
+.bucket:hover:not(:disabled){border-color:var(--blue)}
+.bucket:disabled{cursor:default}
+.bucket.right{border-color:var(--green);background:var(--green-soft);color:var(--green)}
+.bucket.wrong{border-color:var(--red);background:var(--red-soft);color:var(--red)}
+.cloze{font-family:var(--font-display);font-size:19px;line-height:2.15;max-width:70ch}
+.cloze input{display:inline-block;width:auto;max-width:100%;font-family:var(--font-body);font-size:17px;padding:0 6px;border:none;border-bottom:2px solid var(--blue);border-radius:4px 4px 0 0;background:var(--blue-soft);line-height:1.55;color:var(--ink)}
+.cloze input:focus{outline:none;box-shadow:0 2px 0 var(--blue)}
+.cloze input.ok{border-color:var(--green);background:var(--green-soft)}
+.cloze input.near{border-color:var(--amber);background:var(--amber-soft)}
+.cloze input.bad{border-color:var(--red);background:var(--red-soft)}
+.cloze .sol{font-family:var(--font-hand);color:var(--red);font-size:17px;margin:0 4px;line-height:1}
+.tl{list-style:none;margin:0;padding:0 0 0 22px;border-left:2px solid var(--line);display:flex;flex-direction:column;gap:12px}
+.tl li{position:relative}
+.tl li::before{content:"";position:absolute;left:-29px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--blue);border:2px solid var(--sheet)}
+.tl .yr{font-family:var(--font-display);font-weight:800;color:var(--blue);font-variant-numeric:tabular-nums;margin-right:6px}
+.tl .x{display:block;font-size:14.5px;color:var(--ink-soft)}
+.pool{display:flex;flex-wrap:wrap;gap:8px}
+.evt{font:inherit;font-size:15.5px;text-align:left;padding:10px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--sheet);color:var(--ink);cursor:pointer;max-width:100%;line-height:1.3}
+.evt:hover{border-color:var(--blue)}
+.evt.shake{animation:shake .35s;border-color:var(--red);background:var(--red-soft)}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.reader{font-family:var(--font-display);font-size:18px;line-height:1.8;max-width:70ch}
+.reader p+p{margin-top:10px}
+.reader .sec{font-family:var(--font-body);font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:14px 0 2px}
+.sent{border-radius:3px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.reader.live .sent{cursor:pointer}
+.reader.live .sent:hover{background:linear-gradient(transparent 58%,var(--hl) 58%)}
+.sent.ok{background:linear-gradient(transparent 42%,color-mix(in srgb,var(--green) 32%,transparent) 42%)!important}
+.sent.bad{background:linear-gradient(transparent 42%,color-mix(in srgb,var(--red) 28%,transparent) 42%)!important}
+.z{font-family:var(--font-body);font-size:11px;font-weight:700;color:var(--muted);margin-right:3px;vertical-align:super;line-height:0}
+.taskbox{position:sticky;top:calc(env(safe-area-inset-top,0px) + 50px);z-index:3;background:var(--sheet);border:1.5px solid var(--blue);border-radius:var(--radius);padding:12px 14px;box-shadow:0 6px 18px -12px rgba(0,0,0,.35)}
+.taskbox .q{font-family:var(--font-display);font-weight:700;font-size:19px;line-height:1.3}
+.mrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:720px){.mrow{grid-template-columns:1fr}}
+.mcell{display:flex;flex-direction:column;gap:8px;min-width:0}
+.chat{display:flex;flex-direction:column;gap:10px}
+.msg{max-width:88%;padding:10px 14px;border-radius:14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.msg.ai{align-self:flex-start;background:var(--panel);border:1px solid var(--line)}
+.msg.me{align-self:flex-end;background:var(--blue-soft)}
+.msg .who{display:block;font-size:12px;font-weight:700;color:var(--muted);margin-bottom:2px;white-space:normal}
+.grade{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.grade-num{font-family:var(--font-display);font-size:46px;font-weight:800;color:var(--blue);font-variant-numeric:tabular-nums;line-height:1}
+.grade-num small{font-size:16px;color:var(--muted);font-weight:700}
+.crit{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.crit li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:8px;align-items:start}
+.crit .s{font-weight:800;text-align:center;border-radius:6px;line-height:24px}
+.crit .s.y{color:var(--green);background:var(--green-soft)}.crit .s.p{color:var(--amber);background:var(--amber-soft)}.crit .s.n{color:var(--red);background:var(--red-soft)}
+.ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:3px}
+.boxes{display:grid;grid-template-columns:minmax(0,1.6fr) repeat(4,minmax(0,1fr));gap:4px 8px;font-size:14px;align-items:center;font-variant-numeric:tabular-nums}
+.boxes .hd{font-size:12px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.boxes .n{text-align:center}
+.timer{display:inline-flex;gap:8px;align-items:center}
+.timer-disp{font-family:var(--font-display);font-weight:800;font-size:20px;font-variant-numeric:tabular-nums;color:var(--blue)}
+.timer-disp.over{color:var(--red)}
+details.more>summary{cursor:pointer;font-weight:700;color:var(--blue)}
+details.more[open]>summary{margin-bottom:8px}
+.argcols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:640px){.argcols{grid-template-columns:1fr}}
+html:not(.has-ai) .ai-only{display:none!important}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="app-head">
+    <div class="brand">
+      <span class="eyebrow">Ethik 12 · Klausur</span>
+      <h1>Klausurtrainer <span>Religionskritik</span></h1>
+    </div>
+    <div class="status" id="status"></div>
+  </header>
+  <nav class="tabs" id="tabs" aria-label="Lernmodi"></nav>
+  <main class="sheet" id="view"></main>
+</div>
+
+<script>
+/* =========================================================
+   INHALTE – alles aus deinem Hefter (plus markiertes Zusatzwissen)
+   ========================================================= */
+const TOPICS = {
+  theo:{name:"Theodizee"},
+  rk:{name:"Religionskritik – Überblick"},
+  fb:{name:"Feuerbach"},
+  mx:{name:"Marx"},
+  vg:{name:"Vergleich & Zusammenhänge"}
+};
+
+const OPS = {
+  "nennen":{afb:"I",d:"Informationen ohne Erläuterung knapp aufzählen."},
+  "definieren":{afb:"I",d:"Einen Begriff genau bestimmen: Was ist gemeint, welche Merkmale, ggf. Wortherkunft."},
+  "wiedergeben":{afb:"I",d:"Inhalte mit eigenen Worten strukturiert darstellen – ohne eigene Wertung, mit Redewiedergabe (Konjunktiv)."},
+  "zusammenfassen":{afb:"I",d:"Wesentliche Aussagen knapp, strukturiert und in eigenen Worten darstellen."},
+  "beschreiben":{afb:"I",d:"Einen Sachverhalt in seinen Merkmalen sachlich darstellen."},
+  "erklären":{afb:"II",d:"Einen Sachverhalt so darstellen, dass Gründe und Zusammenhänge verständlich werden."},
+  "erläutern":{afb:"II",d:"Erklären und zusätzlich mit Beispielen oder Textbelegen veranschaulichen."},
+  "charakterisieren":{afb:"II",d:"Typische Merkmale herausstellen und zu einem Gesamtbild verbinden."},
+  "herausarbeiten":{afb:"II",d:"Aus dem Material Aspekte erkennen und darstellen, auch wenn sie dort nicht ausdrücklich genannt sind."},
+  "vergleichen":{afb:"II",d:"Gemeinsamkeiten UND Unterschiede kriteriengeleitet darstellen und zu einem Ergebnis kommen."},
+  "einordnen":{afb:"II",d:"Eine Position begründet in einen größeren Zusammenhang (Theorie, Epoche) stellen."},
+  "beurteilen":{afb:"III",d:"Eine Aussage an Kriterien prüfen und zu einem begründeten Sachurteil kommen."},
+  "bewerten":{afb:"III",d:"Wie beurteilen – zusätzlich mit offengelegten eigenen Wertmaßstäben."},
+  "Stellung nehmen":{afb:"III",d:"Nach Abwägung von Pro und Contra eine eigene Position begründet vertreten."},
+  "erörtern":{afb:"III",d:"Eine These durch Pro- und Contra-Argumente prüfen und zu einem begründeten Urteil kommen."},
+  "sich auseinandersetzen":{afb:"III",d:"Eine Aussage kritisch prüfen und dazu eine eigene, begründete Position entwickeln."}
+};
+
+const CARDS = [
+  // ---------- Theodizee ----------
+  {id:"t1",topic:"theo",op:"definieren",q:"Definiere den Begriff „Theodizee“ – inklusive Wortherkunft.",
+   a:"**Theodizee = Rechtfertigung Gottes angesichts des Leids in der Welt.** Griech. *theós* = Gott, *díke* = Gerechtigkeit/Rechtfertigung. (Zusatz: Der Begriff stammt von Leibniz, 1710.)",
+   kp:["Rechtfertigung Gottes","angesichts des Leids / des Übels in der Welt","theós = Gott","díke = Gerechtigkeit / Rechtfertigung"]},
+  {id:"t2",topic:"theo",op:"erklären",q:"Worin besteht das Theodizee-Problem?",
+   a:"Gott gilt als **allmächtig, allwissend und allgütig**. Trotzdem gibt es Leid. Das ist ein **Widerspruch**: Ein allgütiger Gott würde Leid nicht wollen, ein allwissender wüsste davon, ein allmächtiger könnte es verhindern. Deshalb wird entweder **Gott selbst** oder zumindest **eines der Attribute infrage gestellt**.",
+   kp:["Attribute: allmächtig, allwissend, allgütig","Leid existiert trotzdem","Widerspruch zwischen Attributen und Leid","Gott oder ein Attribut wird infrage gestellt"]},
+  {id:"t3",topic:"theo",op:"nennen",q:"Nenne die drei Arten von Leid mit je einem Beispiel und ihrem Ursprung.",
+   a:"**Physisches Leid** (Schmerz, Krankheit, Naturkatastrophen, Alter, Unfall) – weil der Mensch ein **Naturwesen** ist.\n**Metaphysisches Leid** (Frage nach dem Sinn, Angst, Trauer, Schuld, das Theodizee-Problem selbst) – weil der Mensch ein **endliches und unvollständiges Wesen** ist.\n**Leid durch böses Handeln** (Beleidigung, Krieg, Gewalt, Hass) – weil der Mensch ein **frei handelndes Wesen** ist.",
+   kp:["Physisches Leid – Mensch als Naturwesen","Metaphysisches Leid – Mensch als endliches, unvollständiges Wesen","Leid durch böses Handeln – Mensch als frei handelndes Wesen","Zu jeder Art ein passendes Beispiel"]},
+  {id:"t4",topic:"theo",op:"zusammenfassen",q:"Fasse den Grundgedanken der Privationsthese zusammen.",
+   a:"Lat. **privatio = Mangel, Fehlen**. Leid bzw. das Schlechte ist **kein eigenständiges Phänomen**, sondern ein **Mangel am Guten**. Nur Gott ist das höchste, vollkommene Wesen – seine **Schöpfung kann nicht vollkommen sein**, sonst wäre sie **mit Gott identisch**. Alles neben Gott ist darum „weniger gut“, und das erscheint uns als Leid.",
+   kp:["privatio = Mangel","Leid ist kein eigenständiges Phänomen, sondern Mangel am Guten","Schöpfung kann nicht vollkommen sein, sonst identisch mit Gott","Alles neben Gott ist „weniger gut“ – das erleben wir als Leid"]},
+  {id:"t5",topic:"theo",op:"erklären",q:"Was meint Leibniz mit der „besten aller möglichen Welten“?",
+   a:"**Gottfried Wilhelm Leibniz (1646–1716)**: Gott hätte als allmächtiges Wesen jede vorstellbare Welt schaffen können, hat aber wegen seiner **Güte** nur eine geschaffen – **die beste aller möglichen Welten**. Eine Welt ohne Leid ist zwar vorstellbar, aber **nicht besser** als unsere. Also muss das Leid **insgesamt einen positiven Nutzen** haben.",
+   kp:["Allmacht: Gott hätte jede Welt schaffen können","Aus Güte wählte er die beste aller möglichen Welten","Eine leidfreie Welt wäre nicht besser","Das Leid hat insgesamt einen positiven Nutzen / höheren Zweck"]},
+  {id:"t6",topic:"theo",op:"nennen",q:"Nenne möglichst viele Beispiele, welchen positiven Nutzen Leid haben könnte (Leibniz' Logik).",
+   a:"Aus deinem Hefter: **Freude und Glück werden erst im Kontrast erkennbar**, **Wachstum/Reifung**, **Unrecht wird erkannt und bekämpft**. Weitere: Schmerz als **Warnsignal**, Leid weckt **Mitgefühl und Solidarität**, **Freiheit** gibt es nur mit der Möglichkeit des Bösen.",
+   kp:["Glück/Freude werden im Kontrast erkennbar","Wachstum / Reifung","Unrecht erkennen und bekämpfen","Ein weiteres Beispiel (Warnsignal, Mitgefühl oder Freiheit)"]},
+  {id:"t7",topic:"theo",op:"nennen",q:"Nenne die vier Lösungsansätze zum Theodizee-Problem aus dem Unterricht.",
+   a:"1. **Privationsthese**: Leid ist Mangel am Guten.\n2. **Leibniz**: beste aller möglichen Welten – Leid dient einem höheren Zweck.\n3. **Es existiert kein Gott** – zumindest keiner, der zugleich allgütig, allwissend **und** allmächtig ist.\n4. **Zurückweisung als rationales Problem**: Die Frage lässt sich nicht mit Denken lösen – es geht nicht um Rationalität.",
+   kp:["Privationsthese","Leibniz: beste aller möglichen Welten","Kein Gott (zumindest nicht mit allen drei Attributen)","Kein rational lösbares Problem"]},
+  {id:"t8",topic:"theo",op:"erläutern",q:"Worum geht es in Elie Wiesels Text „Wo ist Gott?“ – und was zeigt er für das Theodizee-Problem?",
+   a:"Wiesel schildert eine **Hinrichtung im KZ**: Drei Häftlinge werden erhängt, darunter ein **Kind**, das über eine halbe Stunde mit dem Tod ringt. Ein Mann fragt: **„Wo ist Gott?“** – eine innere Stimme antwortet: **„Dort hängt er, am Galgen.“** Der Text zeigt die Theodizee als **existenzielle**, nicht nur theoretische Frage; rationale Rechtfertigungen wirken hier zynisch. Die Antwort ist doppeldeutig: **Der Glaube an Gott stirbt** – oder **Gott leidet mit den Opfern**.",
+   kp:["Hinrichtung eines Kindes im KZ","„Wo ist Gott?“ – „Dort hängt er, am Galgen“","Theodizee als existenzielle Frage, rationale Antworten versagen","Deutung: Gott ist „tot“ für den Glaubenden oder Gott leidet mit"]},
+  {id:"t9",topic:"theo",op:"beurteilen",q:"Warum lässt sich Wiesels Erfahrung schlecht mit der Privationsthese oder mit Leibniz beantworten?",
+   a:"Das Leid im KZ ist **kein bloßer Mangel am Guten**, sondern **geplantes, aktiv zugefügtes Böses** (Leid durch böses Handeln). Ein **„Nutzen“** (Wachstum, Kontrast zum Glück) wirkt angesichts des Todes eines Kindes **zynisch und unverhältnismäßig**. Deshalb liegen **Lösung 4** (nicht rational lösbar) oder **Lösung 3** (kein solcher Gott) näher.",
+   kp:["Aktiv zugefügtes Böses ist mehr als ein „Mangel“","Ein Nutzen-Argument wirkt zynisch / unverhältnismäßig","Verweis auf Lösung 3 oder 4","Begründetes eigenes Urteil"]},
+  // ---------- Religionskritik Überblick ----------
+  {id:"r1",topic:"rk",op:"nennen",q:"Seit wann gibt es Religionskritik? (Übersicht: „wann“)",
+   a:"Religionskritik ist **so alt wie die Religion selbst**. Beispiele: schon in der Antike (Propheten wie Amos kritisieren leeren Opferkult; Xenophanes: Menschen machen sich Götter nach ihrem Bild), über Luther (1517) und die Aufklärung bis zum **Höhepunkt im 19. Jahrhundert**: **Feuerbach (1841)** und **Marx (1844)**.",
+   kp:["So alt wie die Religion selbst","Eine frühe Epoche/Beispiel (Antike, Propheten, Luther oder Aufklärung)","19. Jahrhundert: Feuerbach und Marx","Jahreszahlen grob richtig (1841 / 1844)"]},
+  {id:"r2",topic:"rk",op:"nennen",q:"Nenne die vier Ansatzpunkte der Religionskritik.",
+   a:"1. Kritik **des Glaubens selbst**\n2. Kritik **bestimmter Glaubensinhalte** oder ihrer **Interpretationen**\n3. Kritik der **religiösen Institutionen**\n4. Kritik der **negativen Auswirkungen** von Religion",
+   kp:["Glaube selbst","Bestimmte Glaubensinhalte / Interpretationen","Religiöse Institutionen","Negative Auswirkungen von Religion"]},
+  {id:"r3",topic:"rk",op:"nennen",q:"Welche zwei Ziele kann Religionskritik verfolgen? Gib je ein Beispiel. (Übersicht: „Ziel“)",
+   a:"1. **Reform / Läuterung** der Religion: Sie soll sich auf das Gute besinnen, aufgeweckt werden, sich klarmachen, worum es eigentlich geht – Kritik **von innen** (z. B. **Luther**, Propheten wie Amos).\n2. **Abschaffung / Überwindung** der Religion – Kritik **von außen** (z. B. **Feuerbach, Marx**).",
+   kp:["Reform / Läuterung der Religion","Abschaffung / Überwindung der Religion","Beispiel für Reform (z. B. Luther)","Beispiel für Abschaffung (z. B. Feuerbach oder Marx)"]},
+  {id:"r4",topic:"rk",op:"erklären",q:"Was ist der Unterschied zwischen religiöser und „irreligiöser“ Kritik?",
+   a:"**Religiöse Kritik** kommt **von innerhalb** der Religion und will sie verbessern (z. B. **Luther**). **Irreligiöse Kritik** kommt **von außerhalb** und stellt Religion grundsätzlich infrage (z. B. **Marx**: „Das Fundament der irreligiösen Kritik ist: Der Mensch macht die Religion …“).",
+   kp:["Religiöse Kritik: von innen, Ziel Reform","Irreligiöse Kritik: von außen, grundsätzlich","Beispiel Luther","Beispiel Marx / Feuerbach"]},
+  // ---------- Feuerbach ----------
+  {id:"f1",topic:"fb",op:"nennen",q:"Wer war Ludwig Feuerbach? (Lebensdaten, Hauptwerk, Kernthese)",
+   a:"Deutscher Philosoph, **1804–1872**. Hauptwerk: **„Das Wesen des Christentums“ (1841)**. Kernthese: die **Projektionsthese** – Gott ist das nach außen projizierte Wesen des Menschen.",
+   kp:["1804–1872","„Das Wesen des Christentums“","1841","Projektionsthese"]},
+  {id:"f2",topic:"fb",op:"erklären",q:"Erkläre mit Feuerbach, was Gott ist.",
+   a:"„Das absolute Wesen, der Gott des Menschen, ist **sein eignes Wesen**.“ Gott ist das Wesen des Menschen, **abgesondert von den Schranken des Individuums**, **vergegenständlicht** und als **anderes Wesen angeschaut und verehrt**. Alle Bestimmungen Gottes sind Bestimmungen des menschlichen Wesens. Genauer: Gott ist das **vergegenständlichte Wesen des Verstandes**, „nur **Gegenstand des Denkens**“.",
+   kp:["Gott ist das eigene Wesen des Menschen","Vergegenständlicht / als anderes Wesen angeschaut und verehrt","Bestimmungen Gottes = Bestimmungen des menschlichen Wesens","Vergegenständlichter Verstand / nur Gegenstand des Denkens"]},
+  {id:"f3",topic:"fb",op:"charakterisieren",q:"Charakterisiere das „Wesen des Menschen“ im Sinne Feuerbachs – und grenze es vom Individuum ab.",
+   a:"Das **Wesen des Menschen** ist das, **was den Menschen zum Menschen macht** – das Allgemeine der Gattung: **Verstand, Denken, Vernunft** (bei Feuerbach außerdem Wille und Liebe). Das **Individuum** ist der konkrete Einzelmensch mit **Schranken**: Vorlieben, Gefühle, Charakter, Schwächen, **Endlichkeit**. In Gott stellt sich der Mensch sein Wesen **ohne die Schranken des Individuums** vor.",
+   kp:["Wesen = was den Menschen zum Menschen macht (Gattung)","Verstand / Vernunft / Denken (Wille, Liebe)","Individuum = begrenzt: Gefühle, Schwächen, Endlichkeit","Gott = Wesen ohne die Schranken des Individuums"]},
+  {id:"f4",topic:"fb",op:"erklären",q:"Erkläre den Begriff „Projektion“ in Feuerbachs Religionskritik.",
+   a:"Der Mensch **vergegenständlicht** sein eigenes Wesen (seine Vollkommenheit) und **projiziert es nach außen – „in den Himmel“ – als Gott**. Was er anbetet, ist in Wahrheit **er selbst**. Religion ist also „das **Verhalten des Menschen zu sich selbst**, zu seinem Wesen“ – nur **unbewusst**, als wäre es ein fremdes Wesen.",
+   kp:["Eigenes Wesen wird nach außen verlagert","…und als Gott / fremdes Wesen vorgestellt und verehrt","Religion = Verhalten des Menschen zu sich selbst","Vorgang ist unbewusst"]},
+  {id:"f5",topic:"fb",op:"erklären",q:"Was meint Feuerbach mit „Gegenstand“ bzw. „vergegenständlichen“?",
+   a:"**Vergegenständlichen** heißt: Etwas Inneres (das eigene Wesen) wird **nach außen gestellt und sich gegenübergestellt**, als wäre es ein eigenständiges Wesen. Gott ist „nur **Gegenstand des Denkens**“ – unsinnlich, gestaltlos, abstrakt, nur durch Abstraktion und Verneinung (**via negationis**) erkennbar. Der Mensch macht also sein eigenes Denken zum Gegenstand.",
+   kp:["Inneres wird nach außen gestellt","…als eigenständiges Gegenüber / anderes Wesen","Gott ist nur Gegenstand des Denkens","Unsinnlich, abstrakt, via negationis erkannt"]},
+  {id:"f6",topic:"fb",op:"erläutern",q:"Warum sind Gott und Mensch bei Feuerbach „Extreme“?",
+   a:"Der Mensch setzt Gott als ihm **entgegengesetztes Wesen**: Gott ist **das schlechthin Positive, der Inbegriff aller Realitäten**; der Mensch ist **das schlechtweg Negative, der Inbegriff aller Nichtigkeiten**. Alles Gute schreibt er Gott zu, sich selbst bleibt nur das Mangelhafte – das ist die Wurzel der Entfremdung.",
+   kp:["Gott = Inbegriff aller Realitäten / das Positive","Mensch = Inbegriff aller Nichtigkeiten / das Negative","Der Mensch gibt alles Gute an Gott ab","Bezug zur Entfremdung"]},
+  {id:"f7",topic:"fb",op:"erklären",q:"Was bedeutet „Entfremdung“ bei Feuerbach?",
+   a:"Der Mensch **überträgt sein Gattungswesen** (Vernunft, Wille, Liebe) **auf Gott**. **Je mehr er Gott zuschreibt, desto ärmer wird er selbst.** Er steht seinem eigenen Wesen **fremd** gegenüber, als wäre es das eines anderen. Die Entfremdung ist **religiös / im Bewusstsein** – aufgehoben wird sie durch **Erkenntnis**, indem der Mensch die Projektion **zurücknimmt**.",
+   kp:["Wesen wird auf Gott übertragen","Je reicher Gott, desto ärmer der Mensch","Eigenes Wesen erscheint fremd","Aufhebung durch Erkenntnis / Rücknahme der Projektion"]},
+  {id:"f8",topic:"fb",op:"erläutern",q:"Welche Folgen hat Feuerbachs Projektionsthese für das Leben der Menschen?",
+   a:"**Verhältnis zu Gott**: Gebet, Hoffnung auf Erlösung und ein Lenker der Geschichte verlieren ihre reale Grundlage.\n**Christliche Werte** (Nächstenliebe, Demut, Jenseitshoffnung) müssen neu begründet werden – nicht als göttliches Gebot, sondern als **menschliche Selbstverpflichtung**.\nBewertung offen: **Befreiung** (der Mensch wird selbst verantwortlich) oder **Verlust** (Trost, Halt, absolute Verbindlichkeit fallen weg).",
+   kp:["Gebet / Erlösung / Lenker der Geschichte verlieren ihre Grundlage","Werte werden zur menschlichen Selbstverpflichtung","Befreiung: Mensch wird selbst verantwortlich","Verlust: Trost, Halt, Verbindlichkeit fallen weg"]},
+  {id:"f9",topic:"fb",op:"erklären",q:"Was ist das Ziel von Feuerbachs Religionskritik?",
+   a:"**Aufklärung über die Selbsttäuschung**: Der Mensch soll **erkennen**, dass er Gott selbst erschaffen hat, und die **Projektion zurücknehmen**. So gewinnt er sein Wesen zurück – die Liebe zu Gott wird zur **Liebe zum Menschen**. Ansatzpunkt ist das **Bewusstsein**.",
+   kp:["Aufklärung / Erkenntnis","Projektion zurücknehmen","Mensch gewinnt sein Wesen zurück","Ansatzpunkt: Bewusstsein"]},
+  // ---------- Marx ----------
+  {id:"m1",topic:"mx",op:"nennen",q:"Wer war Karl Marx? (Lebensdaten und die Texte aus dem Unterricht)",
+   a:"Deutscher Philosoph und Ökonom, **1818–1883**. Texte: **„Zur Kritik der Hegelschen Rechtsphilosophie. Einleitung“ (1844)** – „Opium des Volks“; **„Ökonomisch-philosophische Manuskripte“ (1844)** – Entfremdung; **„Thesen über Feuerbach“ (1845)**; mit **Friedrich Engels** (1820–1895) **„Die deutsche Ideologie“ (1845/46)** – materialistische Geschichtsauffassung.",
+   kp:["1818–1883","Kritik der Hegelschen Rechtsphilosophie (1844) – Opium","Thesen über Feuerbach (1845)","Deutsche Ideologie mit Engels"]},
+  {id:"m2",topic:"mx",op:"erläutern",q:"Erläutere: Religion ist „das Selbstbewusstsein und das Selbstgefühl des Menschen, der sich selbst entweder noch nicht erworben oder schon wieder verloren hat“ (Z. 5–7).",
+   a:"Religion ist für Marx **kein Bewusstsein von Gott**, sondern ein (verzerrtes) **Bewusstsein des Menschen von sich selbst** – nach außen verlagert (**Anschluss an Feuerbach**). **„Noch nicht erworben“**: Der Mensch hat sein wahres Selbstverständnis (reale Lage, Möglichkeiten) noch nicht erkannt. **„Schon wieder verloren“**: Er hatte es, hat es unter **schlechten gesellschaftlichen Bedingungen** wieder eingebüßt. Marx spricht von einem **Mangel**, weil Religion ein **Symptom eines Defizits** ist, nicht bloß ein Irrtum.",
+   kp:["Bewusstsein des Menschen von sich selbst, nicht von Gott (Anschluss an Feuerbach)","„Noch nicht erworben“: wahres Selbstverständnis fehlt noch","„Schon wieder verloren“: unter schlechten Bedingungen eingebüßt","Religion als Symptom eines Mangels, nicht bloß Irrtum"]},
+  {id:"m3",topic:"mx",op:"erklären",q:"Was ist Religion im Wesentlichen für Marx? (Z. 7–15)",
+   a:"**Staat und Sozietät produzieren die Religion**, ein **verkehrtes Weltbewusstsein**, weil sie eine **verkehrte Welt** sind. Religion ist die **„phantastische Verwirklichung des menschlichen Wesens“**, weil dieses keine wahre Wirklichkeit besitzt – sie **kompensiert** eine fehlende reale Verwirklichung. Das religiöse Elend ist **Ausdruck des wirklichen Elends und Protestation dagegen**. **„Opium des Volks“**: lindert den Schmerz, heilt aber nicht die Ursache, sondern verschleiert sie.",
+   kp:["Verkehrte Welt erzeugt verkehrtes Weltbewusstsein","Phantastische Verwirklichung / Kompensation","Ausdruck des Elends UND Protest dagegen","Opium: Trost + Betäubung / Verschleierung"]},
+  {id:"m4",topic:"mx",op:"erklären",q:"Erkläre die Opium-Metapher. Warum ist sie doppeldeutig?",
+   a:"Opium **lindert Schmerz, heilt aber nicht** – es **betäubt**. So spendet Religion **Trost** („Seufzer der bedrängten Kreatur, Gemüt einer herzlosen Welt“), **verschleiert aber die Ursachen** des Elends und hält Menschen davon ab, ihre Lage zu ändern. Doppeldeutig: Religion hat eine **echte Funktion** (Trost, Protest) und **verhindert zugleich Veränderung**. Achtung: „Opium **des** Volks“ – das Volk greift selbst danach; es wird ihm nicht von oben verabreicht.",
+   kp:["Lindert Schmerz / spendet Trost","Heilt nicht – Ursache bleibt","Betäubt / verschleiert und verhindert Veränderung","Doppelt: echte Funktion und zugleich Problem"]},
+  {id:"m5",topic:"mx",op:"erläutern",q:"Welche Forderung ergibt sich für Marx aus der Religionskritik? Was meint er mit „Verhältnissen“? (Z. 16–28)",
+   a:"Die **Aufhebung der Religion als illusorisches Glück** ist die **Forderung nach dem wirklichen Glück**. Wer die Illusionen aufgeben soll, muss **den Zustand aufgeben, der Illusionen braucht**. Religionskritik wird zur **Kritik des „Jammertales“** – zur Gesellschaftskritik. Sie endet im **„kategorischen Imperativ, alle Verhältnisse umzuwerfen, in denen der Mensch ein erniedrigtes, geknechtetes, verlassenes, verächtliches Wesen ist“**. **Verhältnisse** = die **gesellschaftlichen, ökonomischen und politischen Strukturen** (später: Produktionsverhältnisse), nicht private Umstände.",
+   kp:["Illusorisches Glück aufheben = Forderung nach wirklichem Glück","Den Zustand aufgeben, der Illusionen braucht","Kategorischer Imperativ: alle Verhältnisse umwerfen","Verhältnisse = gesellschaftliche / ökonomische / politische Strukturen"]},
+  {id:"m6",topic:"mx",op:"beschreiben",q:"Beschreibe Marx' Dreischritt von der Religionskritik zur Veränderung.",
+   a:"1. **Religionskritik**: Religion ist menschengemacht, eine Illusion.\n2. **Aufdeckung der realen Ursache**: die „verkehrte Welt“ – Elend, Unterdrückung.\n3. **Forderung nach Veränderung der Verhältnisse** – nicht nur der Bewusstseinsinhalte.\nZusatz (Marx, gleicher Text): „Die Kritik des Himmels verwandelt sich damit in die Kritik der Erde.“",
+   kp:["Religionskritik: Religion als Illusion","Aufdeckung der realen (gesellschaftlichen) Ursache","Veränderung der Verhältnisse","Nicht nur Bewusstsein, sondern Praxis"]},
+  {id:"m7",topic:"mx",op:"charakterisieren",q:"Charakterisiere das Menschenbild von Marx („Deutsche Ideologie“, Z. 9–30).",
+   a:"Der Mensch ist …\n1. ein **bedürftiges Naturwesen**: Er muss essen, trinken, wohnen, sich kleiden, bevor er „Geschichte machen“ kann (Z. 9–13);\n2. ein **tätiges, produzierendes Wesen**: Die **erste geschichtliche Tat** ist die Produktion der Mittel zur Bedürfnisbefriedigung (Z. 12–15);\n3. **geschichtlich veränderlich**: Befriedigte Bedürfnisse erzeugen **neue Bedürfnisse** (Z. 17–20);\n4. ein **soziales Wesen**: Familie als erstes soziales Verhältnis, später weitere (Z. 21–30). Diese „drei Seiten“ bestehen gleichzeitig, nicht als Stufen.\n**Kern**: kein abstraktes Einzelwesen, sondern durch **materielle Bedürfnisse, Arbeit und gesellschaftliche Verhältnisse** bestimmt.",
+   kp:["Bedürftiges Naturwesen (Essen, Wohnen, Kleidung)","Tätig / produzierend – Arbeit als erste geschichtliche Tat","Neue Bedürfnisse → geschichtliche Entwicklung","Soziales Wesen (Familie, gesellschaftliche Verhältnisse)"]},
+  {id:"m8",topic:"mx",op:"erklären",q:"Erkläre, warum Marx „(historischer) Materialist“ ist.",
+   a:"**Materialist**: Das **materielle Sein bestimmt das Bewusstsein** – nicht umgekehrt. Am Anfang der Geschichte stehen keine Ideen oder Religionen, sondern die **Produktion des materiellen Lebens** (Z. 12–15). Gegenpol: **Idealismus (Hegel)**, nach dem der Geist die Geschichte antreibt. Religion, Recht und Moral sind **Folgen der Lebensverhältnisse**; Geschichte gibt es auch ohne „politischen oder religiösen Nonsens“ (Z. 45–47).\n**Historisch**: Diese Abhängigkeit **entwickelt sich in der Zeit**. Jede Produktionsweise ist mit einer bestimmten Form des Zusammenwirkens verbunden (Z. 36–41); ändern sich die Produktivkräfte, ändert sich die Gesellschaft. **Geschichte = Abfolge verschiedener Produktionsverhältnisse.**",
+   kp:["Sein bestimmt Bewusstsein","Produktion des materiellen Lebens als Grundlage","Gegensatz zum Idealismus (Hegel)","Historisch: neue Bedürfnisse / Produktionsweisen verändern die Gesellschaft"]},
+  {id:"m9",topic:"mx",op:"nennen",q:"Was ist laut Marx die „erste geschichtliche Tat“?",
+   a:"Die **Erzeugung der Mittel zur Befriedigung der Grundbedürfnisse** (Essen, Trinken, Wohnung, Kleidung) – **die Produktion des materiellen Lebens selbst**. Außerdem: Die Befriedigung führt zu **neuen Bedürfnissen** – auch diese Erzeugung neuer Bedürfnisse nennt Marx „die erste geschichtliche Tat“.",
+   kp:["Produktion der Mittel zur Bedürfnisbefriedigung","= Produktion des materiellen Lebens","Erzeugung neuer Bedürfnisse"]},
+  {id:"m10",topic:"mx",op:"erklären",q:"Erkläre die dreifache Entfremdung bei Marx.",
+   a:"Im **Kapitalismus** entfremdet sich der Mensch von sich selbst – dreifach:\n1. **Vom Produkt seiner Arbeit**: Durch Arbeitsteilung und weil die **Produktionsmittel dem Kapital gehören**, hat der Arbeiter keine Kontrolle und kein Anrecht auf sein Produkt (**der Fließbandarbeiter besitzt das Auto nicht**).\n2. **Von seiner Natur als freies Wesen**: Er muss seine **Arbeitskraft auf dem Markt verkaufen** und wird zur **„Marionette“** der Produktionsstrukturen; was produziert wird, bestimmen **Angebot und Nachfrage**.\n3. **Von seinen Mitmenschen** und damit von seiner Natur als soziales Wesen: Auf dem Arbeitsmarkt herrscht **Konkurrenz**, die jede soziale Beziehung „verseucht“.",
+   kp:["Vom Produkt der Arbeit (Fließband-Beispiel, Produktionsmittel beim Kapital)","Von der Natur als freies Wesen (Arbeitskraft verkaufen, Marionette des Marktes)","Von den Mitmenschen / als soziales Wesen (Konkurrenz)","Ursache: Kapitalismus"]},
+  {id:"m11",topic:"mx",op:"erläutern",q:"Wie lautet die 11. These über Feuerbach – und was bedeutet sie?",
+   a:"**„Die Philosophen haben die Welt nur verschieden interpretiert; es kommt darauf an, sie zu verändern.“** Marx kritisiert damit **Feuerbach** und die bisherige Philosophie: **Erkennen und Aufklären reicht nicht**, die **Verhältnisse müssen praktisch verändert werden**. Theorie soll zur **Praxis** werden.",
+   kp:["Wortlaut: interpretiert – verändern","Kritik an Feuerbach / den Philosophen","Erkenntnis allein reicht nicht","Praxis: Verhältnisse verändern"]},
+  {id:"m12",topic:"mx",op:"beurteilen",q:"Beurteile, welche Rolle das „Wesen des Menschen“ bei Marx spielt.",
+   a:"**Für eine zentrale Rolle**: Entfremdung setzt ein **eigentliches Wesen** voraus (freie, bewusste, gesellschaftliche Tätigkeit) – es ist der **Maßstab der Kapitalismuskritik**. Auch der kategorische Imperativ (Verhältnisse umwerfen, in denen der Mensch „erniedrigt“ ist) setzt voraus, dass der Mensch **anders sein könnte und sollte**.\n**Spannung**: Der historische Materialismus lehnt ein festes, abstraktes Wesen ab – **6. These**: Das menschliche Wesen ist **„das ensemble der gesellschaftlichen Verhältnisse“**. Wandelt sich das Wesen mit den Verhältnissen, ist unklar, woran Entfremdung gemessen wird.\n**Urteil**: unverzichtbar, aber nicht festgeschrieben – kritischer Maßstab, historisch statt metaphysisch bestimmt; zugleich die Schwachstelle.",
+   kp:["Entfremdung braucht ein Wesen als Maßstab","Kategorischer Imperativ setzt ein Ideal voraus","Spannung: 6. These – Ensemble der gesellschaftlichen Verhältnisse","Begründetes eigenes Urteil"]},
+  // ---------- Vergleich ----------
+  {id:"v1",topic:"vg",op:"nennen",q:"Was haben Feuerbach und Marx in ihrer Religionskritik gemeinsam?",
+   a:"Beide: **Religion ist menschengemacht** – „Der Mensch macht die Religion“; **Gott ist keine eigenständige Realität**. Religion ist **Projektion bzw. Illusion**, in der der Mensch **sich selbst verkennt**. Der Mensch ist von seinem Wesen **entfremdet**. Beide üben **irreligiöse Kritik** (von außen); für beide ist **der Mensch das höchste Wesen für den Menschen**.",
+   kp:["Religion ist menschengemacht","Gott ist keine eigenständige Realität","Religion als Illusion / Selbstverkennung","Entfremdung vom eigenen Wesen"]},
+  {id:"v2",topic:"vg",op:"vergleichen",q:"Vergleiche, wie Feuerbach und Marx den Ursprung der Religion erklären.",
+   a:"**Feuerbach**: Religion entsteht aus dem **Wesen des Menschen** – er projiziert seine Vollkommenheit (Vernunft, Wille, Liebe) auf Gott (**anthropologisch-psychologisch**). Er bleibt beim **Bewusstsein** stehen.\n**Marx** fragt weiter: **Warum** projiziert der Mensch? Weil die **Welt (Staat, Gesellschaft) verkehrt** ist und Elend erzeugt. Religion ist **Ausdruck materieller Not und gesellschaftlicher Verhältnisse**.",
+   kp:["Feuerbach: Projektion des menschlichen Wesens","Feuerbach bleibt beim Bewusstsein","Marx fragt nach dem Warum","Marx: verkehrte gesellschaftliche / materielle Verhältnisse als Ursache"]},
+  {id:"v3",topic:"vg",op:"vergleichen",q:"Vergleiche Ansatzpunkt und Ziel der Kritik bei Feuerbach und Marx.",
+   a:"**Feuerbach** setzt beim **Bewusstsein / bei der Erkenntnis** an: Der Mensch soll erkennen, dass er Gott selbst erschafft. Ziel: **Aufklärung über die Selbsttäuschung, Rücknahme der Projektion**.\n**Marx** setzt bei der **gesellschaftlichen und ökonomischen Praxis** an: Die Verhältnisse, die Religion nötig machen, müssen sich ändern. Ziel: **politische und soziale Umwälzung** – dann wird Religion **überflüssig**.",
+   kp:["Feuerbach: Bewusstsein / Erkenntnis","Feuerbach: Aufklärung, Projektion zurücknehmen","Marx: gesellschaftliche Praxis / Verhältnisse","Marx: Umwälzung – Religion wird überflüssig"]},
+  {id:"v4",topic:"vg",op:"herausarbeiten",q:"Arbeite heraus, was Marx an Feuerbach kritisiert.",
+   a:"Feuerbach hat gezeigt, dass die religiöse Welt auf die weltliche zurückgeht – ist aber **beim Interpretieren stehen geblieben** (**11. These**). Er erklärt nicht, **warum** die weltliche Grundlage überhaupt Religion hervorbringt – nämlich wegen ihrer **inneren Widersprüche** (**4. These**). Und er denkt den Menschen **abstrakt als Gattungswesen**, nicht als **gesellschaftlich und historisch** bestimmtes Wesen (**6. These**). Feuerbach bleibt also **unhistorisch und theoretisch**.",
+   kp:["Nur interpretiert, nicht verändert (11. These)","Fragt nicht, warum die weltliche Grundlage Religion erzeugt","Abstraktes Menschenbild statt gesellschaftlicher Verhältnisse (6. These)","Unhistorisch / bleibt Theorie"]},
+  {id:"v5",topic:"vg",op:"vergleichen",q:"Vergleiche den Begriff „Entfremdung“ bei Feuerbach und Marx.",
+   a:"**Gemeinsam**: Der Mensch ist **von seinem eigenen Wesen getrennt**.\n**Feuerbach**: Entfremdung geschieht **im Bewusstsein (Religion)** – der Mensch überträgt sein Wesen auf Gott und verarmt; aufgehoben durch **Erkenntnis**.\n**Marx**: Entfremdung geschieht in der **materiellen Praxis (Arbeit, Kapitalismus)** – dreifach: vom Produkt, vom freien Wesen, von den Mitmenschen; aufgehoben nur durch **veränderte Verhältnisse**. Marx macht Entfremdung zu einem **gesellschaftlichen Problem**.",
+   kp:["Gemeinsam: Trennung vom eigenen Wesen","Feuerbach: im Bewusstsein / in der Religion","Marx: in Arbeit / Ökonomie (dreifach)","Aufhebung: Erkenntnis vs. Veränderung der Verhältnisse"]},
+  {id:"v6",topic:"vg",op:"vergleichen",q:"Vergleiche das Menschenbild von Feuerbach und Marx.",
+   a:"**Feuerbach**: Der Mensch ist ein **allgemeines Gattungswesen**; sein Wesen sind **Vernunft/Verstand, Wille, Liebe** – eher **zeitlos und abstrakt** gedacht.\n**Marx**: Der Mensch ist ein **konkretes, bedürftiges, arbeitendes, soziales** Wesen, **gesellschaftlich und historisch** bestimmt; sein Wesen ist „das **ensemble der gesellschaftlichen Verhältnisse**“ (6. These).",
+   kp:["Feuerbach: Gattungswesen – Vernunft, Wille, Liebe","Feuerbach: abstrakt / zeitlos","Marx: bedürftig, arbeitend, sozial","Marx: gesellschaftlich und historisch bestimmt"]},
+  {id:"v7",topic:"vg",op:"erklären",q:"Erkläre, wie Marx' Religionskritik und sein Materialismus zusammenhängen.",
+   a:"Wenn das **materielle Sein das Bewusstsein bestimmt**, dann ist auch **Religion** (eine Form des Bewusstseins) ein **Produkt der materiellen Lebensverhältnisse**. Eine **verkehrte Welt** erzeugt ein **verkehrtes Weltbewusstsein**. Darum kann man Religion **nicht durch bloße Aufklärung** überwinden (gegen Feuerbach), sondern nur, indem man die **materiellen Verhältnisse ändert**.",
+   kp:["Sein bestimmt Bewusstsein","Religion = Produkt der Verhältnisse","Verkehrte Welt → verkehrtes Weltbewusstsein","Folge: Verhältnisse ändern statt nur aufklären"]},
+  {id:"v8",topic:"vg",op:"erläutern",q:"Erläutere den Zusammenhang zwischen Theodizee-Problem und Religionskritik.",
+   a:"Das Theodizee-Problem ist ein klassischer **Anlass für Religionskritik**: Lässt sich Leid nicht mit einem allmächtigen, allwissenden, allgütigen Gott vereinbaren, liegt **Lösung 3** nahe – es gibt keinen (solchen) Gott. Feuerbach und Marx gehen weiter: Sie erklären, **warum Menschen trotzdem glauben**. Bei **Marx** bringt gerade das **Leid** Religion hervor („**Seufzer der bedrängten Kreatur**“) – als Trost und Protest. Statt Gott zu rechtfertigen, soll der **Mensch** das (gesellschaftlich verursachte) Leid **selbst beseitigen**.",
+   kp:["Theodizee als Anlass für Zweifel / Atheismus (Lösung 3)","Religionskritik erklärt, warum Menschen trotzdem glauben","Marx: Leid erzeugt Religion (Seufzer, Trost, Protest)","Verantwortung zur Leidbeseitigung liegt beim Menschen"]}
+];
+
+const BLURT = {
+  theo:["Theodizee = Rechtfertigung Gottes angesichts des Leids","theós = Gott, díke = Gerechtigkeit","Attribute allmächtig, allwissend, allgütig → Widerspruch zum Leid","Physisches Leid – Mensch als Naturwesen","Metaphysisches Leid – Mensch als endliches, unvollständiges Wesen","Leid durch böses Handeln – Mensch als frei handelndes Wesen","Privationsthese: Leid = Mangel am Guten (privatio)","Schöpfung nicht vollkommen, sonst identisch mit Gott","Leibniz (1646–1716): beste aller möglichen Welten","Nutzen des Leids: Glück erkennbar, Wachstum, Unrecht bekämpfen","Lösung 3: kein Gott mit allen drei Attributen","Lösung 4: kein rational lösbares Problem","Wiesel: „Wo ist Gott?“ – „Dort hängt er, am Galgen“"],
+  rk:["Religionskritik ist so alt wie die Religion selbst","Ansatzpunkt: Glaube selbst","Ansatzpunkt: Glaubensinhalte / Interpretationen","Ansatzpunkt: religiöse Institutionen","Ansatzpunkt: negative Auswirkungen","Ziel: Reform / Läuterung der Religion","Ziel: Abschaffung / Überwindung der Religion","Religiöse Kritik von innen (Luther) vs. irreligiöse Kritik von außen (Marx)","Höhepunkt im 19. Jahrhundert: Feuerbach 1841, Marx 1844"],
+  fb:["1804–1872, „Das Wesen des Christentums“ (1841)","Gott = das eigene Wesen des Menschen","Religion = Verhalten des Menschen zu sich selbst / zu seinem Wesen","Projektion: Wesen vergegenständlicht und als fremdes Wesen verehrt","Wesen des Menschen: Verstand, Vernunft (Wille, Liebe) – Gattung","Individuum: Schranken, Gefühle, Schwächen, Endlichkeit","Gott = menschliches Wesen ohne die Schranken des Individuums","Gott = Inbegriff aller Realitäten, Mensch = Inbegriff aller Nichtigkeiten","Gott ist nur Gegenstand des Denkens (via negationis)","Entfremdung: Je reicher Gott, desto ärmer der Mensch","Ziel: Erkenntnis, Projektion zurücknehmen","Folgen: Werte als menschliche Selbstverpflichtung – Befreiung oder Verlust"],
+  mx:["1818–1883","„Der Mensch macht die Religion“ – Anschluss an Feuerbach","Mensch = Welt des Menschen, Staat, Sozietät – kein abstraktes Wesen","Verkehrte Welt → verkehrtes Weltbewusstsein","Phantastische Verwirklichung des menschlichen Wesens","Religiöses Elend: Ausdruck + Protestation","Seufzer der bedrängten Kreatur / Opium des Volks","Aufhebung des illusorischen Glücks = Forderung nach wirklichem Glück","Kategorischer Imperativ: alle Verhältnisse umwerfen","Menschenbild: bedürftig, produzierend, neue Bedürfnisse, sozial","Historischer Materialismus: Sein bestimmt Bewusstsein (gegen Hegel)","Dreifache Entfremdung: Produkt, freies Wesen, Mitmenschen","11. These: interpretieren → verändern","6. These: Ensemble der gesellschaftlichen Verhältnisse"],
+  vg:["Gemeinsam: Religion menschengemacht, Illusion","Gemeinsam: Entfremdung vom eigenen Wesen","Ursprung: Projektion des Wesens (F) vs. verkehrte Verhältnisse (M)","Funktion: Selbsttäuschung (F) vs. Ausdruck, Protest, Opium (M)","Ansatz: Bewusstsein (F) vs. Praxis (M)","Ziel: Aufklärung (F) vs. Umwälzung der Verhältnisse (M)","Menschenbild: Gattungswesen (F) vs. gesellschaftlich-historisch (M)","Entfremdung: im Bewusstsein (F) vs. in der Arbeit (M)","Marx' Kritik: nur interpretiert, fragt nicht nach dem Warum","Theodizee ↔ Religionskritik: Leid als Anlass zum Glauben und zum Zweifel"]
+};
+
+const SORTS = [
+  {id:"fm",title:"Feuerbach, Marx oder beide?",desc:"Zitate und Thesen dem richtigen Denker zuordnen.",buckets:["Feuerbach","Marx","Beide"],items:[
+    {t:"„Das absolute Wesen, der Gott des Menschen, ist sein eignes Wesen.“",b:0,x:"Feuerbach, „Das Wesen des Christentums“ (1841)."},
+    {t:"„Sie ist das Opium des Volks.“",b:1,x:"Marx (1844): Trost, der zugleich betäubt."},
+    {t:"Religion ist von Menschen gemacht; Gott ist keine eigenständige Realität.",b:2,x:"Gemeinsame Grundlage – Marx übernimmt sie von Feuerbach („Der Mensch macht die Religion“)."},
+    {t:"Gott ist das vergegenständlichte Wesen des Verstandes.",b:0,x:"Feuerbach: Der Mensch projiziert seine Vernunft."},
+    {t:"Staat und Sozietät produzieren die Religion, weil sie eine verkehrte Welt sind.",b:1,x:"Marx fragt nach dem Warum: Ursache sind die gesellschaftlichen Verhältnisse."},
+    {t:"Gott ist der Inbegriff aller Realitäten, der Mensch der Inbegriff aller Nichtigkeiten.",b:0,x:"Feuerbach: Gott und Mensch als Extreme."},
+    {t:"Der Mensch ist von seinem eigenen Wesen entfremdet.",b:2,x:"Beide – Feuerbach meint Entfremdung im Bewusstsein (Religion), Marx in der Arbeit (Kapitalismus)."},
+    {t:"Entfremdung entsteht, weil der Arbeiter seine Arbeitskraft auf dem Markt verkaufen muss.",b:1,x:"Marx, Ökonomisch-philosophische Manuskripte."},
+    {t:"Es reicht, die Projektion zu durchschauen – dann gewinnt der Mensch sein Wesen zurück.",b:0,x:"Feuerbachs Ansatz: Erkenntnis. Genau das ist Marx zu wenig."},
+    {t:"„Die Philosophen haben die Welt nur verschieden interpretiert; es kommt darauf an, sie zu verändern.“",b:1,x:"11. These über Feuerbach (1845)."},
+    {t:"Das religiöse Elend ist Ausdruck des wirklichen Elends und zugleich Protest dagegen.",b:1,x:"Marx: Doppelfunktion der Religion."},
+    {t:"Der Mensch ist das höchste Wesen für den Menschen.",b:2,x:"Marx formuliert es (Z. 25 f.), es ist aber auch Feuerbachs Ergebnis: Was der Mensch Gott zuschreibt, gehört ihm selbst."},
+    {t:"Gott wird nur durch Abstraktion und Verneinung (via negationis) erkannt.",b:0,x:"Feuerbach: Gott ist nur Gegenstand des Denkens."},
+    {t:"Das Sein bestimmt das Bewusstsein.",b:1,x:"Kernsatz des historischen Materialismus."},
+    {t:"Das menschliche Wesen ist das Ensemble der gesellschaftlichen Verhältnisse.",b:1,x:"6. These über Feuerbach – gegen Feuerbachs abstraktes Gattungswesen."},
+    {t:"Das Wesen des Menschen zeigt sich in Vernunft, Wille und Liebe.",b:0,x:"Feuerbachs Gattungswesen; im Textauszug betont er den Verstand."},
+    {t:"„Die Religion ist der Seufzer der bedrängten Kreatur.“",b:1,x:"Marx, Einleitung zur Kritik der Hegelschen Rechtsphilosophie."},
+    {t:"„Die Religion […] ist das Verhalten des Menschen zu sich selbst, oder richtiger: zu seinem Wesen.“",b:0,x:"Feuerbach, Z. 10 f."},
+    {t:"Die Kritik kommt von außerhalb der Religion („irreligiöse Kritik“).",b:2,x:"Beide kritisieren Religion von außen – anders als Luther."}
+  ]},
+  {id:"theo",title:"Theodizee: Welcher Lösungsansatz?",desc:"Argumente den vier Antworten auf das Theodizee-Problem zuordnen.",buckets:["Privationsthese","Leibniz: beste Welt","Kein (solcher) Gott","Nicht rational lösbar"],items:[
+    {t:"Das Böse hat kein eigenes Sein – es ist ein Fehlen des Guten.",b:0,x:"privatio = Mangel."},
+    {t:"Wäre die Schöpfung vollkommen, wäre sie mit Gott identisch.",b:0,x:"Darum muss alles neben Gott „weniger gut“ sein."},
+    {t:"Ohne Leid könnten wir Freude und Glück gar nicht erkennen.",b:1,x:"Leibniz' Logik: Leid hat einen Nutzen (Kontrast)."},
+    {t:"Gott hat aus allen denkbaren Welten die beste gewählt.",b:1,x:"Allmacht + Güte = beste aller möglichen Welten."},
+    {t:"Eine Welt ohne Schmerz ist vorstellbar – aber sie wäre nicht besser als unsere.",b:1,x:"Leibniz bestreitet, dass eine leidfreie Welt besser wäre."},
+    {t:"Leid lässt Menschen reifen und fordert sie auf, Unrecht zu bekämpfen.",b:1,x:"Positiver Nutzen des Leids (Wachstum, Unrecht bekämpfen)."},
+    {t:"Ein Gott, der zugleich allmächtig, allwissend und allgütig ist, kann es angesichts des Leids nicht geben.",b:2,x:"Lösung 3: Der Widerspruch wird gegen Gott aufgelöst."},
+    {t:"Vielleicht ist Gott gut – aber nicht allmächtig.",b:2,x:"Ein Attribut wird aufgegeben → kein Gott mit allen drei Eigenschaften."},
+    {t:"Vor dem Todeskampf eines Kindes verstummt jede Begründung.",b:3,x:"Wiesel: Die Theodizee ist eine existenzielle Frage, keine Denksportaufgabe."},
+    {t:"Leid ist eine Frage des Vertrauens und der Klage, nicht der Logik.",b:3,x:"Lösung 4: Es geht nicht um Rationalität."},
+    {t:"Alles neben Gott ist „weniger gut“ – und das erleben wir als Leid.",b:0,x:"Kern der Privationsthese."},
+    {t:"Wer Gott mit Argumenten rechtfertigt, wird den Leidenden nicht gerecht.",b:3,x:"Zurückweisung der Theodizee als rationales Problem."}
+  ]},
+  {id:"leid",title:"Welche Art von Leid?",desc:"Beispiele den drei Leidarten zuordnen – mit Blick auf den Ursprung.",buckets:["Physisches Leid","Metaphysisches Leid","Leid durch böses Handeln"],items:[
+    {t:"Eine Krebserkrankung",b:0,x:"Krankheit – der Mensch als Naturwesen."},
+    {t:"Das Elbhochwasser 2002 (Bild aus deinem Hefter)",b:0,x:"Naturkatastrophe – der Mensch als Naturwesen."},
+    {t:"Mobbing in der Klasse",b:2,x:"Frei gewähltes, verletzendes Handeln."},
+    {t:"Angst vor dem eigenen Tod",b:1,x:"Endlichkeit des Menschen."},
+    {t:"Krieg",b:2,x:"Gewalt durch frei handelnde Menschen."},
+    {t:"Schuldgefühle nach einem Fehler",b:1,x:"In deinem Hefter: Schuld als metaphysisches Leid."},
+    {t:"Trauer um einen verstorbenen Menschen",b:1,x:"Endlichkeit, Verlust."},
+    {t:"Altersschwäche",b:0,x:"Alter – der Mensch als Naturwesen."},
+    {t:"Die Frage, ob das eigene Leben einen Sinn hat",b:1,x:"Frage nach Sinnhaftigkeit – metaphysisches Leid."},
+    {t:"Ein Sturz auf Glatteis",b:0,x:"Unfall – der Mensch als Naturwesen."},
+    {t:"Ein Betrunkener fährt einen Radfahrer an",b:2,x:"Auch ein Unfall – aber verursacht durch eine freie, verantwortliche Entscheidung."},
+    {t:"Häftlinge im KZ Buchenwald (Foto aus deinem Hefter)",b:2,x:"Planvoll zugefügtes Leid."},
+    {t:"Eine Beleidigung",b:2,x:"Beispiel aus deinem Hefter."}
+  ]},
+  {id:"ansatz",title:"Religionskritik: Welcher Ansatzpunkt?",desc:"Kritikpunkte den vier Ansatzpunkten zuordnen.",buckets:["Glaube selbst","Glaubensinhalte / Deutung","Institutionen","Negative Auswirkungen"],items:[
+    {t:"„Es gibt keinen Gott – der Glaube ist eine Illusion.“",b:0,x:"Grundsätzliche Kritik am Glauben."},
+    {t:"„Gott ist nur eine Projektion des Menschen.“ (Feuerbach)",b:0,x:"Stellt den Gottesglauben als Ganzes infrage."},
+    {t:"„Die Lehre von der ewigen Hölle passt nicht zu einem liebenden Gott.“",b:1,x:"Kritik an einem bestimmten Glaubensinhalt."},
+    {t:"„Die Schöpfungsgeschichte darf man nicht wörtlich nehmen.“",b:1,x:"Kritik an einer bestimmten Interpretation."},
+    {t:"„Wunder widersprechen den Naturgesetzen.“",b:1,x:"Kritik an einem bestimmten Glaubensinhalt."},
+    {t:"„Die Kirche hat zu viel Macht und Reichtum.“",b:2,x:"Kritik an der Institution."},
+    {t:"„Bischöfe haben Missbrauchsfälle vertuscht.“",b:2,x:"Kritik an der Institution und ihren Amtsträgern."},
+    {t:"„Religion rechtfertigte Kreuzzüge und Hexenverfolgungen.“",b:3,x:"Kritik an den Folgen."},
+    {t:"„Religiöser Fanatismus führt zu Gewalt.“",b:3,x:"Kritik an den Folgen."},
+    {t:"„Religion vertröstet aufs Jenseits und hält Menschen davon ab, ihre Lage zu verbessern.“",b:3,x:"Marx' Opium-Gedanke – Kritik an der Wirkung."}
+  ]},
+  {id:"ziel",title:"Religionskritik: Reform oder Abschaffung?",desc:"Welches Ziel verfolgt die Kritik? (Übersicht: „Ziel“)",buckets:["Reform / Läuterung","Abschaffung / Überwindung"],items:[
+    {t:"Martin Luther kritisiert 1517 den Ablasshandel.",b:0,x:"Kritik von innen: Die Kirche soll sich auf das Evangelium besinnen."},
+    {t:"Der Prophet Amos kritisiert Opferfeste ohne Gerechtigkeit.",b:0,x:"Zeigt: Religionskritik ist so alt wie Religion selbst – und oft religiös motiviert."},
+    {t:"Marx: „Die Aufhebung der Religion als des illusorischen Glücks des Volkes …“",b:1,x:"Religion soll überflüssig werden."},
+    {t:"Feuerbach: Der Mensch soll die Projektion zurücknehmen und sein Wesen in sich selbst erkennen.",b:1,x:"Überwindung des Gottesglaubens zugunsten des Menschen."},
+    {t:"Eine Theologin fordert, Bibeltexte im historischen Zusammenhang zu lesen.",b:0,x:"Verbesserung des Verständnisses, nicht Abschaffung."},
+    {t:"„Die Kirche soll sich wieder den Armen zuwenden.“",b:0,x:"Besinnung auf das Gute – Läuterung."},
+    {t:"„Religion ist irrational und sollte ganz verschwinden.“",b:1,x:"Ziel: Abschaffung."}
+  ]},
+  {id:"entfr",title:"Marx: Welche Form der Entfremdung?",desc:"Beispiele den drei Formen der Entfremdung zuordnen.",buckets:["Vom Produkt","Von der Natur als freies Wesen","Von den Mitmenschen"],items:[
+    {t:"Der Fließbandarbeiter besitzt das Auto nicht, an dem er mitbaut.",b:0,x:"Beispiel aus dem Text: kein Anrecht auf das Produkt."},
+    {t:"Was produziert wird, entscheiden Angebot und Nachfrage – nicht der Arbeiter.",b:1,x:"Er bestimmt nicht selbst, was er herstellt."},
+    {t:"Kollegen sehen einander als Konkurrenten um den Arbeitsplatz.",b:2,x:"Konkurrenz „verseucht“ soziale Beziehungen."},
+    {t:"Der Arbeiter muss seine Arbeitskraft verkaufen, um zu überleben.",b:1,x:"Er wird zur Marionette des Marktes."},
+    {t:"Die Produktionsmittel gehören dem Kapital, nicht dem Arbeiter.",b:0,x:"Deshalb hat er keine Kontrolle über das Produkt."},
+    {t:"Bei Bewerbungen zählt nur das beste Preis-Leistungs-Verhältnis.",b:2,x:"Menschen stehen auf dem Arbeitsmarkt in Konkurrenz."},
+    {t:"Der Arbeiter wird zur Marionette der Produktionsstrukturen.",b:1,x:"Verlust der Freiheit."},
+    {t:"Durch Arbeitsteilung hat er keine Kontrolle mehr über das Ergebnis.",b:0,x:"Entfremdung vom Produkt."}
+  ]},
+  {id:"ops",title:"Operatoren: Welcher Anforderungsbereich?",desc:"Wissen, was eine Aufgabe von dir verlangt.",buckets:["AFB I · Wiedergeben","AFB II · Erklären & Verknüpfen","AFB III · Urteilen"],items:null}
+];
+SORTS.find(s=>s.id==="ops").items = Object.entries(OPS).map(([k,o])=>({t:k,b:o.afb==="I"?0:o.afb==="II"?1:2,x:o.d}));
+
+const CLOZES = [
+  {id:"opium",title:"Marx: Opium des Volks",src:"Karl Marx: Zur Kritik der Hegelschen Rechtsphilosophie. Einleitung (1844)",text:"Das Fundament der irreligiösen Kritik ist: Der [[Mensch]] macht die [[Religion]], die Religion macht nicht den Menschen. […] Dieser Staat, diese Sozietät produzieren die Religion, ein [[verkehrtes]] Weltbewusstsein, weil sie eine [[verkehrte]] Welt sind. […] Sie ist die [[phantastische|fantastische]] Verwirklichung des menschlichen Wesens, weil das menschliche Wesen keine wahre [[Wirklichkeit]] besitzt. […] Das religiöse Elend ist in einem der [[Ausdruck]] des wirklichen Elendes und in einem die [[Protestation|Protest]] gegen das wirkliche Elend. Die Religion ist der [[Seufzer]] der bedrängten Kreatur, das [[Gemüt]] einer herzlosen Welt, wie sie der Geist geistloser Zustände ist. Sie ist das [[Opium]] des Volks. Die Aufhebung der Religion als des [[illusorischen]] Glücks des Volkes ist die Forderung seines [[wirklichen]] Glücks."},
+  {id:"imperativ",title:"Marx: der kategorische Imperativ",src:"Karl Marx, ebd., Z. 25–28",text:"Die Kritik der Religion endet mit der Lehre, dass der Mensch das [[höchste Wesen]] für den Menschen sei, also mit dem [[kategorischen Imperativ]], alle [[Verhältnisse]] umzuwerfen, in denen der Mensch ein [[erniedrigtes|@adj]], ein [[geknechtetes|@adj]], ein [[verlassenes|@adj]], ein [[verächtliches|@adj]] Wesen ist."},
+  {id:"feuerbach",title:"Feuerbach: Gott als Projektion",src:"Ludwig Feuerbach: Das Wesen des Christentums (1841)",text:"Das absolute Wesen, der Gott des Menschen, ist sein [[eignes|eigenes]] Wesen. […] Die Religion, wenigstens die christliche, ist das [[Verhalten]] des Menschen zu sich selbst, oder richtiger: zu seinem [[Wesen]]. Das göttliche Wesen ist nichts andres als das menschliche Wesen, abgesondert von den [[Schranken]] des individuellen, d. h. wirklichen, leiblichen Menschen, [[vergegenständlicht]], d. h. angeschaut und verehrt als ein andres, von ihm unterschiednes, eignes Wesen. […] Gott das schlechthin Positive, der Inbegriff aller [[Realitäten]], der Mensch das schlechtweg Negative, der Inbegriff aller [[Nichtigkeiten]]. […] Gott als Gott […] ist nur [[Gegenstand des Denkens]]."},
+  {id:"theodizee",title:"Theodizee: Grundbegriffe",src:"Arbeitsblatt „Das Theodizee-Problem“ und Hefter",text:"„Theodizee“ kommt von griech. [[theós|theos]] = Gott und [[díke|dike]] = Gerechtigkeit und bedeutet [[Rechtfertigung]] Gottes angesichts des [[Leids|Leides|Leid]] in der Welt. Das Problem: Gott gilt als [[allmächtig|@attr]], [[allwissend|@attr]] und [[allgütig|@attr]] – trotzdem gibt es Leid. Die Privationsthese (lat. [[privatio]] = Mangel) deutet das Leid als [[Mangel]] am Guten; wäre die Schöpfung vollkommen, wäre sie mit Gott [[identisch]]. [[Leibniz]] (1646–1716) behauptet, Gott habe die [[beste]] aller möglichen Welten geschaffen."},
+  {id:"thesen",title:"Marx: Thesen & Materialismus",src:"Thesen über Feuerbach (1845), Deutsche Ideologie (1845/46)",text:"11. These: Die Philosophen haben die Welt nur verschieden [[interpretiert]]; es kommt darauf an, sie zu [[verändern]]. – 6. These: Das menschliche Wesen ist kein dem einzelnen Individuum inwohnendes [[Abstraktum]]. In seiner Wirklichkeit ist es das [[ensemble|Ensemble]] der gesellschaftlichen [[Verhältnisse]]. – Materialismus: Das [[Sein]] bestimmt das [[Bewusstsein|Bewußtsein]]. – Die erste geschichtliche Tat ist die [[Erzeugung|Produktion]] der Mittel zur Befriedigung der [[Bedürfnisse]]."},
+  {id:"leid",title:"Leidarten & Entfremdung",src:"Hefter: Tabelle „Leid“ und Text „Wie der Mensch sich selbst verliert“",text:"Physisches Leid entsteht, weil der Mensch ein [[Naturwesen]] ist; metaphysisches Leid, weil er ein [[endliches]] und unvollständiges Wesen ist; Leid durch böses Handeln, weil er ein [[frei]] handelndes Wesen ist. – Marx: Im Kapitalismus entfremdet sich der Mensch vom [[Produkt]] seiner Arbeit, von seiner Natur als [[freies]] Wesen und von seinen [[Mitmenschen]], weil auf dem Arbeitsmarkt [[Konkurrenz]] herrscht."},
+  {id:"daten",title:"Wann? Die wichtigsten Daten",src:"Übersicht – wann",text:"Feuerbach lebte von [[1804]] bis [[1872]]; „Das Wesen des Christentums“ erschien [[1841]]. Marx lebte von [[1818]] bis [[1883]]; die Einleitung zur Kritik der Hegelschen Rechtsphilosophie („Opium des Volks“) erschien [[1844]], die Thesen über Feuerbach schrieb er [[1845]]. Leibniz lebte von [[1646]] bis [[1716]]. Religionskritik ist so alt wie die [[Religion]] selbst."}
+];
+
+const EVENTS = [
+  {y:-760,when:"8. Jh. v. Chr.",t:"Der Prophet Amos kritisiert Opferfeste ohne Gerechtigkeit",x:"Religionskritik von innen – Ziel: Läuterung. (Zusatzwissen)"},
+  {y:-570,when:"6. Jh. v. Chr.",t:"Xenophanes: Menschen stellen sich Götter nach ihrem eigenen Bild vor",x:"„Hätten Pferde Hände, sie malten Götter wie Pferde.“ – früher Vorläufer der Projektionsthese. (Zusatzwissen)"},
+  {y:400,when:"um 400",t:"Augustinus deutet das Böse als Mangel am Guten",x:"Klassischer Vertreter der Privationsthese. (Zusatzwissen)"},
+  {y:1517,when:"1517",t:"Luther kritisiert mit seinen 95 Thesen den Ablasshandel",x:"Religiöse Kritik von innen – Ziel: Reform."},
+  {y:1710,when:"1710",t:"Leibniz veröffentlicht die „Theodizee“: die beste aller möglichen Welten",x:"Leibniz (1646–1716) prägt den Begriff Theodizee."},
+  {y:1804,when:"1804",t:"Ludwig Feuerbach wird geboren",x:"Feuerbach lebte 1804–1872."},
+  {y:1818,when:"1818",t:"Karl Marx wird geboren",x:"Marx lebte 1818–1883."},
+  {y:1841,when:"1841",t:"Feuerbach: „Das Wesen des Christentums“ – die Projektionsthese",x:"Gott als Projektion des menschlichen Wesens."},
+  {y:1844,when:"1844",t:"Marx: „Zur Kritik der Hegelschen Rechtsphilosophie. Einleitung“ – „Opium des Volks“",x:"Religion als Ausdruck des Elends und Protest dagegen."},
+  {y:1845,when:"1845",t:"Marx: „Thesen über Feuerbach“ mit der 11. These",x:"„Es kommt darauf an, sie zu verändern.“"},
+  {y:1846,when:"1845/46",t:"Marx & Engels: „Die deutsche Ideologie“ – materialistische Geschichtsauffassung",x:"Der Mensch als bedürftiges, produzierendes, soziales Wesen."},
+  {y:1872,when:"1872",t:"Ludwig Feuerbach stirbt",x:""},
+  {y:1883,when:"1883",t:"Karl Marx stirbt",x:""},
+  {y:1944,when:"1944",t:"Elie Wiesel erlebt im KZ die Hinrichtung eines Kindes",x:"Später beschrieben in „Die Nacht“: „Wo ist Gott?“"}
+];
+
+const MATRIX = [
+  {id:"ursprung",label:"Ursprung der Religion",
+   f:{a:"**Projektion des menschlichen Wesens** (anthropologisch, psychologisch): Der Mensch verlagert seine Vollkommenheit nach außen.",kp:["Projektion des menschlichen Wesens","Anthropologisch / psychologisch erklärt"]},
+   m:{a:"**Ausdruck materieller Not** und **verkehrter gesellschaftlicher Verhältnisse**: „Staat, Sozietät produzieren die Religion“.",kp:["Materielle Not / Elend","Verkehrte gesellschaftliche Verhältnisse (Staat, Sozietät)"]}},
+  {id:"gott",label:"Was ist Gott bzw. Religion?",
+   f:{a:"Gott = **das vergegenständlichte Wesen des Menschen**; Religion = **Verhalten des Menschen zu seinem eigenen Wesen**.",kp:["Gott = vergegenständlichtes Wesen des Menschen","Religion = Verhalten zu sich selbst"]},
+   m:{a:"Religion = **phantastische Verwirklichung des menschlichen Wesens**, „**verkehrtes Weltbewusstsein**“, Seufzer der bedrängten Kreatur.",kp:["Phantastische Verwirklichung des menschlichen Wesens","Verkehrtes Weltbewusstsein / Seufzer"]}},
+  {id:"funktion",label:"Funktion der Religion",
+   f:{a:"**Selbsttäuschung**: Der Mensch verkennt sich selbst und wertet sich ab.",kp:["Selbsttäuschung / Selbstverkennung","Selbstabwertung des Menschen"]},
+   m:{a:"**Doppelfunktion**: Ausdruck des Elends **und** Protest dagegen; **Opium** – Trost, der betäubt und die Ursache verschleiert.",kp:["Ausdruck + Protest","Opium: Trost und Verschleierung"]}},
+  {id:"mensch",label:"Menschenbild / Wesen des Menschen",
+   f:{a:"**Gattungswesen**: Vernunft/Verstand, Wille, Liebe – eher **abstrakt und zeitlos**.",kp:["Gattungswesen: Vernunft, Wille, Liebe","Abstrakt / zeitlos"]},
+   m:{a:"**Bedürftiges, arbeitendes, soziales Wesen**, **gesellschaftlich und historisch** bestimmt – „Ensemble der gesellschaftlichen Verhältnisse“.",kp:["Bedürftig, arbeitend, sozial","Gesellschaftlich und historisch bestimmt"]}},
+  {id:"entfremdung",label:"Entfremdung",
+   f:{a:"**Religiös, im Bewusstsein**: Je mehr der Mensch Gott zuschreibt, desto ärmer wird er selbst.",kp:["Im Bewusstsein / in der Religion","Je reicher Gott, desto ärmer der Mensch"]},
+   m:{a:"**Ökonomisch, in der Arbeit**: vom Produkt, von der Natur als freies Wesen, von den Mitmenschen (Kapitalismus).",kp:["In der Arbeit / im Kapitalismus","Dreifach: Produkt, freies Wesen, Mitmenschen"]}},
+  {id:"ansatz",label:"Ansatzpunkt der Kritik",
+   f:{a:"**Bewusstsein / Erkenntnis**: Der Mensch soll erkennen, dass er Gott selbst erschafft.",kp:["Bewusstsein / Erkenntnis","Mensch soll die Projektion durchschauen"]},
+   m:{a:"**Gesellschaftliche und ökonomische Praxis**: Die Verhältnisse müssen sich ändern.",kp:["Gesellschaftliche / ökonomische Praxis","Verhältnisse ändern"]}},
+  {id:"ziel",label:"Ziel der Kritik",
+   f:{a:"**Aufklärung über die Selbsttäuschung**, Rücknahme der Projektion – der Mensch gewinnt sein Wesen zurück.",kp:["Aufklärung","Projektion zurücknehmen / Wesen zurückgewinnen"]},
+   m:{a:"**Politische und soziale Umwälzung** – wirkliches statt illusorisches Glück; Religion wird überflüssig.",kp:["Umwälzung der Verhältnisse","Wirkliches statt illusorisches Glück / Religion überflüssig"]}},
+  {id:"bezug",label:"Verhältnis der beiden zueinander",
+   f:{a:"Liefert die **Grundlage**, an die Marx anknüpft: „Der Mensch macht die Religion.“",kp:["Grundlage für Marx","Religion ist menschengemacht"]},
+   m:{a:"**Kritik an Feuerbach**: nur interpretiert (11. These), fragt nicht nach dem Warum (4. These), denkt den Menschen unhistorisch (6. These).",kp:["Nur interpretiert, nicht verändert","Fragt nicht nach dem Warum / Menschenbild unhistorisch"]}}
+];
+
+const TEXTS = [
+  {id:"opium",title:"Marx: „Das Opium des Volkes“",short:"Zur Kritik der Hegelschen Rechtsphilosophie, 1844",
+   src:"Karl Marx: Zur Kritik der Hegelschen Rechtsphilosophie. Einleitung. MEW 1, Dietz, Berlin 1974, S. 378 ff. – Zeilen wie im Lehrbuch (S. 321).",
+   sections:[{sents:[
+    ["o1","2–3","Für Deutschland ist die Kritik der Religion im wesentlichen beendigt, und die Kritik der Religion ist die Voraussetzung aller Kritik. […]"],
+    ["o2","4–5","Das Fundament der irreligiösen Kritik ist: Der Mensch macht die Religion, die Religion macht nicht den Menschen."],
+    ["o3","5–7","Und zwar ist die Religion das Selbstbewusstsein und das Selbstgefühl des Menschen, der sich selbst entweder noch nicht erworben oder schon wieder verloren hat."],
+    ["o4","7–8","Aber der Mensch, das ist kein abstraktes, außer der Welt hockendes Wesen."],
+    ["o5","8","Der Mensch, das ist die Welt des Menschen, Staat, Sozietät."],
+    ["o6","8–10","Dieser Staat, diese Sozietät produzieren die Religion, ein verkehrtes Weltbewusstsein, weil sie eine verkehrte Welt sind. […]"],
+    ["o7","10–11","Sie ist die phantastische Verwirklichung des menschlichen Wesens, weil das menschliche Wesen keine wahre Wirklichkeit besitzt."],
+    ["o8","11–12","Der Kampf gegen die Religion ist also mittelbar der Kampf gegen jene Welt, deren geistiges Aroma die Religion ist."],
+    ["o9","12–14","Das religiöse Elend ist in einem der Ausdruck des wirklichen Elendes und in einem die Protestation gegen das wirkliche Elend."],
+    ["o10","14–15","Die Religion ist der Seufzer der bedrängten Kreatur, das Gemüt einer herzlosen Welt, wie sie der Geist geistloser Zustände ist."],
+    ["o11","15","Sie ist das Opium des Volks."]]},{sents:[
+    ["o12","16–17","Die Aufhebung der Religion als des illusorischen Glücks des Volkes ist die Forderung seines wirklichen Glücks."],
+    ["o13","17–18","Die Forderung, die Illusionen über seinen Zustand aufzugeben, ist die Forderung, einen Zustand aufzugeben, der der Illusionen bedarf."],
+    ["o14","18–19","Die Kritik der Religion ist also im Keim die Kritik des Jammertales, dessen Heiligenschein die Religion ist."],
+    ["o15","20–22","[…] Die Kritik der Religion enttäuscht den Menschen, damit er denke, handle, seine Wirklichkeit gestalte wie ein enttäuschter, zu Verstand gekommener Mensch, damit er sich um sich selbst und damit um seine wirkliche Sonne bewege."],
+    ["o16","22–24","Die Religion ist nur die illusorische Sonne, die sich um den Menschen bewegt, solange er sich nicht um sich selbst bewegt. […]"]]},{sents:[
+    ["o17","25–28","Die Kritik der Religion endet mit der Lehre, dass der Mensch das höchste Wesen für den Menschen sei, also mit dem kategorischen Imperativ, alle Verhältnisse umzuwerfen, in denen der Mensch ein erniedrigtes, ein geknechtetes, ein verlassenes, ein verächtliches Wesen ist."]]}],
+   tasks:[
+    {q:"Wo knüpft Marx direkt an Feuerbach an?",ok:["o2"],x:"„Der Mensch macht die Religion“ ist Feuerbachs Grundgedanke: Gott ist ein Produkt des Menschen.",hint:"Suche den Satz, der sagt, wer wen „macht“."},
+    {q:"Wo deutet Marx an, dass Feuerbachs Menschenbild zu abstrakt ist?",ok:["o4","o5"],x:"Der Mensch ist kein „abstraktes, außer der Welt hockendes Wesen“, sondern Staat und Gesellschaft – gegen Feuerbachs allgemeines Gattungswesen.",hint:"Achte auf das Wort „abstrakt“."},
+    {q:"Wo nennt Marx die eigentliche Ursache der Religion – und geht damit über Feuerbach hinaus?",ok:["o6"],x:"Eine verkehrte Welt (Staat, Gesellschaft) erzeugt ein verkehrtes Weltbewusstsein. Feuerbach fragt nicht, warum der Mensch projiziert.",hint:"Wer „produziert“ die Religion?"},
+    {q:"Wo beschreibt Marx die Doppelfunktion der Religion?",ok:["o9","o10"],x:"Ausdruck des wirklichen Elends UND Protest dagegen – Religion ist Symptom, nicht nur Irrtum.",hint:"Zwei Seiten: Ausdruck und …"},
+    {q:"Welcher Satz zeigt, dass Religionskritik eigentlich Gesellschaftskritik ist?",ok:["o8","o14"],x:"Der Kampf gegen die Religion ist „mittelbar der Kampf gegen jene Welt“; Religion ist nur ihr „geistiges Aroma“ bzw. ihr „Heiligenschein“.",hint:"Achte auf „mittelbar“ oder „Jammertal“."},
+    {q:"Welche Stelle passt inhaltlich zur 11. These (vom Erkennen zum Handeln)?",ok:["o15"],x:"Die Kritik „enttäuscht“ den Menschen, damit er denke, HANDLE und seine Wirklichkeit gestalte.",hint:"Suche das Verb „handle“."},
+    {q:"Wo formuliert Marx seine politische Forderung?",ok:["o17","o12","o13"],x:"Der „kategorische Imperativ, alle Verhältnisse umzuwerfen“ – Ziel ist die Veränderung der gesellschaftlichen Verhältnisse.",hint:"Ein Imperativ – Kant lässt grüßen."}],
+   write:{op:"erläutern",task:"Erläutere Marx' Verständnis von Religion (Z. 4–19) und zeige, wo er an Feuerbach anknüpft und wo er über ihn hinausgeht.",topics:["mx","fb","vg"],
+    horizon:["Anknüpfung: „Der Mensch macht die Religion“ (Z. 4 f.) = Feuerbachs Projektionsgedanke","Mensch als „Welt des Menschen, Staat, Sozietät“ (Z. 7 f.) – Kritik an Feuerbachs abstraktem Menschenbild","Ursache: verkehrte Welt → verkehrtes Weltbewusstsein (Z. 8–10)","Doppelfunktion: Ausdruck und Protest, Seufzer, Opium (Z. 12–15)","Hinausgehen: Forderung nach Veränderung der Verhältnisse statt bloßer Aufklärung (Z. 16–19, 25–28)","Korrekte Zitierweise mit Zeilenangaben und Fachbegriffe"]}},
+  {id:"feuerbach",title:"Feuerbach: „Gott als Projektion“",short:"Das Wesen des Christentums, 1841",
+   src:"Ludwig Feuerbach: Das Wesen des Christentums. Contumax-Hofenberg, Berlin 2016, S. 29 ff. – Zeilen wie auf deinem Arbeitsblatt.",
+   sections:[{sents:[
+    ["f1","8","Das absolute Wesen, der Gott des Menschen, ist sein eignes Wesen."],
+    ["f2","8–9","Die Macht des Gegenstandes über ihn ist daher die Macht seines eignen Wesens. […]"],
+    ["f3","10–11","Die Religion, wenigstens die christliche, ist das Verhalten des Menschen zu sich selbst, oder richtiger: zu seinem Wesen […]."],
+    ["f4","11–15","Das göttliche Wesen ist nichts andres als das menschliche Wesen oder besser: das Wesen des Menschen, abgesondert von den Schranken des individuellen, d. h. wirklichen, leiblichen Menschen, vergegenständlicht, d. h. angeschaut und verehrt als ein andres, von ihm unterschiednes, eignes Wesen – alle Bestimmungen des göttlichen Wesens sind darum Bestimmungen des menschlichen Wesens. […]"]]},{sents:[
+    ["f5","16","[Der Mensch] setzt Gott als ein ihm entgegengesetztes Wesen gegenüber. […]"],
+    ["f6","16–18","Gott und Mensch sind Extreme: Gott das schlechthin Positive, der Inbegriff aller Realitäten, der Mensch das schlechtweg Negative, der Inbegriff aller Nichtigkeiten."]]},{sents:[
+    ["f7","19","Aber der Mensch vergegenständlicht in der Religion sein eignes geheimes Wesen. […]"],
+    ["f8","20","Dieses Wesen ist nichts andres als die Intelligenz – die Vernunft oder der Verstand."],
+    ["f9","20–22","Gott als Extrem des Menschen, als nicht menschliches, d. i. persönlich menschliches Wesen gedacht – ist das vergegenständlichte Wesen des Verstandes."],
+    ["f10","22–24","Das reine, vollkommne, mangellose göttliche Wesen ist das Selbstbewusstsein des Verstandes, das Bewusstsein des Verstandes von seiner eignen Vollkommenheit. […]"],
+    ["f11","24–29","Reine Verstandesmenschen, Menschen, die uns das Wesen des Verstandes, wenn auch nur in einseitiger, aber eben deswegen charakteristischer Bestimmtheit versinnbildlichen und personifizieren, sind enthoben den Gemütsqualen, den Passionen, den Exzessen der Gefühlsmenschen; sie sind für keinen endlichen, d. i. bestimmten Gegenstand leidenschaftlich eingenommen; sie „verpfänden“ sich nicht; sie sind frei. […]"]]},{sents:[
+    ["f12","30–31","Gott als Gott, d. h. als nicht endliches, nicht menschliches, nicht materiell bestimmtes, nicht sinnliches Wesen ist nur Gegenstand des Denkens."],
+    ["f13","31–33","Er ist das unsinnliche, gestaltlose, unfassbare, bildlose – das abstrakte, negative Wesen; er wird nur durch Abstraktion und Negation (via negationis) erkannt, d. i. Gegenstand. […]"],
+    ["f14","33–37","Der Mensch kann keinen andern Geist, d. h. – denn der Begriff des Geistes ist lediglich der Begriff des Denkens, der Erkenntnis, des Verstandes, jeder andre Geist ein Gespenst der Phantasie – keine andre Intelligenz glauben, ahnden, vorstellen, denken als die Intelligenz, die ihn erleuchtet, die sich in ihm betätigt."]]}],
+   tasks:[
+    {q:"Wo sagt Feuerbach am knappsten, was Gott ist?",ok:["f1","f4"],x:"Gott ist das eigene Wesen des Menschen (Z. 8) – genauer: das menschliche Wesen ohne die Schranken des Individuums (Z. 11–15).",hint:"Gleich der erste Satz ist verdächtig."},
+    {q:"Wo beschreibt er den Vorgang der Projektion (Vergegenständlichung) am genauesten?",ok:["f4"],x:"Das Wesen des Menschen wird von den Schranken des Individuums abgesondert, vergegenständlicht und als anderes Wesen angeschaut und verehrt.",hint:"Suche das Wort „vergegenständlicht“ mit Erklärung „d. h.“."},
+    {q:"Wo wird deutlich, wie sich der Mensch gegenüber Gott abwertet (→ Entfremdung)?",ok:["f6","f5"],x:"Gott = Inbegriff aller Realitäten, Mensch = Inbegriff aller Nichtigkeiten: Alles Positive gibt der Mensch an Gott ab.",hint:"Gott und Mensch als „Extreme“."},
+    {q:"Was genau projiziert der Mensch laut diesem Textauszug?",ok:["f8","f9"],x:"Die Intelligenz – Vernunft bzw. Verstand. Gott ist das „vergegenständlichte Wesen des Verstandes“.",hint:"„Dieses Wesen ist nichts andres als …“"},
+    {q:"Wo erklärt Feuerbach, warum Gott nur gedacht, aber nicht wahrgenommen werden kann?",ok:["f12","f13"],x:"Gott ist „nur Gegenstand des Denkens“: unsinnlich, gestaltlos, nur via negationis erkennbar.",hint:"Achte auf „nicht sinnlich“ und „via negationis“."},
+    {q:"Welcher Satz bereitet Marx' Satz „Der Mensch macht die Religion“ am direktesten vor?",ok:["f3","f1"],x:"Religion ist das Verhalten des Menschen zu sich selbst – also ein menschliches Produkt.",hint:"Wie definiert Feuerbach die Religion?"}],
+   write:{op:"erläutern",task:"Erkläre Feuerbachs Projektionsthese anhand des Textes und erläutere, inwiefern Marx sie aufgreift und kritisiert.",topics:["fb","mx","vg"],
+    horizon:["Gott = eigenes Wesen des Menschen (Z. 8), Religion = Verhalten zu sich selbst (Z. 10 f.)","Vergegenständlichung: Wesen ohne Schranken des Individuums als fremdes Wesen verehrt (Z. 11–15)","Gott und Mensch als Extreme → Entfremdung (Z. 16–18)","Projiziert wird der Verstand / die Vernunft (Z. 19–24)","Marx greift auf: „Der Mensch macht die Religion“","Marx kritisiert: Warum projiziert der Mensch? → verkehrte Verhältnisse; Erkenntnis reicht nicht (11. These)"]}},
+  {id:"thesen",title:"Marx: „Thesen über Feuerbach“",short:"Unbekannter Text – Klausur-Simulation",
+   src:"Karl Marx: Thesen über Feuerbach (1845), 4., 6. und 11. These, gekürzt. MEW 3, S. 5 ff. – Zeilen für diese Übung neu gezählt.",
+   sections:[{label:"4. These",sents:[
+    ["t1","1–2","Feuerbach geht aus von dem Faktum der religiösen Selbstentfremdung, der Verdopplung der Welt in eine religiöse und eine weltliche."],
+    ["t2","2–3","Seine Arbeit besteht darin, die religiöse Welt in ihre weltliche Grundlage aufzulösen."],
+    ["t3","3–6","Aber dass die weltliche Grundlage sich von sich selbst abhebt und sich ein selbständiges Reich in den Wolken fixiert, ist nur aus der Selbstzerrissenheit und dem Sichselbstwidersprechen dieser weltlichen Grundlage zu erklären."],
+    ["t4","6–7","Diese selbst muss also in sich selbst sowohl in ihrem Widerspruch verstanden als praktisch revolutioniert werden."],
+    ["t5","7–9","Also nachdem z. B. die irdische Familie als das Geheimnis der heiligen Familie entdeckt ist, muss nun erstere selbst theoretisch und praktisch vernichtet werden."]]},
+    {label:"6. These",sents:[
+    ["t6","10","Feuerbach löst das religiöse Wesen in das menschliche Wesen auf."],
+    ["t7","10–11","Aber das menschliche Wesen ist kein dem einzelnen Individuum inwohnendes Abstraktum."],
+    ["t8","11–12","In seiner Wirklichkeit ist es das ensemble der gesellschaftlichen Verhältnisse."],
+    ["t9","12–14","Feuerbach, der auf die Kritik dieses wirklichen Wesens nicht eingeht, ist daher gezwungen, […] ein abstrakt – isoliert – menschliches Individuum vorauszusetzen."]]},
+    {label:"11. These",sents:[
+    ["t10","15–16","Die Philosophen haben die Welt nur verschieden interpretiert; es kommt darauf an, sie zu verändern."]]}],
+   tasks:[
+    {q:"Welche Leistung Feuerbachs erkennt Marx ausdrücklich an?",ok:["t2","t6"],x:"Feuerbach hat die religiöse Welt in ihre weltliche Grundlage aufgelöst – das ist die Projektionsthese.",hint:"„Seine Arbeit besteht darin …“"},
+    {q:"Wo nennt Marx, was Feuerbach NICHT erklärt?",ok:["t3"],x:"Warum sich die weltliche Grundlage „ein selbständiges Reich in den Wolken“ schafft: wegen ihrer Selbstzerrissenheit – also wegen der verkehrten gesellschaftlichen Verhältnisse.",hint:"Ein Satz mit „Aber“ und „Reich in den Wolken“."},
+    {q:"Wo fordert Marx Praxis statt bloßer Theorie?",ok:["t4","t5","t10"],x:"Die weltliche Grundlage muss „praktisch revolutioniert“ werden – derselbe Gedanke wie in der 11. These.",hint:"Suche das Wort „praktisch“."},
+    {q:"Wo kritisiert Marx Feuerbachs Menschenbild?",ok:["t7","t8","t9"],x:"Das menschliche Wesen ist kein „Abstraktum“ im Einzelnen, sondern das „ensemble der gesellschaftlichen Verhältnisse“.",hint:"Schau in die 6. These."},
+    {q:"Welcher Satz zeigt, dass beide Religion als Entfremdung verstehen?",ok:["t1"],x:"„Religiöse Selbstentfremdung“ und „Verdopplung der Welt“ – Feuerbachs Ausgangspunkt, den Marx teilt.",hint:"Gleich der erste Satz."},
+    {q:"Welches Beispiel zeigt Feuerbachs Projektion im Kleinen?",ok:["t5"],x:"Die „heilige Familie“ ist ein Spiegelbild der irdischen Familie. Marx will aber auch die irdische Familie verändern.",hint:"Es geht um eine Familie."}],
+   write:{op:"herausarbeiten",task:"Arbeite heraus, inwiefern Marx in diesem Text an Feuerbach anknüpft und worin er über ihn hinausgeht.",topics:["fb","mx","vg"],
+    horizon:["Anknüpfung: religiöse Selbstentfremdung, Verdopplung der Welt (Z. 1 f.)","Anerkennung: Auflösung der religiösen Welt in ihre weltliche Grundlage = Projektionsthese (Z. 2 f., 10)","Hinausgehen 1: Ursache der Religion in der Zerrissenheit der weltlichen Grundlage (Z. 3–6) – verkehrte Verhältnisse","Hinausgehen 2: praktische Revolutionierung statt bloßer Erkenntnis (Z. 6–9, 15 f.)","Hinausgehen 3: Wesen des Menschen = Ensemble der gesellschaftlichen Verhältnisse statt abstraktes Individuum (Z. 10–14)","Belege mit Zeilenangaben, Fachbegriffe, klare Gliederung"]}}
+];
+
+const GENERIC_STELLUNG = ["Einleitung: Thema und These der Vorlage korrekt (mit Beleg) wiedergegeben","Eigene Position klar formuliert","Mindestens zwei Argumente: Behauptung – Begründung – Beispiel","Gegenposition fair dargestellt und abgewogen oder entkräftet","Fachbegriffe aus dem Unterricht korrekt verwendet","Fazit: begründetes Urteil, das an die Position anknüpft"];
+
+const ESSAYS = [
+  {id:"opium",title:"Ist Religion „Opium des Volks“?",topics:["mx","vg","theo"],
+   task:"Nimm begründet Stellung zu Marx' These, die Religion sei „das Opium des Volks“. Beziehe die heutige Situation mit ein.",
+   material:[{t:"Das religiöse Elend ist in einem der Ausdruck des wirklichen Elendes und in einem die Protestation gegen das wirkliche Elend. Die Religion ist der Seufzer der bedrängten Kreatur, das Gemüt einer herzlosen Welt, wie sie der Geist geistloser Zustände ist. Sie ist das Opium des Volks.",src:"Karl Marx: Zur Kritik der Hegelschen Rechtsphilosophie. Einleitung (1844)"}],
+   proLabel:"Marx hat recht",conLabel:"Marx greift zu kurz",
+   pro:["Religion vertröstet auf das Jenseits („Jammertal“) und kann Menschen davon abhalten, ihre Lage zu verändern.","Kirchen haben historisch oft Herrschaft gestützt (z. B. Gottesgnadentum).","Trost wirkt wie ein Schmerzmittel: Er macht Missstände erträglich, beseitigt aber nicht ihre Ursachen.","Wird Leid als gottgewollt gedeutet, werden reale Konflikte verschleiert."],
+   con:["Religion war oft Motor für Veränderung: Martin Luther King, Befreiungstheologie in Lateinamerika, Friedensgebete in Leipzig 1989.","Religion stiftet Sinn, Gemeinschaft und Werte (Nächstenliebe, Caritas, Diakonie) – nicht nur Betäubung.","Auch Wohlhabende und Gebildete glauben: Religion entsteht nicht nur aus materieller Not.","Metaphysisches Leid (Tod, Endlichkeit, Schuld) lässt sich nicht durch bessere Verhältnisse beseitigen – hier ist Trost berechtigt.","Marx selbst sieht die Protestfunktion („Protestation“) – Religion ist bei ihm nicht nur negativ.","Staaten, die Religion im Namen des Marxismus bekämpften, schufen keine freie Gesellschaft."],
+   horizon:["Marx' Doppelfunktion (Ausdruck + Protest, Trost + Betäubung) korrekt wiedergegeben","Begriffe wie „verkehrte Welt“, „illusorisches Glück“ oder „Verhältnisse“ verwendet","Bezug zur heutigen Situation hergestellt"]},
+  {id:"projektion",title:"Gott als Projektion: Befreiung oder Verlust?",topics:["fb","vg"],
+   task:"Nimm begründet Stellung: Bedeutet Feuerbachs Projektionsthese – wenn sie zuträfe – für den Menschen eher eine Befreiung oder einen Verlust?",
+   material:[{t:"Das absolute Wesen, der Gott des Menschen, ist sein eignes Wesen. […] Gott und Mensch sind Extreme: Gott das schlechthin Positive, der Inbegriff aller Realitäten, der Mensch das schlechtweg Negative, der Inbegriff aller Nichtigkeiten.",src:"Ludwig Feuerbach: Das Wesen des Christentums (1841)"}],
+   proLabel:"Befreiung",conLabel:"Verlust",
+   pro:["Der Mensch gewinnt sein Wesen zurück und ist nicht mehr „Inbegriff aller Nichtigkeiten“.","Er wird mündig und selbst verantwortlich, statt auf einen Lenker der Geschichte zu warten.","Werte wie Nächstenliebe gelten aus Einsicht, nicht aus Gehorsam oder Angst vor Strafe.","Die Liebe richtet sich direkt auf den Menschen statt auf ein Jenseits."],
+   con:["Trost und Halt in Leid und Tod fallen weg (Gebet, Erlösungshoffnung).","Werte verlieren ihre absolute Verbindlichkeit: Wer garantiert, dass Menschen Nächstenliebe üben?","Gemeinschaft, Rituale und Sinnangebote der Religion gehen verloren.","Einwand gegen die These selbst: Dass Menschen sich Gott vorstellen oder wünschen, beweist nicht, dass es ihn nicht gibt."],
+   horizon:["Projektionsthese korrekt erklärt (Wesen vergegenständlicht, als fremdes Wesen verehrt)","Folgen für das Verhältnis zu Gott und für christliche Werte bedacht","Beide Seiten (Befreiung und Verlust) abgewogen"]},
+  {id:"leibniz",title:"Beste aller Welten – auch nach Auschwitz?",topics:["theo"],
+   task:"Nimm begründet Stellung: Lässt sich angesichts von Leid, wie Elie Wiesel es schildert, an Leibniz' These von der „besten aller möglichen Welten“ festhalten?",
+   material:[{t:"Gott hätte als allmächtiges Wesen jede vorstellbare Welt schaffen können, hat aber aufgrund seiner Güte nur eine Welt, und zwar „die beste aller möglichen Welten“ geschaffen. […] Das Leid muss also insgesamt einen positiven Nutzen haben.",src:"nach G. W. Leibniz (1646–1716), Arbeitsblatt „Das Theodizee-Problem“"},{t:"Hinter mir hörte ich denselben Mann fragen: „Wo ist Gott?“ Und ich hörte eine Stimme in mir antworten: „Wo er ist? Dort – dort hängt er, am Galgen …“",src:"Elie Wiesel: Die Nacht – nach der Hinrichtung eines Kindes im KZ"}],
+   proLabel:"Für Leibniz",conLabel:"Gegen Leibniz",
+   pro:["Freiheit ist ein hohes Gut; eine Welt mit Freiheit schließt die Möglichkeit des Bösen ein – das KZ ist menschengemachtes Böses, nicht Gottes Tat.","Leid kann Mitgefühl, Widerstand und Solidarität hervorrufen („Unrecht bekämpfen“).","Unsere Perspektive ist begrenzt: Wir sehen nicht das Ganze."],
+   con:["Kein denkbarer Nutzen rechtfertigt den Todeskampf eines Kindes – das Argument wirkt zynisch.","Die Opfer werden zum Mittel für einen höheren Zweck gemacht; das verletzt ihre Würde.","Naturkatastrophen (physisches Leid) lassen sich nicht mit menschlicher Freiheit erklären.","Ein allmächtiger Gott hätte eine Welt mit Freiheit und weniger Leid schaffen können.","Wiesel zeigt: Die Theodizee ist eine existenzielle Frage (Lösung 4) – oder sie führt zu Lösung 3."],
+   horizon:["Theodizee-Problem (drei Attribute vs. Leid) korrekt dargestellt","Leibniz' Position und ihr Nutzen-Argument richtig wiedergegeben","Wiesels Erfahrung als Prüfstein einbezogen (Leidarten, Lösungsansätze 3/4)"]},
+  {id:"verändern",title:"Interpretieren oder verändern?",topics:["fb","mx","vg"],
+   task:"Nimm begründet Stellung zu der Auffassung, es reiche nicht, die Religion zu durchschauen (Feuerbach); man müsse die Verhältnisse verändern (Marx).",
+   material:[{t:"Die Philosophen haben die Welt nur verschieden interpretiert; es kommt darauf an, sie zu verändern.",src:"Karl Marx: 11. These über Feuerbach (1845)"}],
+   proLabel:"Für Marx",conLabel:"Für Feuerbach / gegen Marx",
+   pro:["Aufklärung allein beseitigt kein Elend: Solange die Not bleibt, bleibt das Bedürfnis nach Trost.","Marx bekämpft Ursachen statt Symptome – Feuerbach bleibt beim Bewusstsein stehen.","Feuerbach erklärt nicht, warum Menschen projizieren – Marx schon (verkehrte Welt)."],
+   con:["Veränderung setzt Erkenntnis voraus – ohne Feuerbachs Kritik gäbe es Marx' Kritik nicht.","Auch Marx' Schriften sind Theorie; Interpretieren ist die Grundlage verantwortlichen Handelns.","Religion entsteht auch aus metaphysischem Leid (Tod, Sinnfrage) – das kann keine Revolution aufheben.","Gewaltsame Umwälzungen im Namen des Marxismus führten zu neuer Unterdrückung."],
+   horizon:["Feuerbachs Ansatz (Erkenntnis, Rücknahme der Projektion) korrekt dargestellt","Marx' Kritik (11. These, Verhältnisse, verkehrte Welt) korrekt dargestellt","Eigenes Urteil wägt Erkenntnis und Praxis ab"]},
+  {id:"privatio",title:"Ist Leid nur ein Mangel am Guten?",topics:["theo"],
+   task:"Nimm begründet Stellung zur Privationsthese, nach der das Leid kein eigenständiges Phänomen, sondern nur ein Mangel am Guten ist.",
+   material:[{t:"Der Grundgedanke ist, dass das Leid bzw. das Schlechte in der Welt kein eigenständiges Phänomen ist, sondern als ein Mangel am Guten verstanden werden muss. […] Hätte Gott seine Schöpfung ohne einen Mangel am Guten […] erschaffen, wäre sie mit ihm identisch gewesen.",src:"Arbeitsblatt „Das Theodizee-Problem“, Abschnitt 2"}],
+   proLabel:"Überzeugt",conLabel:"Überzeugt nicht",
+   pro:["Gott ist nicht Urheber des Bösen – er bleibt vollkommen gut.","Logisch plausibel: Eine Schöpfung muss sich vom Schöpfer unterscheiden, also unvollkommen sein.","Analogie: Dunkelheit ist Fehlen von Licht, Kälte Fehlen von Wärme."],
+   con:["Für Leidende ist Schmerz real – kein bloßes „Nichts“.","Geplantes Böses (KZ, Folter) als „Mangel“ zu bezeichnen, verharmlost es.","Warum ist der Mangel so ungleich verteilt? Ein allmächtiger Gott hätte weniger Mangel schaffen können.","Erklärt eher, warum es Unvollkommenheit gibt, als warum es so extremes Leid gibt."],
+   horizon:["Privationsthese korrekt erklärt (privatio = Mangel, Schöpfung ≠ Gott)","Bezug zu Leidarten oder einem konkreten Beispiel","Vergleich mit einem anderen Lösungsansatz (Leibniz oder Lösung 3/4)"]},
+  {id:"ziel",title:"Will Religionskritik Religion zerstören?",topics:["rk","fb","mx"],
+   task:"Nimm begründet Stellung zu der Behauptung: „Religionskritik will die Religion abschaffen.“",
+   material:[{t:"Religionskritik ist so alt wie die Religion selbst. Sie setzt am Glauben selbst, an bestimmten Glaubensinhalten, an religiösen Institutionen oder an negativen Auswirkungen von Religion an – mit unterschiedlichen Zielen: zur Reform und Läuterung der Religion oder zu ihrer Abschaffung.",src:"Unterrichtsübersicht „Religionskritik“"}],
+   proLabel:"Ja, sie will abschaffen",conLabel:"Nein, oft will sie läutern",
+   pro:["Feuerbach und Marx zielen auf die Überwindung des Gottesglaubens (Projektion zurücknehmen bzw. Religion wird überflüssig).","Irreligiöse Kritik kommt von außen und stellt Religion grundsätzlich infrage.","Manche heutige Kritiker wollen Religion ganz aus dem öffentlichen Leben verbannen."],
+   con:["Viel Religionskritik kommt von innen und will läutern: Propheten wie Amos, Luther 1517.","Kritik an Institutionen (z. B. Aufarbeitung von Missbrauch) kann Glaubwürdigkeit wiederherstellen.","Kritik zwingt Religion, ihre Inhalte zu prüfen und neu zu begründen – das kann sie stärken.","Selbst Marx kritisiert Religion vor allem als Symptom: Sein eigentliches Ziel ist die Veränderung der Verhältnisse."],
+   horizon:["Unterschied Reform vs. Abschaffung erklärt","Mindestens zwei Ansatzpunkte der Religionskritik einbezogen","Beispiele für beide Ziele (z. B. Luther vs. Feuerbach/Marx)"]}
+];
+
+const PHRASES = [
+  ["Einleitung","In dem vorliegenden Textauszug vertritt … die These, dass … (Z. …).","Der Autor behauptet, … – Diese Position soll im Folgenden geprüft werden."],
+  ["Position","Ich stimme dieser These nur teilweise zu, weil …","Meiner Auffassung nach überzeugt die These, sofern …"],
+  ["Argumente","Dafür spricht zunächst, dass …","Ein weiteres, gewichtigeres Argument ist …","Dies zeigt sich beispielsweise an …"],
+  ["Gegenargumente","Dem könnte man entgegenhalten, dass …","Zwar …, jedoch …","Dieser Einwand überzeugt nur bedingt, denn …"],
+  ["Fazit","Wägt man die Argumente ab, so …","Abschließend komme ich zu dem Urteil, dass …"]
+];
+const SCAFFOLD = "Einleitung (Thema + These der Vorlage mit Zeilenangabe):\n\nMeine Position:\n\nArgument 1 (Behauptung – Begründung – Beispiel):\n\nArgument 2:\n\nGegenargument + Entkräftung:\n\nFazit:\n";
+
+const WIESEL_SUMMARY = "Elie Wiesel (1928–2016) überlebte als Jugendlicher die Konzentrationslager Auschwitz und Buchenwald. In seinem Bericht „Die Nacht“ schildert er, wie die SS im Lager drei Häftlinge vor allen Gefangenen erhängt – darunter einen Jungen, den „Pipel“. Die beiden Erwachsenen sterben sofort; der leichte Junge kämpft über eine halbe Stunde mit dem Tod, während die Häftlinge an ihm vorbeimarschieren und ihn ansehen müssen.";
+
+const EXAMS = [
+  {id:"A",title:"Probeklausur A: Marx' Thesen über Feuerbach",desc:"Unbekannter Text, Vergleich Feuerbach – Marx, Stellungnahme.",text:"thesen",tasks:[
+    {op:"zusammenfassen",task:"Fasse die Kernaussagen des Textes zusammen.",topics:["mx","vg"],
+     horizon:["Feuerbachs Leistung: Auflösung der religiösen Welt in ihre weltliche Grundlage (religiöse Selbstentfremdung, Verdopplung der Welt)","Marx' Einwand: Religion ist aus der Zerrissenheit der weltlichen Grundlage zu erklären","Forderung: die weltliche Grundlage praktisch revolutionieren","Menschliches Wesen = Ensemble der gesellschaftlichen Verhältnisse, kein Abstraktum","11. These: nicht nur interpretieren, sondern verändern","Eigene Worte, Redewiedergabe, Zeilenangaben, keine Wertung"]},
+    {op:"vergleichen",task:"Vergleiche die Religionskritik von Marx mit der Projektionsthese Feuerbachs.",topics:["fb","mx","vg"],
+     horizon:["Gemeinsamkeiten: Religion menschengemacht, Gott keine eigene Realität, Entfremdung","Ursprung: Projektion des Wesens (F) vs. verkehrte gesellschaftliche Verhältnisse (M)","Funktion: Selbsttäuschung (F) vs. Ausdruck, Protest, Opium (M)","Ansatz und Ziel: Bewusstsein/Aufklärung (F) vs. Praxis/Umwälzung (M)","Menschenbild: Gattungswesen (F) vs. gesellschaftlich-historisches Wesen (M)","Kriteriengeleiteter Aufbau mit Ergebnis (z. B. Marx radikalisiert Feuerbach)"]},
+    {op:"Stellung nehmen",task:"Nimm begründet Stellung zu der Forderung, die Welt nicht nur zu interpretieren, sondern zu verändern – auch mit Blick auf die Religion.",topics:["fb","mx","vg","theo"],
+     horizon:GENERIC_STELLUNG.concat(["Bezug auf Religion: Reicht Aufklärung, oder bleibt ein Bedürfnis nach Religion (z. B. metaphysisches Leid)?"])}
+  ]},
+  {id:"B",title:"Probeklausur B: Wo ist Gott?",desc:"Theodizee am Fall Wiesel – mit Marx als Gegenstimme.",text:null,
+   material:[{t:WIESEL_SUMMARY,src:"Zusammenfassung nach Elie Wiesel: Die Nacht"},{t:"„Wo ist Gott, wo ist er?“ […] Hinter mir hörte ich denselben Mann fragen: „Wo ist Gott?“ Und ich hörte eine Stimme in mir antworten: „Wo er ist? Dort – dort hängt er, am Galgen …“",src:"Elie Wiesel: Die Nacht"}],
+   tasks:[
+    {op:"erläutern",task:"Gib die im Material geschilderte Situation wieder und erläutere, inwiefern sie das Theodizee-Problem aufwirft.",topics:["theo"],
+     horizon:["Situation knapp und korrekt wiedergegeben (Hinrichtung im KZ, Kind, Frage „Wo ist Gott?“)","Theodizee definiert (Rechtfertigung Gottes angesichts des Leids)","Widerspruch: allmächtig, allwissend, allgütig vs. Leid","Leidart eingeordnet (Leid durch böses Handeln) und Antwort „Dort hängt er, am Galgen“ gedeutet"]},
+    {op:"erläutern",task:"Erläutere zwei Versuche, Gott angesichts des Leids zu rechtfertigen, und prüfe, ob sie auf die Situation im Material anwendbar sind.",topics:["theo"],
+     horizon:["Privationsthese korrekt erläutert","Leibniz' beste aller möglichen Welten korrekt erläutert","Anwendung auf das Material: Grenzen (aktives Böses, Nutzen wirkt zynisch)","Lösungsansätze 3 und/oder 4 als Konsequenz erwähnt"]},
+    {op:"Stellung nehmen",task:"Nimm begründet Stellung zu der These, Leid sei mit dem Glauben an einen guten Gott nicht vereinbar. Beziehe die Religionskritik von Marx ein.",topics:["theo","mx","vg"],
+     horizon:["Eigene Position klar formuliert","Argumente pro und contra mit Beispielen","Marx einbezogen: Leid erzeugt Religion (Seufzer, Trost, Protest); Verantwortung zur Veränderung","Abwägung und begründetes Fazit","Fachbegriffe korrekt"]}
+  ]}
+];
+
+const SYLLABUS = [
+  {t:"Theodizee",topics:["theo"],links:[["abfrage","Karten","theo"],["zuordnen","Zuordnen"],["stellung","Stellung nehmen"]]},
+  {t:"Religionskritik",topics:["rk"],links:[["abfrage","Karten","rk"],["zuordnen","Ansatzpunkte"]]},
+  {t:"Übersicht – wann, Ziel",topics:["rk"],extra:"timeline",links:[["zeitstrahl","Zeitstrahl"],["luecken","Daten-Lückentext"],["zuordnen","Ziele zuordnen"]]},
+  {t:"Feuerbach",topics:["fb"],links:[["abfrage","Karten","fb"],["luecken","Lückentext"],["textarbeit","Textarbeit"]]},
+  {t:"Marx",topics:["mx"],links:[["abfrage","Karten","mx"],["luecken","Lückentext"],["textarbeit","Textarbeit"]]},
+  {t:"Text: Zusammenhänge erkennen (z. B. Vergleich Feuerbach – Marx)",topics:["vg"],links:[["vergleich","Vergleichstabelle"],["textarbeit","Textarbeit"],["abfrage","Karten","vg"]]},
+  {t:"Text: begründet Stellung nehmen",topics:[],extra:"essays",links:[["stellung","Stellung nehmen"],["probeklausur","Probeklausur"]]}
+];
+
+/* =========================================================
+   HELFER
+   ========================================================= */
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const md = s => esc(s).replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>").replace(/\*(.+?)\*/g,"<em>$1</em>").replace(/\n/g,"<br>");
+const plain = s => String(s).replace(/\*\*/g,"").replace(/\*/g,"");
+const shuffle = arr => { const a=[...arr]; for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
+const norm = s => String(s).toLowerCase().replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss").replace(/[áàâ]/g,"a").replace(/[éèê]/g,"e").replace(/[íìî]/g,"i").replace(/[óòô]/g,"o").replace(/[úùû]/g,"u").replace(/[^a-z0-9]/g,"");
+let uidN = 0; const uid = p => (p||"u")+(++uidN);
+
+function h(tag, props, ...kids){
+  const el = document.createElement(tag);
+  if(props) for(const k in props){
+    const v = props[k];
+    if(v==null || v===false) continue;
+    if(k==="class") el.className = v;
+    else if(k==="html") el.innerHTML = v;
+    else if(k==="style") el.style.cssText = v;
+    else if(k.startsWith("on") && typeof v==="function") el.addEventListener(k.slice(2), v);
+    else if(k==="value" || k==="checked") el[k] = v;
+    else el.setAttribute(k, v===true ? "" : String(v));
+  }
+  for(const kid of kids.flat(Infinity)){
+    if(kid==null || kid===false) continue;
+    el.append(kid instanceof Node ? kid : String(kid));
+  }
+  return el;
+}
+function lev(a,b){
+  const m=a.length, n=b.length; if(!m) return n; if(!n) return m;
+  let prev = Array.from({length:n+1},(_,i)=>i);
+  for(let i=1;i<=m;i++){ const cur=[i]; for(let j=1;j<=n;j++) cur[j]=Math.min(prev[j]+1, cur[j-1]+1, prev[j-1]+(a[i-1]===b[j-1]?0:1)); prev=cur; }
+  return prev[n];
+}
+// 2 = exakt, 1 = Tippfehler, 0 = falsch
+function matchAnswer(input, alts){
+  const u = norm(input); if(!u) return 0;
+  let best = 0;
+  for(const a of alts){
+    const v = norm(a);
+    if(u===v) return 2;
+    const tol = v.length>=10 ? 2 : v.length>=5 ? 1 : 0;
+    if(tol && lev(u,v)<=tol) best = 1;
+  }
+  return best;
+}
+const fmtTime = s => Math.floor(s/60)+":"+String(s%60).padStart(2,"0");
+const zCite = z => { const p=z.split("–"); if(p.length===1) return "Z. "+p[0]; return (+p[1]-+p[0]===1) ? "Z. "+p[0]+" f." : "Z. "+z; };
+const words = s => (s.trim().match(/\S+/g)||[]).length;
+const NOTE = ["6","5−","5","5+","4−","4","4+","3−","3","3+","2−","2","2+","1−","1","1+"];
+
+/* =========================================================
+   SPEICHER: lokal + (in Claude) dein Konto
+   ========================================================= */
+const STORE_KEY = "klausurtrainer-religionskritik-v1";
+const fresh = () => ({v:1, updatedAt:0, cards:{}, sorts:{}, cloze:{}, timeline:{}, matrix:{}, drafts:{}, blurts:{}, texts:{}});
+function loadLocal(){ try{ const raw=localStorage.getItem(STORE_KEY); return raw ? Object.assign(fresh(), JSON.parse(raw)) : null; }catch(e){ return null; } }
+let S = loadLocal() || fresh();
+let remoteRef = null, remoteTimer = null, remoteChain = Promise.resolve(), syncState = "local";
+function save(){
+  S.updatedAt = Date.now();
+  try{ localStorage.setItem(STORE_KEY, JSON.stringify(S)); }catch(e){}
+  if(remoteRef){ clearTimeout(remoteTimer); remoteTimer = setTimeout(pushRemote, 2500); }
+}
+function pushRemote(){
+  if(!remoteRef) return;
+  const body = {updatedAt:S.updatedAt, json:JSON.stringify(S)};
+  remoteChain = remoteChain.then(()=>remoteRef.set(body)).then(()=>{ syncState="account"; updateHeader(); }).catch(()=>{ syncState="local"; updateHeader(); });
+}
+async function initRemote(){
+  if(!window.claude || !window.claude.use) return;
+  try{
+    const [db, user] = await Promise.all([window.claude.use("db"), window.claude.use("user")]);
+    if(!db || !user) return;
+    const id = await user.id(); if(!id) return;
+    const ref = db.doc("data/users/"+id+"/progress");
+    const snap = await ref.get();
+    remoteRef = ref; syncState = "account";
+    if(snap.exists){
+      const d = snap.data() || {};
+      if((d.updatedAt||0) > (S.updatedAt||0) && d.json){
+        try{ S = Object.assign(fresh(), JSON.parse(d.json)); localStorage.setItem(STORE_KEY, JSON.stringify(S)); }catch(e){}
+        if(currentRoute()==="start") render();
+      } else if((S.updatedAt||0) > (d.updatedAt||0)) pushRemote();
+    } else if(S.updatedAt) pushRemote();
+    updateHeader();
+  }catch(e){ remoteRef = null; syncState = "local"; updateHeader(); }
+}
+
+/* =========================================================
+   KI (Claude) – Korrektur und Prüfungsgespräch
+   ========================================================= */
+let AI = null;
+async function initAI(){
+  if(!window.claude || !window.claude.use) return;
+  try{
+    const s = await window.claude.use("sample");
+    if(s){ AI = s; document.documentElement.classList.add("has-ai"); updateHeader(); if(currentRoute()==="gespraech") render(); }
+  }catch(e){}
+}
+function aiError(e){
+  const c = e && e.code;
+  if(["not_granted","sampling_disabled","not_declared","capability_disabled","capability_removed"].includes(c)){
+    AI = null; document.documentElement.classList.remove("has-ai"); updateHeader();
+    return "KI-Feedback ist hier nicht freigegeben. Nutze die Checkliste zur Selbstkontrolle.";
+  }
+  const m = {
+    cancelled:"",
+    rate_limited:"Gerade zu viele Anfragen. Warte eine Minute und tippe dann noch einmal.",
+    session_expired:"Deine Anmeldung ist abgelaufen. Melde dich neu an und versuch es dann noch einmal.",
+    invalid_json:"Die Korrektur kam unvollständig an. Tippe noch einmal auf den Button.",
+    refused:"Diese Eingabe wurde nicht bewertet. Formuliere sie um und versuch es erneut.",
+    empty_completion:"Keine Antwort erhalten. Versuch es noch einmal.",
+    prompt_too_large:"Der Text ist zu lang für eine Korrektur. Kürze ihn etwas."
+  };
+  return (c in m) ? m[c] : "Verbindungsproblem. Versuch es gleich noch einmal.";
+}
+const kb = topics => CARDS.filter(c=>topics.includes(c.topic)).map(c=>"• "+c.q+"\n  "+plain(c.a).replace(/\n/g," ")).join("\n");
+
+function aiBlock({label, tier, build, onResult, waitText}){
+  const out = h("div",{class:"stack tight","aria-live":"polite"});
+  const btn = h("button",{class:"btn ai",type:"button"}, label);
+  const stop = h("button",{class:"btn ghost small",type:"button",hidden:true}, "Abbrechen");
+  let ctl = null;
+  btn.addEventListener("click", async ()=>{
+    if(!AI) return;
+    const prompt = build(); if(!prompt) return;
+    ctl = new AbortController(); btn.disabled = true; stop.hidden = false;
+    out.replaceChildren(h("p",{class:"thinking"}, waitText || "Claude liest deine Antwort"));
+    try{
+      const res = await AI.json(prompt, {modelTier: tier || "default", signal: ctl.signal});
+      out.replaceChildren(); onResult(res || {}, out);
+    }catch(e){
+      const msg = aiError(e); out.replaceChildren(msg ? h("p",{class:"note warn"}, msg) : "");
+    }finally{ btn.disabled = false; stop.hidden = true; }
+  });
+  stop.addEventListener("click", ()=> ctl && ctl.abort());
+  return h("div",{class:"ai-only stack tight"}, h("div",{class:"row"}, btn, stop), out);
+}
+function checkPrompt(context, items, answer){
+  return "Du bist eine strenge, faire Ethik-Lehrkraft (Oberstufe, Klasse 12, Deutschland). "+context+
+  "\n\nKERNPUNKTE (Index: Inhalt):\n"+items.map((x,i)=>i+": "+plain(x)).join("\n")+
+  "\n\nANTWORT DES SCHÜLERS:\n\"\"\"\n"+answer+"\n\"\"\"\n\n"+
+  "Prüfe für jeden Kernpunkt, ob die Antwort ihn inhaltlich trifft (sinngemäß genügt, Stichpunkte sind ok). \"teilweise\" nur, wenn der Gedanke angedeutet, aber unvollständig oder ungenau ist. Benenne fachlich falsche Aussagen. "+
+  "Antworte NUR mit JSON in genau diesem Format: {\"getroffen\":[Indizes],\"teilweise\":[Indizes],\"fehler\":[\"falsche Aussage – richtig wäre …\"],\"feedback\":\"1–2 Sätze in Du-Form: was gut ist und was fehlt\"}";
+}
+function applyCheck(res, list, n){
+  const ok = new Set((res.getroffen||[]).map(Number)), half = new Set((res.teilweise||[]).map(Number));
+  const vals = Array.from({length:n}, (_,i)=> ok.has(i) ? 1 : half.has(i) ? 0.5 : 0);
+  list.setVals(vals);
+  return vals;
+}
+function renderCheckFeedback(res, out){
+  if(res.feedback) out.append(h("p",{class:"note blue"}, String(res.feedback)));
+  const f = (res.fehler||[]).filter(Boolean);
+  if(f.length) out.append(h("div",null, h("h4",null,"Fachliche Fehler"), h("ul",{class:"ul"}, f.map(x=>h("li",null,String(x))))));
+}
+function gradePrompt({op, task, material, horizon, answer, topics}){
+  const o = OPS[op] || {afb:"II", d:""};
+  return "Du bist eine erfahrene Ethik-Lehrkraft der Sekundarstufe II in Deutschland und korrigierst eine Klausurantwort streng, fair und konkret.\n\n"+
+  "OPERATOR: "+op+" (Anforderungsbereich "+o.afb+") – verlangt: "+o.d+"\n"+
+  "AUFGABE: "+task+"\n"+
+  (material ? "MATERIAL:\n"+material+"\n" : "")+
+  "\nERWARTUNGSHORIZONT:\n"+horizon.map((x,i)=>(i+1)+". "+x).join("\n")+
+  "\n\nUNTERRICHTSWISSEN (nur zur Prüfung der fachlichen Richtigkeit):\n"+kb(topics)+
+  "\n\nSCHÜLERTEXT:\n\"\"\"\n"+answer+"\n\"\"\"\n\n"+
+  "Bewerte nur, was tatsächlich im Schülertext steht. Ein kurzer oder nur stichpunktartiger Text kann keine hohe Punktzahl bekommen. Vergib 0–15 Notenpunkte wie in der Oberstufe. "+
+  "Antworte NUR mit JSON in genau diesem Format: {\"punkte\":0,\"kriterien\":[{\"nr\":1,\"status\":\"erfüllt|teilweise|fehlt\",\"kommentar\":\"kurz\"}],\"staerken\":[\"…\"],\"verbesserungen\":[\"konkreter, umsetzbarer Tipp\"],\"fachfehler\":[\"falsche Aussage – Korrektur\"],\"beispielsatz\":\"ein verbesserter Beispielsatz oder -absatz für die schwächste Stelle\"}. "+
+  "Gib für jeden Punkt des Erwartungshorizonts genau ein Kriterium aus. Alles auf Deutsch, Du-Form, knapp.";
+}
+function renderGrade(res, out, horizon, list, storeKey){
+  const p = Math.max(0, Math.min(15, Math.round(Number(res.punkte)||0)));
+  if(storeKey){ S.drafts[storeKey+":grade"] = p; save(); }
+  out.append(h("div",{class:"grade"}, h("div",{class:"grade-num"}, String(p), h("small",null," / 15 Punkte")), h("span",{class:"note blue"}, "≈ Note "+NOTE[p])),
+             h("p",{class:"small muted"},"KI-Einschätzung zur Orientierung – keine echte Note."));
+  const kr = Array.isArray(res.kriterien) ? res.kriterien : [];
+  if(kr.length){
+    const vals = horizon.map(()=>0);
+    out.append(h("ul",{class:"crit"}, kr.map(k=>{
+      const i = (Number(k.nr)||0)-1, st = String(k.status||"");
+      const cls = st.startsWith("erf") ? "y" : st.startsWith("teil") ? "p" : "n";
+      if(i>=0 && i<vals.length) vals[i] = cls==="y" ? 1 : cls==="p" ? 0.5 : 0;
+      return h("li",null, h("span",{class:"s "+cls}, cls==="y"?"✓":cls==="p"?"~":"✗"), h("span",null, h("strong",null, horizon[i] || ("Kriterium "+(i+1))), k.kommentar ? " – "+k.kommentar : ""));
+    })));
+    if(list) list.setVals(vals);
+  }
+  const sec = (title, arr) => { arr = (arr||[]).filter(Boolean); if(arr.length) out.append(h("div",null, h("h4",null,title), h("ul",{class:"ul"}, arr.map(x=>h("li",null,String(x)))))); };
+  sec("Stärken", res.staerken); sec("So wird's besser", res.verbesserungen); sec("Fachliche Fehler", res.fachfehler);
+  if(res.beispielsatz) out.append(h("div",{class:"panel"}, h("h4",null,"Beispielformulierung"), h("p",null,String(res.beispielsatz))));
+}
+
+/* =========================================================
+   BAUSTEINE
+   ========================================================= */
+function opChip(op){
+  const o = OPS[op]; if(!o) return null;
+  return h("details",{class:"op"}, h("summary",null, op.charAt(0).toUpperCase()+op.slice(1)+" · AFB "+o.afb), h("p",null,o.d));
+}
+function topicChip(t){ return h("span",{class:"chip "+t}, TOPICS[t].name); }
+function bar(pct){ return h("div",{class:"bar",role:"progressbar","aria-valuenow":pct,"aria-valuemin":0,"aria-valuemax":100}, h("span",{style:"width:"+pct+"%"})); }
+function checklist(items, saved, onChange){
+  const vals = items.map((_,i)=> (saved && saved[i]) || 0);
+  const rows = [];
+  const list = h("ul",{class:"checklist"}, items.map((it,i)=>{
+    const id = uid("ck");
+    const cb = h("input",{type:"checkbox",id});
+    const li = h("li",null, cb, h("label",{for:id, html:md(it)}));
+    cb.addEventListener("change", ()=>{ vals[i] = cb.checked ? 1 : 0; paint(i); onChange && onChange(vals, false); });
+    rows.push({cb, li}); return li;
+  }));
+  function paint(i){ const {cb, li} = rows[i]; cb.checked = vals[i]===1; cb.indeterminate = vals[i]===0.5; li.classList.toggle("hit", vals[i]===1); li.classList.toggle("half", vals[i]===0.5); }
+  items.forEach((_,i)=>paint(i));
+  list.setVals = (nv, silent) => { nv.forEach((v,i)=>{ vals[i]=v; paint(i); }); onChange && onChange(vals, !!silent); };
+  list.vals = vals;
+  return list;
+}
+const score = vals => vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : 0;
+let cleanups = [];
+const onCleanup = fn => cleanups.push(fn);
+function timer(minutes){
+  let left = minutes*60, iv = null;
+  const disp = h("span",{class:"timer-disp"}, fmtTime(left));
+  const btn = h("button",{class:"btn small sec",type:"button"}, "Timer starten");
+  btn.addEventListener("click", ()=>{
+    if(iv){ clearInterval(iv); iv=null; btn.textContent="Weiter"; return; }
+    btn.textContent = "Pause";
+    iv = setInterval(()=>{ left--; if(left<=0){ clearInterval(iv); iv=null; disp.textContent="Zeit um"; disp.classList.add("over"); btn.hidden=true; return; } disp.textContent = fmtTime(left); }, 1000);
+  });
+  onCleanup(()=>{ if(iv) clearInterval(iv); });
+  return h("span",{class:"timer"}, disp, btn);
+}
+function confirmButton(label, confirmLabel, onConfirm, cls){
+  const b = h("button",{class:"btn small "+(cls||"sec"),type:"button"}, label);
+  let armed = false, t = null;
+  b.addEventListener("click", ()=>{
+    if(!armed){ armed=true; b.textContent=confirmLabel; b.classList.add("danger"); t=setTimeout(()=>{ armed=false; b.textContent=label; b.classList.remove("danger"); }, 4000); return; }
+    clearTimeout(t); onConfirm();
+  });
+  return b;
+}
+function materialBlock(mats){
+  return h("div",{class:"stack tight"}, mats.map(m=>h("blockquote",{class:"panel quote",style:"margin:0"}, m.t, h("span",{class:"src"}, m.src))));
+}
+
+// Schreibaufgabe mit Erwartungshorizont + KI-Korrektur
+function writingTask(o){
+  const key = o.key;
+  const ta = h("textarea",{class:"lined",id:"w-"+key,rows:o.rows||12,placeholder:"Schreibe hier – in ganzen Sätzen, wie in der Klausur."});
+  ta.value = S.drafts[key] || "";
+  const wc = h("span",{class:"wc"}, words(ta.value)+" Wörter");
+  let tmo = null;
+  ta.addEventListener("input", ()=>{ wc.textContent = words(ta.value)+" Wörter"; clearTimeout(tmo); tmo = setTimeout(()=>{ S.drafts[key]=ta.value; save(); }, 600); });
+  onCleanup(()=>{ if(tmo){ clearTimeout(tmo); S.drafts[key]=ta.value; save(); } });
+  const tools = h("div",{class:"row"});
+  if(o.scaffold) tools.append(h("button",{class:"btn small sec",type:"button",onclick:()=>{ ta.value = ta.value.trim() ? ta.value+"\n\n"+SCAFFOLD : SCAFFOLD; ta.dispatchEvent(new Event("input")); ta.focus(); }}, "Schreibgerüst einfügen"));
+  if(o.timer) tools.append(timer(o.timer));
+  tools.append(wc);
+  const reveal = h("div",{class:"stack",hidden:true});
+  const submit = h("button",{class:"btn",type:"button"}, "Abgeben & mit Erwartungshorizont vergleichen");
+  const scoreEl = h("p",{class:"note"});
+  const list = checklist(o.horizon, S.drafts[key+":ck"], (vals, silent)=>{ if(!silent){ S.drafts[key+":ck"]=[...vals]; save(); } const s=Math.round(score(vals)*100); scoreEl.textContent = "Selbstcheck: "+s+" % des Erwartungshorizonts"; scoreEl.className = "note "+(s>=75?"ok":s>=45?"warn":""); });
+  function build(){
+    reveal.replaceChildren();
+    reveal.append(h("hr",{class:"rule"}), h("h4",null,"Erwartungshorizont – hake ab, was wirklich in deinem Text steht"), list, scoreEl);
+    if(o.pro){
+      reveal.append(h("details",{class:"more"}, h("summary",null,"Argumentbank aufdecken (erst nach dem Schreiben!)"),
+        h("div",{class:"argcols"},
+          h("div",{class:"panel"}, h("h4",null,o.proLabel||"Pro"), h("ul",{class:"ul"}, o.pro.map(x=>h("li",null,x)))),
+          h("div",{class:"panel"}, h("h4",null,o.conLabel||"Contra"), h("ul",{class:"ul"}, o.con.map(x=>h("li",null,x)))))));
+    }
+    reveal.append(aiBlock({label:"KI-Korrektur (0–15 Punkte)", tier:"default", waitText:"Claude korrigiert wie eine Lehrkraft – das dauert etwa eine halbe Minute",
+      build:()=>{ const t=ta.value.trim(); if(words(t)<15){ alertInline("Schreib erst mindestens ein paar Sätze – sonst gibt es nichts zu korrigieren."); return null; } S.drafts[key]=ta.value; save();
+        return gradePrompt({op:o.op, task:o.task, material:o.materialText, horizon:o.horizon, answer:t, topics:o.topics}); },
+      onResult:(res,out)=>renderGrade(res,out,o.horizon,list,key)}));
+    if(S.drafts[key+":grade"]!=null) reveal.append(h("p",{class:"small muted"},"Letzte KI-Einschätzung: "+S.drafts[key+":grade"]+" Punkte."));
+    list.setVals(list.vals, true);
+  }
+  const msg = h("p",{class:"note warn",hidden:true});
+  function alertInline(t){ msg.textContent=t; msg.hidden=false; setTimeout(()=>msg.hidden=true, 5000); }
+  submit.addEventListener("click", ()=>{
+    if(words(ta.value)<10){ alertInline("Erst schreiben, dann vergleichen – sonst ist es passives Lernen."); return; }
+    S.drafts[key]=ta.value; S.drafts[key+":sub"]=true; save();
+    build(); reveal.hidden=false; submit.textContent="Erneut vergleichen"; reveal.scrollIntoView({behavior:"smooth",block:"start"});
+  });
+  if(S.drafts[key+":sub"]){ build(); reveal.hidden=false; submit.textContent="Erneut vergleichen"; }
+  return h("section",{class:"stack"},
+    h("div",{class:"stack tight"}, h("div",{class:"row"}, opChip(o.op)), h("h3",null,o.task)),
+    o.phrases ? h("details",{class:"more"}, h("summary",null,"Formulierungshilfen"), h("div",{class:"grid2"}, PHRASES.map(p=>h("div",{class:"panel"}, h("h4",null,p[0]), h("ul",{class:"ul small"}, p.slice(1).map(x=>h("li",null,x))))))) : null,
+    tools, ta, h("div",{class:"row"}, submit), msg, reveal);
+}
+
+/* =========================================================
+   ANSICHTEN
+   ========================================================= */
+const ROUTES = [
+  {id:"start",label:"Start",render:viewStart},
+  {id:"blurting",label:"Brain-Dump",render:viewBlurt},
+  {id:"abfrage",label:"Abfrage",render:viewCards},
+  {id:"zuordnen",label:"Zuordnen",render:viewSort},
+  {id:"luecken",label:"Lückentext",render:viewCloze},
+  {id:"zeitstrahl",label:"Zeitstrahl",render:viewTimeline},
+  {id:"vergleich",label:"Vergleich",render:viewMatrix},
+  {id:"textarbeit",label:"Textarbeit",render:viewText},
+  {id:"stellung",label:"Stellung nehmen",render:viewEssay},
+  {id:"gespraech",label:"Prüfungsgespräch",render:viewChat,ai:true},
+  {id:"probeklausur",label:"Probeklausur",render:viewExam}
+];
+const mastery = t => { const cs=CARDS.filter(c=>c.topic===t); if(!cs.length) return 0; return Math.round(100*cs.reduce((a,c)=>a+((S.cards[c.id]&&S.cards[c.id].box)||0),0)/(cs.length*5)); };
+const sureCount = () => CARDS.filter(c=>((S.cards[c.id]&&S.cards[c.id].box)||0)>=4).length;
+let cardCfg = {topics:new Set(Object.keys(TOPICS)), size:12};
+let blurtTopic = "theo";
+function go(id, opts){
+  if(opts && opts.topic){ cardCfg.topics = new Set([opts.topic]); cardSess = null; blurtTopic = opts.topic; }
+  if(location.hash==="#"+id) render(); else location.hash = id;
+}
+
+// ---------- Start ----------
+function viewStart(root){
+  const weakest = Object.keys(TOPICS).map(t=>({t, m:mastery(t)})).sort((a,b)=>a.m-b.m)[0];
+  const anyProgress = Object.keys(S.cards).length>0;
+  const essaysDone = ESSAYS.filter(e=>S.drafts["essay-"+e.id+":sub"]).length;
+  const rec = anyProgress
+    ? h("div",{class:"panel stack tight"}, h("h4",null,"Heute dran"), h("p",null,"Dein schwächstes Thema: ", h("strong",null,TOPICS[weakest.t].name), " ("+weakest.m+" % gemeistert)."),
+        h("div",{class:"row"}, h("button",{class:"btn",type:"button",onclick:()=>go("abfrage",{topic:weakest.t})},"Karten zu "+TOPICS[weakest.t].name), h("button",{class:"btn sec",type:"button",onclick:()=>go("blurting",{topic:weakest.t})},"Brain-Dump dazu")))
+    : h("div",{class:"panel stack tight"}, h("h4",null,"Starte hier"), h("p",null,"Schreib in 5 Minuten alles auf, was du zur Theodizee noch weißt. Danach siehst du genau, wo deine Lücken sind."),
+        h("div",{class:"row"}, h("button",{class:"btn",type:"button",onclick:()=>go("blurting",{topic:"theo"})},"Brain-Dump: Theodizee"), h("button",{class:"btn sec",type:"button",onclick:()=>go("abfrage")},"Direkt zur Abfrage")));
+  const syl = h("ul",{class:"syl"}, SYLLABUS.map(s=>{
+    let m;
+    if(s.extra==="essays") m = h("div",{class:"m"}, h("span",{class:"small muted"}, essaysDone+" von "+ESSAYS.length+" Stellungnahmen geschrieben"));
+    else { const pct = mastery(s.topics[0]); const tl = s.extra==="timeline" && S.timeline.best!=null; m = h("div",{class:"m"}, bar(pct), h("span",{class:"pct"}, pct+" %"), tl ? h("span",{class:"chip vg",title:"Zeitstrahl gelöst"},"Zeitstrahl ✓") : null); }
+    return h("li",null, h("div",null, h("div",{class:"t"}, s.t), h("div",{class:"links"}, s.links.map(([id,label,topic])=>h("a",{href:"#"+id,onclick:(e)=>{ e.preventDefault(); go(id, topic?{topic}:null); }}, label)))), m);
+  }));
+  const steps = [["blurting","Brain-Dump","Was weißt du schon? 5 Minuten pro Thema."],["abfrage","Abfrage","Lücken mit Karteikarten schließen – erst antworten, dann aufdecken."],["zuordnen","Zuordnen & Lückentext","Begriffe und Positionen sicher unterscheiden."],["zeitstrahl","Zeitstrahl","Wann? Personen und Werke einordnen."],["vergleich","Vergleich","Die Feuerbach-Marx-Tabelle aus dem Kopf füllen."],["textarbeit","Textarbeit","Stellen finden, mit Zeilen belegen, Zusammenhänge formulieren."],["stellung","Stellung nehmen","Begründet urteilen – mit Korrektur."],["probeklausur","Probeklausur","Alles zusammen unter Zeitdruck."]];
+  root.append(h("div",{class:"stack"},
+    h("div",{class:"stack tight"}, h("h2",null,"Theodizee & Religionskritik"),
+      h("p",{class:"lede"},"Hier wird nicht gelesen, sondern abgerufen. Jede Übung verlangt zuerst deine eigene Antwort – erst danach siehst du, was gefehlt hat. Das ist anstrengender als Durchlesen und genau deshalb wirksam.")),
+    rec,
+    h("section",null, h("h4",null,"Was drankommt – laut deinem Hefter (27.10.)"), syl),
+    h("div",{class:"callout stack tight"}, h("span",{class:"note"},"„Übersicht – wann, Ziel“?"),
+      h("p",null,"Gemeint ist sehr wahrscheinlich dein Blatt ", h("strong",null,"„Religionskritik“"), ": ", h("strong",null,"Wann"), " gibt es Religionskritik? – Sie ist so alt wie die Religion selbst (Antike, Luther, Aufklärung, Höhepunkt im 19. Jh. mit Feuerbach 1841 und Marx 1844). ", h("strong",null,"Ziel"), ": Reform/Läuterung der Religion oder ihre Abschaffung. Dazu gehören die vier ", h("strong",null,"Ansatzpunkte"), ". Frag zur Sicherheit kurz bei Mitschülern nach."),
+      h("div",{class:"row"}, h("button",{class:"btn small",type:"button",onclick:()=>go("zeitstrahl")},"Zeitstrahl üben"), h("button",{class:"btn small sec",type:"button",onclick:()=>go("abfrage",{topic:"rk"})},"Karten: Religionskritik"))),
+    h("section",null, h("h4",null,"Lernpfad"), h("ol",{class:"path"}, steps.map(([id,t,d])=>h("li",null, h("span",null, h("a",{href:"#"+id},t), h("br"), h("span",{class:"small muted"},d)))))),
+    h("section",{class:"stack tight"}, h("h4",null,"Stand"),
+      h("p",{class:"small"}, sureCount()+" von "+CARDS.length+" Karten sicher (Box 4–5) · ", AI ? "KI-Korrektur aktiv" : "KI-Korrektur nicht verfügbar – du nutzt die Checklisten zur Selbstkontrolle", " · ", syncState==="account" ? "Fortschritt wird in deinem Konto gespeichert (alle Geräte)." : "Fortschritt wird in diesem Browser gespeichert."),
+      h("div",{class:"row"}, confirmButton("Fortschritt zurücksetzen","Wirklich alles löschen?", ()=>{ S = fresh(); save(); cardSess=null; render(); })))
+  ));
+}
+
+// ---------- Brain-Dump ----------
+let blurtState = {};
+function viewBlurt(root){
+  const items = BLURT[blurtTopic];
+  const st = blurtState[blurtTopic] || (blurtState[blurtTopic] = {done:false});
+  const chips = h("div",{class:"row"}, Object.keys(TOPICS).map(t=>h("button",{class:"chip "+t,type:"button","aria-pressed":String(t===blurtTopic),onclick:()=>{ blurtTopic=t; render(); }}, TOPICS[t].name)));
+  const key = "blurt-"+blurtTopic;
+  const ta = h("textarea",{class:"lined",id:"blurt-"+blurtTopic,rows:10,placeholder:"Alles, was dir einfällt: Begriffe, Thesen, Namen, Zitate, Zusammenhänge …"});
+  ta.value = S.drafts[key] || "";
+  let dirty = false;
+  ta.addEventListener("input", ()=>{ S.drafts[key]=ta.value; dirty = true; });
+  onCleanup(()=>{ if(dirty) save(); });
+  const res = h("div",{class:"stack",hidden:!st.done});
+  const scoreEl = h("p",{class:"note"});
+  const last = S.blurts[blurtTopic];
+  const list = checklist(items, st.vals, (vals, silent)=>{ st.vals=[...vals]; const s=Math.round(score(vals)*100); scoreEl.textContent = s+" % abgerufen"+(s>=80?" – stark!":s>=50?" – solide, aber Lücken.":" – hier liegt Arbeit."); scoreEl.className="note "+(s>=80?"ok":s>=50?"warn":""); if(!silent){ S.blurts[blurtTopic]={pct:s,t:Date.now()}; save(); } });
+  const doneBtn = h("button",{class:"btn",type:"button"}, "Fertig – mit der Checkliste abgleichen");
+  doneBtn.addEventListener("click", ()=>{ if(words(ta.value)<5){ ta.focus(); ta.placeholder="Erst aufschreiben – mindestens ein paar Stichworte."; return; } S.drafts[key]=ta.value; st.done=true; save(); res.hidden=false; res.scrollIntoView({behavior:"smooth",block:"start"}); });
+  res.append(h("hr",{class:"rule"}), h("h4",null,"Hake ab, was in deinem Text vorkommt (sinngemäß reicht)"), list, scoreEl,
+    aiBlock({label:"KI gleicht ab", tier:"quick", build:()=>checkPrompt("Ein Schüler hat zum Thema „"+TOPICS[blurtTopic].name+"“ alles aufgeschrieben, was er weiß (Brain-Dump).", items, ta.value), onResult:(r,out)=>{ applyCheck(r,list,items.length); renderCheckFeedback(r,out); }}),
+    h("div",{class:"row"}, h("button",{class:"btn sec",type:"button",onclick:()=>go("abfrage",{topic:blurtTopic})},"Lücken mit Karten schließen"),
+      confirmButton("Neuer Versuch","Text wirklich leeren?", ()=>{ S.drafts[key]=""; blurtState[blurtTopic]={done:false}; save(); render(); }, "ghost")));
+  root.append(h("div",{class:"stack"},
+    h("div",{class:"stack tight"}, h("h2",null,"Brain-Dump"), h("p",{class:"lede"},"Schreib ohne Unterlagen alles auf, was du zu einem Thema weißt. Danach gleichst du mit der Checkliste ab. Was fehlt, ist genau das, was du als Nächstes übst.")),
+    chips,
+    last ? h("p",{class:"small muted"},"Letzter Abgleich: "+last.pct+" %") : null,
+    h("div",{class:"row"}, timer(5), h("span",{class:"small muted"},"Optional: 5 Minuten Zeitdruck")),
+    ta, h("div",{class:"row"}, doneBtn), res));
+  if(st.done) list.setVals(list.vals, true);
+}
+
+// ---------- Abfrage (Leitner) ----------
+let cardSess = null;
+function buildSession(){
+  const pool = CARDS.filter(c=>cardCfg.topics.has(c.topic));
+  const sorted = pool.map(c=>({c, b:(S.cards[c.id]&&S.cards[c.id].box)||0, l:(S.cards[c.id]&&S.cards[c.id].last)||0, r:Math.random()}))
+    .sort((a,b)=> a.b-b.b || a.l-b.l || a.r-b.r);
+  const n = cardCfg.size==="all" ? sorted.length : Math.min(cardCfg.size, sorted.length);
+  const picked = shuffle(sorted.slice(0,n).map(x=>x.c.id));
+  return {queue:picked, total:picked.length, done:0, stats:{ok:0,part:0,no:0}, retry:{}, revealed:false, answer:"", vals:null};
+}
+function viewCards(root){
+  root.append(h("div",{class:"stack tight"}, h("h2",null,"Abfrage"), h("p",{class:"lede"},"Erst antworten, dann aufdecken. Karten, die du nicht kannst, kommen in derselben Runde wieder und wandern im Kasten zurück (Leitner-Prinzip).")));
+  if(!cardSess || !cardSess.queue.length) return cardSetup(root);
+  cardView(root);
+}
+function cardSetup(root){
+  const box = h("div",{class:"stack"});
+  if(cardSess && !cardSess.queue.length){
+    const s = cardSess.stats;
+    box.append(h("div",{class:"panel stack tight"}, h("span",{class:"note ok"},"Runde geschafft!"), h("p",null, cardSess.total+" Karten · "+s.ok+"× gewusst · "+s.part+"× teilweise · "+s.no+"× nicht gewusst")));
+  }
+  const chips = h("div",{class:"row"}, Object.keys(TOPICS).map(t=>{
+    const b = h("button",{class:"chip "+t,type:"button","aria-pressed":String(cardCfg.topics.has(t))}, TOPICS[t].name);
+    b.addEventListener("click", ()=>{ if(cardCfg.topics.has(t)){ if(cardCfg.topics.size>1) cardCfg.topics.delete(t); } else cardCfg.topics.add(t); render(); });
+    return b;
+  }));
+  const sizes = h("div",{class:"row"}, h("span",{class:"small muted"},"Rundengröße:"), [8,12,20,"all"].map(n=>h("button",{class:"chip vg",type:"button","aria-pressed":String(cardCfg.size===n),onclick:()=>{ cardCfg.size=n; render(); }}, n==="all"?"alle":String(n))));
+  const grid = h("div",{class:"boxes"}, h("span",{class:"hd"},"Thema"), h("span",{class:"hd n"},"neu"), h("span",{class:"hd n"},"Box 1–2"), h("span",{class:"hd n"},"Box 3"), h("span",{class:"hd n"},"sicher"),
+    Object.keys(TOPICS).map(t=>{ const cs=CARDS.filter(c=>c.topic===t); const cnt=[0,0,0,0]; cs.forEach(c=>{ const b=(S.cards[c.id]&&S.cards[c.id].box)||0; cnt[b===0?0:b<=2?1:b===3?2:3]++; }); return [h("span",null,TOPICS[t].name), cnt.map(n=>h("span",{class:"n"},String(n)))]; }));
+  box.append(h("div",{class:"stack tight"}, h("h4",null,"Themen wählen"), chips), sizes,
+    h("div",{class:"row"}, h("button",{class:"btn",type:"button",onclick:()=>{ cardSess=buildSession(); render(); }}, cardSess ? "Neue Runde" : "Runde starten")),
+    h("div",{class:"panel stack tight"}, h("h4",null,"Dein Karteikasten"), grid));
+  root.append(box);
+}
+function cardView(root){
+  const s = cardSess, id = s.queue[0], c = CARDS.find(x=>x.id===id);
+  const progress = Math.round(100*s.done/s.total);
+  const ta = h("textarea",{class:"lined",id:"ans-"+id,rows:5,placeholder:"Antworte aus dem Gedächtnis – Stichpunkte reichen."});
+  ta.value = s.answer;
+  const reveal = h("button",{class:"btn",type:"button",disabled:s.answer.trim().length<12}, "Aufdecken");
+  const oral = h("button",{class:"btn ghost small",type:"button"}, "Ich habe laut geantwortet");
+  ta.addEventListener("input", ()=>{ s.answer=ta.value; reveal.disabled = ta.value.trim().length<12; });
+  const back = h("div",{class:"stack",hidden:!s.revealed});
+  const doReveal = ()=>{ s.revealed=true; ta.readOnly=true; reveal.hidden=true; oral.hidden=true; back.hidden=false; fillBack(); };
+  reveal.addEventListener("click", doReveal);
+  oral.addEventListener("click", doReveal);
+  function fillBack(){
+    back.replaceChildren();
+    const rateBtns = {};
+    const list = checklist(c.kp, s.vals, vals=>{ s.vals=[...vals]; const sc=score(vals); const sug = sc>=0.75?"ok":sc>=0.4?"part":"no"; Object.entries(rateBtns).forEach(([k,b])=>b.classList.toggle("suggest",k===sug)); });
+    rateBtns.no = h("button",{class:"btn r-no",type:"button",onclick:()=>rate("no")},"Nicht gewusst");
+    rateBtns.part = h("button",{class:"btn r-part",type:"button",onclick:()=>rate("part")},"Teilweise");
+    rateBtns.ok = h("button",{class:"btn r-ok",type:"button",onclick:()=>rate("ok")},"Gewusst");
+    back.append(
+      h("div",{class:"panel"}, h("h4",null,"Musterantwort"), h("p",{html:md(c.a)})),
+      h("div",null, h("h4",null,"Kernpunkte – was hattest du?"), list),
+      aiBlock({label:"KI prüft meine Antwort", tier:"quick", build:()=>{ if(ta.value.trim().length<12) return null; return checkPrompt("Lernkarte: „"+c.q+"“\nMusterantwort: "+plain(c.a), c.kp, ta.value); }, onResult:(r,out)=>{ applyCheck(r,list,c.kp.length); renderCheckFeedback(r,out); }}),
+      h("div",null, h("h4",null,"Wie gut saß es?"), h("div",{class:"row"}, rateBtns.no, rateBtns.part, rateBtns.ok)));
+    list.setVals(list.vals, true);
+  }
+  function rate(r){
+    const st = S.cards[id] || {box:0};
+    if(r==="ok") st.box = Math.min(5,(st.box||0)+1); else if(r==="part") st.box = Math.max(1, st.box||0); else st.box = 1;
+    st.last = Date.now(); st.n = (st.n||0)+1; S.cards[id] = st; save();
+    s.stats[r]++; s.queue.shift();
+    if(r!=="ok" && (s.retry[id]||0)<2){ s.retry[id]=(s.retry[id]||0)+1; s.queue.splice(Math.min(s.queue.length, r==="no"?3:5), 0, id); }
+    else s.done++;
+    s.revealed=false; s.answer=""; s.vals=null; render();
+  }
+  root.append(h("div",{class:"stack"},
+    h("div",{class:"row between"}, h("span",{class:"small muted"}, "Fertig: "+s.done+" von "+s.total+(s.retry[id]?" · Wiederholung":"")), h("button",{class:"btn ghost small",type:"button",onclick:()=>{ cardSess=null; render(); }},"Runde beenden")),
+    bar(progress),
+    h("div",{class:"row"}, topicChip(c.topic), opChip(c.op), h("span",{class:"small muted"},"Box "+((S.cards[id]&&S.cards[id].box)||0))),
+    h("p",{class:"card-q"}, c.q),
+    ta, h("div",{class:"row"}, reveal, oral), back));
+  if(s.revealed){ ta.readOnly=true; reveal.hidden=true; oral.hidden=true; fillBack(); }
+}
+
+// ---------- Zuordnen ----------
+let sortSess = null;
+function viewSort(root){
+  root.append(h("div",{class:"stack tight"}, h("h2",null,"Zuordnen"), h("p",{class:"lede"},"Eine Aussage, mehrere Schubladen. Entscheide dich – die Begründung kommt sofort. Wer Positionen sicher unterscheiden kann, erkennt sie auch im unbekannten Text.")));
+  if(!sortSess){
+    root.append(h("div",{class:"grid2",style:"margin-top:16px"}, SORTS.map(set=>{
+      const best = S.sorts[set.id];
+      return h("button",{class:"choice",type:"button",onclick:()=>{ sortSess={set, items:shuffle(set.items), i:0, right:0, wrong:[], answered:null}; render(); }},
+        h("strong",null,set.title), h("span",{class:"meta"}, set.desc), h("span",{class:"meta"}, set.items.length+" Aussagen"+(best!=null?" · Bestwert "+best+" %":"")));
+    })));
+    return;
+  }
+  const s = sortSess, set = s.set;
+  if(s.i>=s.items.length){
+    const pct = Math.round(100*s.right/s.items.length);
+    if(S.sorts[set.id]==null || pct>S.sorts[set.id]){ S.sorts[set.id]=pct; save(); }
+    root.append(h("div",{class:"stack",style:"margin-top:14px"},
+      h("div",{class:"panel stack tight"}, h("span",{class:"note "+(pct>=85?"ok":pct>=60?"warn":"")}, pct+" % richtig ("+s.right+" von "+s.items.length+")"),
+        s.wrong.length ? h("div",null, h("h4",null,"Das solltest du dir ansehen"), h("ul",{class:"ul"}, s.wrong.map(it=>h("li",null, h("strong",null,it.t), " → ", set.buckets[it.b], h("br"), h("span",{class:"small muted"}, it.x))))) : h("p",null,"Fehlerfrei.")),
+      h("div",{class:"row"},
+        s.wrong.length ? h("button",{class:"btn",type:"button",onclick:()=>{ sortSess={set, items:shuffle(s.wrong), i:0, right:0, wrong:[], answered:null}; render(); }},"Nur die Fehler wiederholen") : null,
+        h("button",{class:"btn sec",type:"button",onclick:()=>{ sortSess={set, items:shuffle(set.items), i:0, right:0, wrong:[], answered:null}; render(); }},"Ganze Runde neu"),
+        h("button",{class:"btn ghost",type:"button",onclick:()=>{ sortSess=null; render(); }},"Andere Übung"))));
+    return;
+  }
+  const it = s.items[s.i];
+  const fb = h("div",{class:"stack tight"});
+  const next = h("button",{class:"btn",type:"button",hidden:true}, s.i+1<s.items.length ? "Weiter" : "Auswertung");
+  next.addEventListener("click", ()=>{ s.i++; s.answered=null; render(); });
+  const bucketBtns = set.buckets.map((b,bi)=>{
+    const btn = h("button",{class:"bucket",type:"button"}, b);
+    btn.addEventListener("click", ()=>{ if(s.answered!=null) return; s.answered=bi; if(bi===it.b) s.right++; else s.wrong.push(it); paint(); });
+    return btn;
+  });
+  function paint(){
+    if(s.answered==null) return;
+    bucketBtns.forEach((btn,bi)=>{ btn.disabled=true; if(bi===it.b) btn.classList.add("right"); else if(bi===s.answered) btn.classList.add("wrong"); });
+    const ok = s.answered===it.b;
+    fb.replaceChildren(h("span",{class:"note "+(ok?"ok":"")}, ok ? "Richtig." : "Nicht ganz – richtig ist: "+set.buckets[it.b]+"."), it.x ? h("p",{class:"small"}, it.x) : null);
+    next.hidden=false; next.focus();
+  }
+  root.append(h("div",{class:"stack",style:"margin-top:14px"},
+    h("div",{class:"row between"}, h("span",{class:"small muted"}, set.title+" · "+(s.i+1)+" von "+s.items.length), h("button",{class:"btn ghost small",type:"button",onclick:()=>{ sortSess=null; render(); }},"Abbrechen")),
+    bar(Math.round(100*s.i/s.items.length)),
+    h("div",{class:"statement"}, it.t),
+    h("div",{class:"buckets"}, bucketBtns), fb, h("div",{class:"row"}, next)));
+  paint();
+}
+
+// ---------- Lückentext ----------
+let clozeSel = null;
+function parseCloze(text){
+  const parts = []; const re = /\[\[(.+?)\]\]/g; let last = 0, m;
+  while((m = re.exec(text))){ if(m.index>last) parts.push(text.slice(last,m.index)); const bits=m[1].split("|"); const group=(bits.find(b=>b.startsWith("@"))||"").slice(1)||null; parts.push({ans:bits.filter(b=>!b.startsWith("@")), group}); last=re.lastIndex; }
+  if(last<text.length) parts.push(text.slice(last));
+  return parts;
+}
+function viewCloze(root){
+  root.append(h("div",{class:"stack tight"}, h("h2",null,"Lückentext"), h("p",{class:"lede"},"Die Originalformulierungen sind Gold wert: In der Klausur zitierst du sie mit Zeilenangabe. Füll die Lücken aus dem Gedächtnis – kleine Tippfehler werden toleriert.")));
+  if(!clozeSel){
+    root.append(h("div",{class:"grid2",style:"margin-top:16px"}, CLOZES.map(c=>{ const best=S.cloze[c.id]; const n=parseCloze(c.text).filter(p=>typeof p!=="string").length;
+      return h("button",{class:"choice",type:"button",onclick:()=>{ clozeSel=c.id; render(); }}, h("strong",null,c.title), h("span",{class:"meta"}, n+" Lücken"+(best!=null?" · Bestwert "+best+" %":"")), h("span",{class:"meta"}, c.src)); })));
+    return;
+  }
+  const c = CLOZES.find(x=>x.id===clozeSel);
+  const parts = parseCloze(c.text);
+  const blanks = [];
+  const body = h("p",{class:"cloze"}, parts.map(p=>{
+    if(typeof p==="string") return p;
+    const longest = p.ans.reduce((a,b)=>b.length>a.length?b:a, "");
+    const inp = h("input",{type:"text",autocomplete:"off",autocapitalize:"off",spellcheck:"false","aria-label":"Lücke",style:"width:"+Math.max(5,longest.length+2)+"ch"});
+    const sol = h("span",{class:"sol",hidden:true});
+    blanks.push({p, inp, sol});
+    return [inp, sol];
+  }));
+  const result = h("p",{class:"note",hidden:true});
+  const groups = {};
+  blanks.forEach(b=>{ if(b.p.group) (groups[b.p.group] = groups[b.p.group] || []).push(b); });
+  function check(){
+    let pts = 0;
+    const used = {};
+    blanks.forEach(b=>{
+      let sc = 0, shown = b.p.ans[0];
+      if(b.p.group){
+        const pool = groups[b.p.group], u = used[b.p.group] || (used[b.p.group] = new Set());
+        let bestK = -1;
+        pool.forEach((x,k)=>{ if(u.has(k)) return; const r = matchAnswer(b.inp.value, x.p.ans); if(r>sc){ sc=r; bestK=k; } });
+        if(bestK>=0){ u.add(bestK); shown = pool[bestK].p.ans[0]; }
+        else shown = pool.filter((x,k)=>!u.has(k)).map(x=>x.p.ans[0]).join(" / ") || b.p.ans[0];
+      } else sc = matchAnswer(b.inp.value, b.p.ans);
+      b.inp.classList.remove("ok","near","bad"); b.inp.classList.add(sc===2?"ok":sc===1?"near":"bad");
+      b.sol.hidden = sc===2; b.sol.textContent = (sc===1 ? "Schreibweise: " : "→ ")+shown;
+      pts += sc ? 1 : 0;
+    });
+    const pct = Math.round(100*pts/blanks.length);
+    result.hidden=false; result.textContent = pts+" von "+blanks.length+" Lücken richtig ("+pct+" %)"+(pct===100?" – perfekt.":"");
+    result.className = "note "+(pct>=85?"ok":pct>=60?"warn":"");
+    if(S.cloze[c.id]==null || pct>S.cloze[c.id]){ S.cloze[c.id]=pct; save(); }
+  }
+  root.append(h("div",{class:"stack",style:"margin-top:14px"},
+    h("div",{class:"row between"}, h("h3",null,c.title), h("button",{class:"btn ghost small",type:"button",onclick:()=>{ clozeSel=null; render(); }},"Andere Texte")),
+    h("span",{class:"src",style:"margin-top:-8px"}, c.src),
+    body,
+    h("div",{class:"row"},
+      h("button",{class:"btn",type:"button",onclick:check},"Prüfen"),
+      h("button",{class:"btn sec",type:"button",onclick:()=>blanks.forEach(b=>{ if(!b.inp.value) b.inp.placeholder = b.p.group ? "?" : b.p.ans[0].charAt(0)+"…"; })},"Tipp: Anfangsbuchstaben"),
+      h("button",{class:"btn ghost",type:"button",onclick:()=>render()},"Leeren")),
+    result));
+}
+
+// ---------- Zeitstrahl ----------
+let tlSess = null;
+function viewTimeline(root){
+  if(!tlSess) tlSess = {pool:shuffle(EVENTS), placed:[], mistakes:0};
+  const s = tlSess;
+  const remainingMin = () => Math.min(...s.pool.map(e=>e.y));
+  root.append(h("div",{class:"stack"},
+    h("div",{class:"stack tight"}, h("h2",null,"Zeitstrahl"), h("p",{class:"lede"},"„Wann?“ – Tippe die Ereignisse in der richtigen Reihenfolge an, vom frühesten zum spätesten. Jahreszahlen siehst du erst, wenn ein Ereignis richtig liegt."), h("p",{class:"small muted"},"Mit „Zusatzwissen“ markierte Punkte stehen nicht im Hefter, helfen aber beim Einordnen.")),
+    h("div",{class:"row between"}, h("span",{class:"small muted"}, s.placed.length+" von "+EVENTS.length+" eingeordnet · Fehlversuche: "+s.mistakes), h("button",{class:"btn ghost small",type:"button",onclick:()=>{ tlSess=null; render(); }},"Neu mischen")),
+    s.pool.length ? h("div",{class:"pool"}, s.pool.map(e=>{
+      const b = h("button",{class:"evt",type:"button"}, e.t);
+      b.addEventListener("click", ()=>{
+        if(e.y===remainingMin()){ s.pool=s.pool.filter(x=>x!==e); s.placed.push(e); if(!s.pool.length){ if(S.timeline.best==null || s.mistakes<S.timeline.best){ S.timeline.best=s.mistakes; save(); } } render(); }
+        else { s.mistakes++; b.classList.remove("shake"); void b.offsetWidth; b.classList.add("shake"); }
+      });
+      return b;
+    })) : h("div",{class:"panel"}, h("span",{class:"note ok"}, "Geschafft – mit "+s.mistakes+" Fehlversuchen."), S.timeline.best!=null ? h("p",{class:"small muted"},"Bestwert: "+S.timeline.best+" Fehlversuche") : null),
+    s.placed.length ? h("ol",{class:"tl"}, s.placed.map(e=>h("li",null, h("span",{class:"yr"}, e.when), e.t, e.x ? h("span",{class:"x"}, e.x) : null))) : null,
+    h("div",{class:"row"}, h("button",{class:"btn sec",type:"button",onclick:()=>{ clozeSel="daten"; go("luecken"); }},"Danach: Jahreszahlen im Lückentext"))));
+}
+
+// ---------- Vergleichstabelle ----------
+let matrixOpen = new Set();
+function viewMatrix(root){
+  root.append(h("div",{class:"stack tight"}, h("h2",null,"Vergleich Feuerbach – Marx"), h("p",{class:"lede"},"Die Tabelle aus deinem Hefter – nur leer. Füll jede Zeile aus dem Kopf, dann deck sie auf. In der Klausur ist genau diese Kriterien-Logik dein roter Faden beim Vergleichen.")),
+    h("div",{class:"row",style:"margin-top:10px"}, confirmButton("Alle Eingaben leeren","Wirklich alles leeren?", ()=>{ S.matrix={}; matrixOpen=new Set(); save(); render(); }, "ghost")));
+  MATRIX.forEach(row=>{
+    const open = matrixOpen.has(row.id);
+    const cells = ["f","m"].map(side=>{
+      const k = row.id+"-"+side;
+      const ta = h("textarea",{class:"lined",id:"mx-"+k,rows:3,placeholder:side==="f"?"Feuerbach …":"Marx …"});
+      ta.value = S.matrix[k] || "";
+      ta.addEventListener("input", ()=>{ S.matrix[k]=ta.value; });
+      ta.addEventListener("change", save);
+      const model = row[side];
+      const list = checklist(model.kp, S.matrix[k+":ck"], (vals, silent)=>{ if(!silent){ S.matrix[k+":ck"]=[...vals]; save(); } });
+      const back = h("div",{class:"stack tight",hidden:!open}, h("div",{class:"panel small",html:md(model.a)}), list);
+      return {ta, list, back, model, el:h("div",{class:"mcell"}, h("span",{class:"chip "+(side==="f"?"fb":"mx")}, side==="f"?"Feuerbach":"Marx"), ta, back)};
+    });
+    const openBtn = h("button",{class:"btn small",type:"button",hidden:open}, "Zeile aufdecken");
+    openBtn.addEventListener("click", ()=>{ if((cells[0].ta.value+cells[1].ta.value).trim().length<10){ cells[0].ta.focus(); cells[0].ta.placeholder="Erst selbst eintragen …"; return; } matrixOpen.add(row.id); save(); cells.forEach(c=>c.back.hidden=false); openBtn.hidden=true; ai.hidden=false; });
+    const ai = aiBlock({label:"KI prüft die Zeile", tier:"quick", build:()=>{
+        const items = cells[0].model.kp.map(x=>"Feuerbach: "+x).concat(cells[1].model.kp.map(x=>"Marx: "+x));
+        return checkPrompt("Vergleichstabelle Feuerbach – Marx, Kriterium „"+row.label+"“.", items, "Feuerbach: "+cells[0].ta.value+"\nMarx: "+cells[1].ta.value);
+      }, onResult:(r,out)=>{ const n0=cells[0].model.kp.length; const ok=(r.getroffen||[]).map(Number), half=(r.teilweise||[]).map(Number);
+        cells.forEach((c,ci)=>{ const off=ci?n0:0; c.list.setVals(c.model.kp.map((_,i)=> ok.includes(i+off)?1:half.includes(i+off)?0.5:0)); });
+        renderCheckFeedback(r,out); }});
+    ai.hidden = !open;
+    root.append(h("section",{class:"stack tight",style:"margin-top:22px"}, h("h3",null,row.label), h("div",{class:"mrow"}, cells.map(c=>c.el)), h("div",{class:"row"}, openBtn), ai));
+  });
+}
+
+// ---------- Textarbeit ----------
+let textSess = null;
+function readerEl(t, live){
+  return h("div",{class:"reader"+(live?" live":"")}, t.sections.map(sec=>[
+    sec.label ? h("div",{class:"sec"}, sec.label) : null,
+    h("p",null, sec.sents.map(([id,z,txt])=>[h("span",{class:"sent","data-id":id,"data-z":z,tabindex:live?0:null,role:live?"button":null}, h("span",{class:"z"},"Z. "+z), txt), " "]))
+  ]), h("span",{class:"src"}, t.src));
+}
+function viewText(root){
+  root.append(h("div",{class:"stack tight"}, h("h2",null,"Textarbeit"), h("p",{class:"lede"},"Zusammenhänge erkennen heißt: die richtige Stelle finden und mit Zeilenangabe belegen. Tippe im Text auf den Satz, der die Frage beantwortet. Danach formulierst du den Zusammenhang selbst.")));
+  if(!textSess){
+    root.append(h("div",{class:"grid2",style:"margin-top:16px"}, TEXTS.map(t=>{ const best=S.texts[t.id];
+      return h("button",{class:"choice",type:"button",onclick:()=>{ textSess={id:t.id, i:0, tries:0, first:0, phase:"find"}; render(); }}, h("strong",null,t.title), h("span",{class:"meta"}, t.short), h("span",{class:"meta"}, t.tasks.length+" Stellen + Schreibaufgabe"+(best!=null?" · Bestwert "+best+" %":""))); })));
+    return;
+  }
+  const t = TEXTS.find(x=>x.id===textSess.id), s = textSess;
+  const head = h("div",{class:"row between",style:"margin-top:12px"}, h("h3",null,t.title), h("button",{class:"btn ghost small",type:"button",onclick:()=>{ textSess=null; render(); }},"Andere Texte"));
+  if(s.phase==="write"){
+    root.append(h("div",{class:"stack"}, head,
+      h("details",{class:"more",open:true}, h("summary",null,"Text einblenden"), readerEl(t,false)),
+      writingTask({key:"text-"+t.id, op:t.write.op, task:t.write.task, horizon:t.write.horizon, topics:t.write.topics, materialText:t.sections.map(sec=>sec.sents.map(x=>"(Z. "+x[1]+") "+x[2]).join(" ")).join("\n"), timer:20}),
+      h("div",{class:"row"}, h("button",{class:"btn ghost",type:"button",onclick:()=>{ textSess={id:t.id,i:0,tries:0,first:0,phase:"find"}; render(); }},"Stellensuche wiederholen"))));
+    return;
+  }
+  const task = t.tasks[s.i];
+  const fb = h("div",{class:"stack tight","aria-live":"polite"});
+  const next = h("button",{class:"btn small",type:"button",hidden:true}, s.i+1<t.tasks.length ? "Nächste Frage" : "Weiter zur Schreibaufgabe");
+  next.addEventListener("click", ()=>{ if(s.i+1<t.tasks.length){ s.i++; s.tries=0; s.solved=false; render(); } else { const pct=Math.round(100*s.first/t.tasks.length); if(S.texts[t.id]==null || pct>S.texts[t.id]){ S.texts[t.id]=pct; save(); } s.phase="write"; render(); } });
+  const firstEl = h("span",{class:"small muted"}, s.first+" auf Anhieb");
+  const box = h("div",{class:"taskbox stack tight"}, h("div",{class:"row between"}, h("span",{class:"small muted"},"Frage "+(s.i+1)+" von "+t.tasks.length), firstEl), h("p",{class:"q"}, task.q), fb, h("div",{class:"row"}, next));
+  const reader = readerEl(t, true);
+  function showSolved(el){
+    reader.querySelectorAll(".sent").forEach(x=>{ if(task.ok.includes(x.dataset.id)) x.classList.add("ok"); });
+    const z = (el || reader.querySelector('.sent[data-id="'+task.ok[0]+'"]')).dataset.z;
+    fb.replaceChildren(h("span",{class:"note "+(s.okFirst?"ok":"")}, s.okFirst ? "Genau." : "Hier steht's:"), h("p",{class:"small"}, task.x), h("p",{class:"small"}, h("strong",null,"So belegst du es: "), "(", zCite(z), ")"));
+    firstEl.textContent = s.first+" auf Anhieb";
+    next.hidden=false;
+  }
+  function solve(okFirst, el){ s.solved = true; s.okFirst = okFirst; if(okFirst) s.first++; showSolved(el); }
+  reader.addEventListener("click", e=>{
+    const el = e.target.closest(".sent"); if(!el || s.solved) return;
+    if(task.ok.includes(el.dataset.id)){ solve(s.tries===0, el); return; }
+    s.tries++; el.classList.add("bad"); setTimeout(()=>el.classList.remove("bad"), 900);
+    if(s.tries>=3) solve(false);
+    else fb.replaceChildren(h("span",{class:"note"}, "Nicht diese Stelle."), s.tries>=2 ? h("p",{class:"small"}, "Tipp: "+task.hint) : null);
+  });
+  reader.addEventListener("keydown", e=>{ if((e.key==="Enter"||e.key===" ") && e.target.classList.contains("sent")){ e.preventDefault(); e.target.click(); } });
+  root.append(h("div",{class:"stack"}, head, box, reader));
+  if(s.solved) showSolved(null);
+}
+
+// ---------- Stellung nehmen ----------
+let essaySel = null;
+function viewEssay(root){
+  root.append(h("div",{class:"stack tight"}, h("h2",null,"Stellung nehmen"), h("p",{class:"lede"},"Wähle eine These, schreib deine begründete Stellungnahme – erst danach siehst du Argumentbank und Erwartungshorizont. Mit KI-Korrektur bekommst du eine Punkt-Einschätzung und konkrete Verbesserungen.")));
+  if(!essaySel){
+    root.append(h("div",{class:"grid2",style:"margin-top:16px"}, ESSAYS.map(e=>{ const g=S.drafts["essay-"+e.id+":grade"], sub=S.drafts["essay-"+e.id+":sub"];
+      return h("button",{class:"choice",type:"button",onclick:()=>{ essaySel=e.id; render(); }}, h("strong",null,e.title), h("span",{class:"row"}, e.topics.map(t=>topicChip(t))), h("span",{class:"meta"}, sub ? ("geschrieben"+(g!=null?" · "+g+" Punkte":"")) : "noch offen")); })),
+      h("div",{class:"panel stack tight",style:"margin-top:18px"}, h("h4",null,"So ist eine gute Stellungnahme gebaut"), h("ol",{class:"ul"}, ["Einleitung: Thema + These der Vorlage in eigenen Worten (mit Zeile)","Eigene Position – klar, nicht schwammig","Argumente: Behauptung → Begründung → Beispiel","Gegenargument ernst nehmen und entkräften oder abwägen","Fazit: begründetes Urteil, das zur Position passt"].map(x=>h("li",null,x)))));
+    return;
+  }
+  const e = ESSAYS.find(x=>x.id===essaySel);
+  root.append(h("div",{class:"stack",style:"margin-top:12px"},
+    h("div",{class:"row between"}, h("h3",null,e.title), h("button",{class:"btn ghost small",type:"button",onclick:()=>{ essaySel=null; render(); }},"Andere Thesen")),
+    h("h4",null,"Material"), materialBlock(e.material),
+    writingTask({key:"essay-"+e.id, op:"Stellung nehmen", task:e.task, horizon:GENERIC_STELLUNG.concat(e.horizon), topics:e.topics, materialText:e.material.map(m=>m.t+" ("+m.src+")").join("\n"), pro:e.pro, con:e.con, proLabel:e.proLabel, conLabel:e.conLabel, scaffold:true, phrases:true, timer:25, rows:16})));
+}
+
+// ---------- Prüfungsgespräch ----------
+let chat = {topic:"all", turns:[], busy:false, ctl:null};
+const CHAT_TOPICS = {all:["Alles gemischt",["theo","rk","fb","mx","vg"]], theo:["Theodizee",["theo"]], rk:["Religionskritik & Feuerbach",["rk","fb","vg"]], mx:["Marx",["mx","vg"]], vg:["Vergleich Feuerbach – Marx",["fb","mx","vg"]]};
+function chatRules(){
+  const [name, topics] = CHAT_TOPICS[chat.topic];
+  return "Du bist Prüfer in einer mündlichen Ethik-Prüfung (Klasse 12, Gymnasium, Deutschland). Thema: "+name+".\n"+
+  "Grundlage ist ausschließlich dieses Unterrichtswissen:\n"+kb(topics)+"\n\n"+
+  "Ablauf: Stelle immer genau EINE Frage. Nach jeder Antwort des Schülers: (1) Bewertung als erstes Wort: „Richtig.“, „Teilweise.“ oder „Falsch.“ (2) In 1–3 Sätzen, was gefehlt hat oder falsch war, mit der korrekten Information. (3) Dann die nächste Frage. "+
+  "Steigere die Schwierigkeit: erst Wissen (nennen, erklären), dann Zusammenhänge (vergleichen, Textbezug), dann Urteil (Stellung nehmen). Hake bei vagen Antworten einmal nach, bevor du weitergehst. "+
+  "Nach der achten Frage: kurzes Gesamtfeedback mit zwei Stärken und zwei Lücken, keine weitere Frage. Verrate keine Antwort, bevor der Schüler geantwortet hat. Deutsch, Du-Form, knapp, ohne Markdown-Überschriften.\n\nBeginne jetzt mit der ersten Frage.";
+}
+function viewChat(root){
+  root.append(h("div",{class:"stack tight"}, h("h2",null,"Prüfungsgespräch"), h("p",{class:"lede"},"Claude fragt dich ab wie in einer mündlichen Prüfung: eine Frage, deine Antwort, sofortiges Feedback, dann die nächste – zunehmend schwieriger.")));
+  if(!AI){ root.append(h("div",{class:"panel",style:"margin-top:14px"}, h("p",null,"Das Prüfungsgespräch braucht die KI-Funktion. Sie ist nur verfügbar, wenn du die App in Claude öffnest und die Nutzung erlaubst. Alle anderen Übungen funktionieren ohne."))); return; }
+  const log = h("div",{class:"chat"});
+  const paint = () => { log.replaceChildren(...chat.turns.map(m=>h("div",{class:"msg "+(m.role==="user"?"me":"ai")}, h("span",{class:"who"}, m.role==="user"?"Du":"Prüfer"), m.content))); };
+  paint();
+  const status = h("p",{class:"small muted","aria-live":"polite"});
+  const ta = h("textarea",{id:"chat-in",rows:4,placeholder:"Deine Antwort …"});
+  const send = h("button",{class:"btn",type:"button"}, "Antwort senden");
+  const stop = h("button",{class:"btn ghost small",type:"button",hidden:true}, "Abbrechen");
+  async function ask(){
+    chat.busy = true; send.disabled = true; stop.hidden = false;
+    const bubble = h("div",{class:"msg ai"}, h("span",{class:"who"},"Prüfer"), h("span",{class:"thinking"},"denkt nach"));
+    log.append(bubble); bubble.scrollIntoView({block:"nearest"});
+    chat.ctl = new AbortController();
+    const recent = chat.turns.slice(-24);
+    if(recent.length && recent[0].role!=="assistant") recent.shift();
+    const input = [{role:"user", content:chatRules()}].concat(recent);
+    try{
+      const {text} = await AI(input, {cache:false, signal:chat.ctl.signal, onText:({text})=>{ bubble.replaceChildren(h("span",{class:"who"},"Prüfer"), text); }});
+      chat.turns.push({role:"assistant", content:text});
+    }catch(e){ bubble.remove(); const m = aiError(e); if(m) status.textContent = m; if(chat.turns.length && chat.turns[chat.turns.length-1].role==="user") ta.value = chat.turns.pop().content; }
+    finally{ chat.busy=false; send.disabled=false; stop.hidden=true; paint(); }
+  }
+  send.addEventListener("click", ()=>{ const v=ta.value.trim(); if(!v || chat.busy) return; chat.turns.push({role:"user",content:v}); ta.value=""; status.textContent=""; paint(); ask(); });
+  stop.addEventListener("click", ()=> chat.ctl && chat.ctl.abort());
+  const chips = h("div",{class:"row"}, Object.entries(CHAT_TOPICS).map(([k,[name]])=>h("button",{class:"chip vg",type:"button","aria-pressed":String(chat.topic===k),onclick:()=>{ if(chat.busy) return; chat.topic=k; chat.turns=[]; render(); }}, name)));
+  const startBtn = h("button",{class:"btn",type:"button"}, chat.turns.length ? "Neu starten" : "Prüfung starten");
+  startBtn.addEventListener("click", ()=>{ if(chat.busy) return; chat.turns=[]; paint(); inputRow.hidden=false; ask(); });
+  const inputRow = h("div",{class:"stack tight",hidden:!chat.turns.length}, ta, h("div",{class:"row"}, send, stop));
+  root.append(h("div",{class:"stack",style:"margin-top:14px"}, chips, h("div",{class:"row"}, startBtn), log, status, inputRow));
+}
+
+// ---------- Probeklausur ----------
+let examSel = null, examMinutes = 90;
+function viewExam(root){
+  root.append(h("div",{class:"stack tight"}, h("h2",null,"Probeklausur"), h("p",{class:"lede"},"Ein Material, drei Aufgaben von AFB I bis III – wie in der echten Klausur. Stell den Timer, leg Hefter und Handy-Notizen weg, schreib durch. Erst danach: Erwartungshorizont und Korrektur.")));
+  if(!examSel){
+    root.append(h("div",{class:"grid2",style:"margin-top:16px"}, EXAMS.map(x=>{ const g=x.tasks.map((_,i)=>S.drafts["exam-"+x.id+"-"+i+":grade"]).filter(v=>v!=null);
+      return h("button",{class:"choice",type:"button",onclick:()=>{ examSel=x.id; render(); }}, h("strong",null,x.title), h("span",{class:"meta"}, x.desc), h("span",{class:"meta"}, g.length ? "KI-Schnitt: "+(g.reduce((a,b)=>a+b,0)/g.length).toFixed(1)+" Punkte" : "noch nicht geschrieben")); })));
+    return;
+  }
+  const x = EXAMS.find(e=>e.id===examSel);
+  const t = x.text ? TEXTS.find(tt=>tt.id===x.text) : null;
+  const materialText = t ? t.sections.map(sec=>sec.sents.map(s=>"(Z. "+s[1]+") "+s[2]).join(" ")).join("\n") : x.material.map(m=>m.t).join("\n");
+  const minutes = h("div",{class:"row"}, h("span",{class:"small muted"},"Dauer:"), [45,90,135].map(m=>h("button",{class:"chip vg",type:"button","aria-pressed":String(examMinutes===m),onclick:()=>{ examMinutes=m; render(); }}, m+" Min.")), timer(examMinutes));
+  root.append(h("div",{class:"stack",style:"margin-top:12px"},
+    h("div",{class:"row between"}, h("h3",null,x.title), h("button",{class:"btn ghost small",type:"button",onclick:()=>{ examSel=null; render(); }},"Andere Klausur")),
+    minutes,
+    h("h4",null,"Material"),
+    t ? readerEl(t,false) : materialBlock(x.material),
+    x.tasks.map((tk,i)=>h("div",{class:"stack",style:"margin-top:10px"}, h("h4",null,"Aufgabe "+(i+1)),
+      writingTask({key:"exam-"+x.id+"-"+i, op:tk.op, task:tk.task, horizon:tk.horizon, topics:tk.topics, materialText, scaffold:tk.op==="Stellung nehmen", phrases:tk.op==="Stellung nehmen", rows:12})))));
+}
+
+/* =========================================================
+   RAHMEN
+   ========================================================= */
+const main = document.getElementById("view");
+const tabs = document.getElementById("tabs");
+tabs.append(...ROUTES.map(r=>h("a",{class:"tab"+(r.ai?" ai-only":""),href:"#"+r.id,"data-id":r.id}, r.label)));
+const currentRoute = () => { const id=(location.hash||"#start").slice(1); return ROUTES.some(r=>r.id===id) ? id : "start"; };
+function updateHeader(){
+  const st = document.getElementById("status");
+  st.replaceChildren(
+    h("span",{class:"pill on"}, h("i"), sureCount()+"/"+CARDS.length+" Karten sicher"),
+    h("span",{class:"pill"+(AI?" on":"")}, h("i"), AI ? "KI-Korrektur aktiv" : "KI-Korrektur aus"),
+    h("span",{class:"pill"+(syncState==="account"?" on":"")}, h("i"), syncState==="account" ? "Gespeichert im Konto" : "Gespeichert im Browser"));
+}
+function render(){
+  cleanups.forEach(f=>{ try{ f(); }catch(e){} }); cleanups = [];
+  const id = currentRoute(), r = ROUTES.find(x=>x.id===id);
+  tabs.querySelectorAll(".tab").forEach(t=>{ if(t.dataset.id===id) t.setAttribute("aria-current","page"); else t.removeAttribute("aria-current"); });
+  main.replaceChildren();
+  r.render(main);
+  updateHeader();
+}
+window.addEventListener("hashchange", ()=>{
+  render();
+  const top = document.querySelector(".app-head").getBoundingClientRect().bottom + window.scrollY;
+  if(window.scrollY > top) window.scrollTo(0, top);
+  const a = tabs.querySelector('[aria-current="page"]'); if(a) a.scrollIntoView({inline:"nearest",block:"nearest"});
+});
+render();
+initAI();
+initRemote();
+</script>
