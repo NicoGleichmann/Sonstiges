@@ -1,10 +1,9 @@
 // Service Worker: lädt alle Dateien beim ersten Start in den Cache, danach läuft die App komplett offline.
 // Neue/geänderte Dateien: VERSION erhöhen (und APP_VERSION in js/app.js), neue Dateien in ASSETS eintragen.
-const VERSION = '1.0.1';
+const VERSION = '1.0.2';
 const CACHE = 'clockgallery-' + VERSION;
 const ASSETS = [
   './',
-  'index.html',
   'manifest.webmanifest',
   'css/fonts.css',
   'css/app.css',
@@ -60,8 +59,24 @@ const ASSETS = [
   'fonts/zen-kaku-gothic-new-latin-300-normal.woff2',
 ];
 
+// Umgeleitete Antworten (Cloudflare leitet z. B. /index.html → / um) dürfen nicht für Seitenaufrufe
+// ausgeliefert werden (Chrome: ERR_FAILED). Deshalb vor dem Speichern in eine „saubere“ Antwort kopieren.
+async function clean(res) {
+  if (!res.redirected) return res;
+  const body = await res.blob();
+  return new Response(body, { status: res.status, statusText: res.statusText, headers: res.headers });
+}
+
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS.map(u => new Request(u, { cache: 'reload' })))).then(() => self.skipWaiting()));
+  e.waitUntil((async () => {
+    const c = await caches.open(CACHE);
+    await Promise.all(ASSETS.map(async u => {
+      const res = await fetch(new Request(u, { cache: 'reload' }));
+      if (!res.ok) throw new Error('Precache fehlgeschlagen: ' + u + ' (' + res.status + ')');
+      await c.put(u, await clean(res));
+    }));
+    await self.skipWaiting();
+  })());
 });
 
 self.addEventListener('activate', e => {
@@ -72,17 +87,28 @@ self.addEventListener('activate', e => {
   );
 });
 
-// Cache zuerst; nur was fehlt, kommt aus dem Netz (und wird dann ebenfalls gespeichert).
+// Seitenaufrufe: zuerst Netz (damit Updates ankommen), ohne Netz die gespeicherte Startseite.
+// Alles andere: Cache zuerst; was fehlt, kommt aus dem Netz und wird gespeichert.
 self.addEventListener('fetch', e => {
   const req = e.request;
   if (req.method !== 'GET' || new URL(req.url).origin !== location.origin) return;
   if (req.mode === 'navigate') {
-    e.respondWith(caches.match('index.html', { cacheName: CACHE }).then(r => r || fetch(req)));
+    e.respondWith((async () => {
+      const cached = await caches.match('./', { cacheName: CACHE });
+      try {
+        // Höchstens 4 s aufs Netz warten, sonst gespeicherte Version (Uhr soll sofort starten).
+        const res = await Promise.race([fetch(req), new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), cached ? 4000 : 30000))]);
+        if (res.ok) return clean(res);
+        return cached || res;
+      } catch {
+        return cached || Response.error();
+      }
+    })());
     return;
   }
   e.respondWith(
-    caches.match(req, { ignoreSearch: true }).then(hit => hit || fetch(req).then(res => {
-      if (res.ok && res.type === 'basic') { const copy = res.clone(); caches.open(CACHE).then(c => c.put(req, copy)); }
+    caches.match(req, { ignoreSearch: true }).then(hit => hit || fetch(req).then(async res => {
+      if (res.ok && res.type === 'basic') { const copy = await clean(res.clone()); caches.open(CACHE).then(c => c.put(req, copy)); }
       return res;
     }))
   );

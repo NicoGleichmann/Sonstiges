@@ -8,7 +8,7 @@ import { createBurnIn } from './burnin.js';
 import { attachGestures } from './gestures.js';
 import { parts, timeZone } from './format.js';
 
-export const APP_VERSION = '1.0.1'; // bei Änderungen zusammen mit VERSION in sw.js erhöhen
+export const APP_VERSION = '1.0.2'; // bei Änderungen zusammen mit VERSION in sw.js erhöhen
 
 const $ = id => document.getElementById(id);
 const stage = $('stage'), shiftEl = $('shift'), designEl = $('design'), decoEl = $('deco');
