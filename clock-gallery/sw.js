@@ -1,6 +1,6 @@
 // Service Worker: lädt alle Dateien beim ersten Start in den Cache, danach läuft die App komplett offline.
 // Neue/geänderte Dateien: VERSION erhöhen (und APP_VERSION in js/app.js), neue Dateien in ASSETS eintragen.
-const VERSION = '1.0.0';
+const VERSION = '1.0.1';
 const CACHE = 'clockgallery-' + VERSION;
 const ASSETS = [
   './',

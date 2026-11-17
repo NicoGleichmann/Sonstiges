@@ -47,7 +47,8 @@ export default {
     r.tz = line('out', ctx.tz || '');
     r.prompt = line('cmd', 'user@clock:~$ ');
     r.cursor = el('span', 'cursor', r.prompt, '█');
-    requestAnimationFrame(() => { if (r) r.rain = startRain(r.canvas); });
+    const mine = r;
+    r.raf = requestAnimationFrame(() => { if (r === mine) r.rain = startRain(r.canvas); });
   },
   tick(p, ctx) {
     const s = ctx.settings;
@@ -64,5 +65,5 @@ export default {
     fit(r.time, ctx.width * 0.86, ctx.height * (land ? 0.42 : 0.2));
     r.rain && r.rain.resize();
   },
-  unmount() { if (r && r.rain) r.rain.stop(); r = null; },
+  unmount() { if (r) { cancelAnimationFrame(r.raf); if (r.rain) r.rain.stop(); } r = null; },
 };

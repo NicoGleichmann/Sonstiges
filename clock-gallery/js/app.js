@@ -8,7 +8,7 @@ import { createBurnIn } from './burnin.js';
 import { attachGestures } from './gestures.js';
 import { parts, timeZone } from './format.js';
 
-export const APP_VERSION = '1.0.0'; // bei Änderungen zusammen mit VERSION in sw.js erhöhen
+export const APP_VERSION = '1.0.1'; // bei Änderungen zusammen mit VERSION in sw.js erhöhen
 
 const $ = id => document.getElementById(id);
 const stage = $('stage'), shiftEl = $('shift'), designEl = $('design'), decoEl = $('deco');
@@ -17,7 +17,7 @@ const controls = $('controls'), settingsEl = $('settings'), toastEl = $('toast')
 let S = store.load();
 let current = null, effTheme = null, night = false, lastNow = new Date();
 
-const orientation = () => (innerWidth >= innerHeight ? 'landscape' : 'portrait');
+const orientation = () => (innerWidth > innerHeight ? 'landscape' : 'portrait');
 const ctx = () => ({
   settings: S, theme: themeById(effTheme), orientation: orientation(), tz: timeZone(),
   width: designEl.clientWidth, height: designEl.clientHeight,
@@ -180,15 +180,18 @@ function syncSettingsUI() {
   $('stTz').textContent = timeZone();
   $('stVer').textContent = APP_VERSION;
 }
+let openedAt = 0;
 function openSettings() {
   hideControls();
   syncSettingsUI();
   settingsEl.hidden = false;
+  openedAt = performance.now();
   $('btnClose').focus({ preventScroll: true });
 }
 function closeSettings() { settingsEl.hidden = true; }
 $('btnClose').addEventListener('click', closeSettings);
-settingsEl.addEventListener('click', e => { if (e.target === settingsEl) closeSettings(); });
+// Klick aufs Abdunkeln schließt, aber nicht der Klick, der beim Loslassen des Langdrucks entsteht.
+settingsEl.addEventListener('click', e => { if (e.target === settingsEl && performance.now() - openedAt > 700) closeSettings(); });
 document.addEventListener('keydown', e => {
   if (!settingsEl.hidden) { if (e.key === 'Escape') closeSettings(); return; }
   if (e.key === 'ArrowRight') nextDesign(1);

@@ -1,5 +1,5 @@
 // Flip-Uhr: Klappkarten. Hochformat 2×2 (Stunden über Minuten), Querformat 1×4.
-import { el, setText, reducedMotion } from './_lib.js';
+import { el, setText, fit, reducedMotion } from './_lib.js';
 
 let r = null;
 
@@ -48,8 +48,9 @@ export default {
     if (s.showSeconds) bits.push(p.ss);
     if (p.ampm) bits.push(p.ampm);
     if (s.showDate) bits.push(p.dateShort);
-    setText(r.foot, bits.join('  ·  '));
+    const ch = setText(r.foot, bits.join('  ·  '));
     r.foot.hidden = !bits.length;
+    if (ch && r.foot.textContent.length !== r.flen) { r.flen = r.foot.textContent.length; this.layout(ctx); }
   },
   layout(ctx) {
     if (!r) return;
@@ -58,7 +59,8 @@ export default {
       ? Math.min(W * 0.92 / 4.5, H * 0.72 / 1.42)
       : Math.min(W * 0.88 / 2.06, H * 0.8 / 3.2);
     r.wrap.style.setProperty('--cw', Math.floor(cw) + 'px');
-    r.foot.style.fontSize = Math.max(12, Math.min(cw * 0.22, 40)) + 'px';
+    r.cw = cw; r.W = W;
+    fit(r.foot, W * 0.9, Math.min(cw * 0.22, 40), 40);
   },
   unmount() { r = null; },
 };
