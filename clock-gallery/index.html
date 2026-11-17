@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Clock Gallery</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/designs.css">
+</head>
+<body>
+<main id="stage" aria-live="off">
+  <div id="shift">
+    <div id="deco" aria-hidden="true"></div>
+    <div id="design" role="timer" aria-label="Uhr"></div>
+  </div>
+</main>
+
+<div id="controls" hidden>
+  <div class="bar top">
+    <button type="button" class="btn" id="btnPrev" aria-label="Vorheriges Design">‹</button>
+    <div class="titles">
+      <div id="lblDesign" class="lbl-design"></div>
+      <button type="button" id="btnTheme" class="lbl-theme" aria-label="Nächster Stil"></button>
+    </div>
+    <button type="button" class="btn" id="btnNext" aria-label="Nächstes Design">›</button>
+  </div>
+  <div class="bar bottom">
+    <div id="dots" class="dots" aria-hidden="true"></div>
+    <div class="actions">
+      <button type="button" class="btn small" id="btnFull" aria-label="Vollbild">⛶</button>
+      <button type="button" class="btn small" id="btnSettings" aria-label="Einstellungen">⚙</button>
+    </div>
+  </div>
+  <p class="hint">Wischen ←→ Design · ↑↓ Stil · lange drücken Einstellungen</p>
+</div>
+
+<div id="settings" hidden role="dialog" aria-modal="true" aria-labelledby="setTitle">
+  <div class="sheet">
+    <header>
+      <h2 id="setTitle">Einstellungen</h2>
+      <button type="button" class="btn small" id="btnClose" aria-label="Schließen">✕</button>
+    </header>
+
+    <section>
+      <h3>Ansicht</h3>
+      <label class="row"><span>Design</span><select id="selDesign"></select></label>
+      <label class="row"><span>Stil</span><select id="selTheme"></select></label>
+      <label class="row"><span>12-Stunden-Format</span><input type="checkbox" id="chk12"></label>
+      <label class="row"><span>Sekunden anzeigen</span><input type="checkbox" id="chkSec"></label>
+      <label class="row"><span>Datum anzeigen</span><input type="checkbox" id="chkDate"></label>
+    </section>
+
+    <section>
+      <h3>Display-Schutz</h3>
+      <label class="row col"><span>Helligkeit <output id="outBright"></output></span><input type="range" id="rngBright" min="10" max="100" step="5"></label>
+      <label class="row"><span>Pixel-Shift (alle 60 s)</span><input type="checkbox" id="chkShift"></label>
+      <label class="row"><span>Nachtdimmung</span><input type="checkbox" id="chkNight"></label>
+      <div class="row night"><span>von</span><input type="time" id="timeFrom"><span>bis</span><input type="time" id="timeTo"></div>
+      <label class="row col night"><span>Helligkeit nachts <output id="outNight"></output></span><input type="range" id="rngNight" min="5" max="100" step="5"></label>
+      <label class="row night"><span>Nachts Rotlicht-Stil</span><input type="checkbox" id="chkRed"></label>
+    </section>
+
+    <section>
+      <h3>Status</h3>
+      <p class="row"><span>Display bleibt an</span><span id="stWake">–</span></p>
+      <p class="row"><span>Offline bereit</span><span id="stOffline">–</span></p>
+      <p class="row"><span>Zeitzone</span><span id="stTz">–</span></p>
+      <p class="row"><span>Version</span><span id="stVer">–</span></p>
+      <button type="button" class="btn wide" id="btnReset">Einstellungen zurücksetzen</button>
+    </section>
+  </div>
+</div>
+
+<div id="toast" role="status" hidden></div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
