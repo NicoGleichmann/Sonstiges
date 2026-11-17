@@ -37,25 +37,21 @@ das Design liefert den Aufbau.
 - **Nachtdimmung:** Zeitfenster frei wählbar (Standard 23–6 Uhr, 25 %). Optional nachts automatisch Stil „Rotlicht“.
   Dekor-Flächen (Raster, Synthwave-Sonne, Farbfelder) sind nachts aus.
 
-## Hosting auf Cloudflare Pages (einmalig, ca. 5 Minuten)
+## Hosting auf Cloudflare Pages (ohne GitHub, ca. 5 Minuten)
 
 Die App braucht HTTPS (sonst funktionieren Offline-Modus und „Display bleibt an“ nicht). Cloudflare Pages liefert das kostenlos.
 
-1. Code auf `main` bringen (Pull Request mergen).
-2. [dash.cloudflare.com](https://dash.cloudflare.com) → **Workers & Pages** → **Erstellen** → **Pages** → **Mit Git verbinden**.
-3. Repository **`Sonstiges`** wählen.
-4. Einstellungen:
-   - Produktions-Branch: `main`
-   - Framework-Voreinstellung: **Keine**
-   - Build-Befehl: **leer**
-   - Build-Ausgabeverzeichnis: **`clock-gallery`**
-5. **Speichern und bereitstellen.** Du bekommst eine Adresse wie `https://<projekt>.pages.dev`.
+1. ZIP entpacken. Du hast dann einen Ordner `clock-gallery` mit `index.html` direkt darin.
+2. [dash.cloudflare.com](https://dash.cloudflare.com) → **Workers & Pages** → **Erstellen** → Reiter **Pages** → **Assets direkt hochladen** (Direct Upload).
+3. Projektnamen vergeben, z. B. `clock-gallery` → **Projekt erstellen**.
+4. Den **Inhalt** des Ordners hochladen: den Ordner `clock-gallery` ins Upload-Feld ziehen oder die ZIP-Datei wählen.
+   Wichtig: `index.html` muss auf oberster Ebene liegen, nicht in einem Unterordner.
+5. **Bereitstellen.** Du bekommst eine Adresse wie `https://clock-gallery.pages.dev`.
 
-Jeder weitere Push auf `main` geht automatisch live. Die Datei `_headers` setzt auf Cloudflare die
-Sicherheitsregeln (nur eigene Dateien erlaubt) und sorgt dafür, dass Updates ankommen.
+**Update später:** Im Projekt **Neue Bereitstellung erstellen** und den geänderten Ordner erneut hochladen.
+Vorher in `sw.js` `VERSION` und in `js/app.js` `APP_VERSION` erhöhen, sonst behält das Handy die alte Version im Cache.
 
-Alternative ohne GitHub: In Cloudflare Pages „Direkt hochladen“ wählen und den Ordner `clock-gallery` hineinziehen.
-Jedes Update muss dann wieder von Hand hochgeladen werden.
+Die Datei `_headers` setzt auf Cloudflare die Sicherheitsregeln (nur eigene Dateien erlaubt) und sorgt dafür, dass Updates ankommen.
 
 ## Installation auf dem Samsung Galaxy A70
 
